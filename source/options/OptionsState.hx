@@ -29,7 +29,7 @@ using StringTools;
 
 class OptionsState extends MusicBeatState
 {
-	var options:Array<String> = ['Adjust Delay and Combo', 'Note Colors', 'Controls', 'Graphics', 'Gameplay', 'Visuals and UI'];
+	var options:Array<String> = ['Adjust Delay and Combo', 'Note Colors', 'Controls', 'Gameplay', 'Graphics', 'Visuals and UI'];
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 	private static var curSelected:Int = 0;
 	public static var menuBG:FlxSprite;
@@ -46,10 +46,10 @@ class OptionsState extends MusicBeatState
 				} else {
 					openSubState(new options.ControlsSubState());
 				}
-			case 'Graphics':
-				openSubState(new options.GraphicsSettingsSubState());
 			case 'Gameplay':
 				openSubState(new options.GameplaySettingsSubState());
+			case 'Graphics':
+				openSubState(new options.GraphicsSettingsSubState());
 			case 'Visuals and UI':
 				openSubState(new options.VisualsUISubState());
 		}
