@@ -1,5 +1,6 @@
 package;
 
+import flixel.input.gamepad.FlxGamepadInputID;
 import flixel.FlxG;
 import flixel.util.FlxSave;
 import flixel.input.keyboard.FlxKey;
@@ -14,10 +15,16 @@ class ClientPrefs {
 	public static var globalAntialiasing:Bool = true;
 	public static var noteSplashes:Bool = true;
 	public static var lowQuality:Bool = false;
-	public static var framerate:Int = 60;
+	public static var framerate:Int = 120;
+	public static var maxOptimization:Bool = false;
+	public static var underlay:Float = 0;
 	public static var cursing:Bool = true;
 	public static var violence:Bool = true;
 	public static var camZooms:Bool = true;
+	public static var infoTextBorder:String = 'Outline';
+	public static var infoType:String = 'Simple Info';
+	public static var showWatermarks:Bool = true;
+	public static var uiSkin:String = 'Default';
 	public static var hideHud:Bool = false;
 	public static var noteOffset:Int = 0;
 	public static var arrowHSV:Array<Array<Int>> = [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]];
@@ -39,7 +46,7 @@ class ClientPrefs {
 		// bps is calculated by bpm / 60
 		// oh yeah and you'd have to actually convert the difference to seconds which I already do, because this is based on beats and stuff. but it should work
 		// just fine. but I wont implement it because I don't know how you handle sustains and other stuff like that.
-		// oh yeah when you calculate the bps divide it by the songSpeed or rate because it wont scroll correctly when speeds exist.
+		// oh yeah when you calculate the bps divide it by the songSpeed or rate because it wont scroll correctly when speeds exist. -KadeDev
 		'songspeed' => 1.0,
 		'healthgain' => 1.0,
 		'healthloss' => 1.0,
@@ -48,6 +55,11 @@ class ClientPrefs {
 		'botplay' => false,
 		'opponentplay' => false
 	];
+
+	public static var playMissSounds:Bool = true;
+	public static var playHitSounds:String = 'Disabled';
+	public static var moveCameraInNoteDirection:Bool = false;
+	public static var lightcpustrums:Bool = true;
 
 	public static var comboOffset:Array<Int> = [0, 0, 0, 0];
 	public static var keSustains:Bool = false; //i was bored, okay?
@@ -85,9 +97,28 @@ class ClientPrefs {
 	];
 	public static var defaultKeys:Map<String, Array<FlxKey>> = null;
 
+	public static var controllerBinds:Map<String, Array<FlxGamepadInputID>> = [
+		//FlxGamepadButtonId = Controller default binding
+		'note_left'		=> [DPAD_LEFT, LEFT_STICK_DIGITAL_LEFT],
+		'note_down'		=> [DPAD_DOWN, LEFT_STICK_DIGITAL_DOWN],
+		'note_up'		=> [DPAD_UP, LEFT_STICK_DIGITAL_UP],
+		'note_right'	=> [DPAD_RIGHT, LEFT_STICK_DIGITAL_RIGHT],
+
+		'ui_left'		=> [DPAD_LEFT, LEFT_STICK_DIGITAL_LEFT],
+		'ui_down'		=> [DPAD_DOWN, LEFT_STICK_DIGITAL_DOWN],
+		'ui_up'			=> [DPAD_UP, LEFT_STICK_DIGITAL_UP],
+		'ui_right'		=> [DPAD_RIGHT, LEFT_STICK_DIGITAL_RIGHT],
+
+		'accept'		=> [#if !switch A #else B #end, START],
+		'back'			=> [#if !switch B #else A #end, LEFT_SHOULDER],
+		'pause'			=> [START, LEFT_TRIGGER],
+		'reset'			=> [8, RIGHT_SHOULDER]
+	];
+	public static var controllerDefaultBinds:Map<String, Array<FlxGamepadInputID>> = null;
+
 	public static function loadDefaultKeys() {
 		defaultKeys = keyBinds.copy();
-		//trace(defaultKeys);
+		controllerDefaultBinds = controllerBinds.copy();
 	}
 
 	public static function saveSettings() {
@@ -98,16 +129,22 @@ class ClientPrefs {
 		FlxG.save.data.globalAntialiasing = globalAntialiasing;
 		FlxG.save.data.noteSplashes = noteSplashes;
 		FlxG.save.data.lowQuality = lowQuality;
+		FlxG.save.data.maxOptimization = maxOptimization;
 		FlxG.save.data.framerate = framerate;
+		FlxG.save.data.underlay = underlay;
 		//FlxG.save.data.cursing = cursing;
 		//FlxG.save.data.violence = violence;
 		FlxG.save.data.camZooms = camZooms;
+		FlxG.save.data.infoTextBorder = infoTextBorder;
+		FlxG.save.data.showWatermarks = showWatermarks;
 		FlxG.save.data.noteOffset = noteOffset;
 		FlxG.save.data.hideHud = hideHud;
 		FlxG.save.data.arrowHSV = arrowHSV;
 		FlxG.save.data.imagesPersist = imagesPersist;
 		FlxG.save.data.ghostTapping = ghostTapping;
 		FlxG.save.data.timeBarType = timeBarType;
+		FlxG.save.data.uiSkin = uiSkin;
+		FlxG.save.data.infoType = infoType;
 		FlxG.save.data.scoreZoom = scoreZoom;
 		FlxG.save.data.noReset = noReset;
 		FlxG.save.data.healthBarAlpha = healthBarAlpha;
@@ -122,12 +159,17 @@ class ClientPrefs {
 		FlxG.save.data.safeFrames = safeFrames;
 		FlxG.save.data.gameplaySettings = gameplaySettings;
 		FlxG.save.data.controllerMode = controllerMode;
+		FlxG.save.data.playMissSounds = playMissSounds;
+		FlxG.save.data.playHitSounds = playHitSounds;
+		FlxG.save.data.moveCameraInNoteDirection = moveCameraInNoteDirection;
+		FlxG.save.data.lightcpustrums = lightcpustrums;
 	
 		FlxG.save.flush();
 
 		var save:FlxSave = new FlxSave();
 		save.bind('controls_v2', 'ninjamuffin99'); //Placing this in a separate save so that it can be manually deleted without removing your Score and stuff
 		save.data.customControls = keyBinds;
+		save.data.customControllerBinds = controllerBinds;
 		save.flush();
 		FlxG.log.add("Settings saved!");
 	}
@@ -157,6 +199,22 @@ class ClientPrefs {
 		if(FlxG.save.data.lowQuality != null) {
 			lowQuality = FlxG.save.data.lowQuality;
 		}
+		if(FlxG.save.data.maxOptimization != null) {
+			maxOptimization = FlxG.save.data.maxOptimization;
+		}
+		if (FlxG.save.data.playHitSounds != null) {
+			playHitSounds = FlxG.save.data.playHitSounds;
+		}
+		if (FlxG.save.data.playMissSounds != null) {
+			playMissSounds = FlxG.save.data.playMissSounds;
+		}
+		if (FlxG.save.data.moveCameraInNoteDirection != null) {
+			moveCameraInNoteDirection = FlxG.save.data.moveCameraInNoteDirection;
+		}
+		if (FlxG.save.data.lightcpustrums != null) {
+			lightcpustrums = FlxG.save.data.lightcpustrums;
+		}
+		
 		if(FlxG.save.data.framerate != null) {
 			framerate = FlxG.save.data.framerate;
 			if(framerate > FlxG.drawFramerate) {
@@ -167,6 +225,10 @@ class ClientPrefs {
 				FlxG.updateFramerate = framerate;
 			}
 		}
+		if (FlxG.save.data.underlay != null)
+		{
+			underlay = FlxG.save.data.underlay;
+		}
 		/*if(FlxG.save.data.cursing != null) {
 			cursing = FlxG.save.data.cursing;
 		}
@@ -175,6 +237,12 @@ class ClientPrefs {
 		}*/
 		if(FlxG.save.data.camZooms != null) {
 			camZooms = FlxG.save.data.camZooms;
+		}
+		if(FlxG.save.data.infoTextBorder != null) {
+			infoTextBorder = FlxG.save.data.infoTextBorder;
+		}
+		if(FlxG.save.data.showWatermarks != null) {
+			showWatermarks = FlxG.save.data.showWatermarks;
 		}
 		if(FlxG.save.data.hideHud != null) {
 			hideHud = FlxG.save.data.hideHud;
@@ -187,6 +255,12 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.ghostTapping != null) {
 			ghostTapping = FlxG.save.data.ghostTapping;
+		}
+		if(FlxG.save.data.uiSkin != null) {
+			uiSkin = FlxG.save.data.uiSkin;
+		}
+		if(FlxG.save.data.infoType != null) {
+			infoType = FlxG.save.data.infoType;
 		}
 		if(FlxG.save.data.timeBarType != null) {
 			timeBarType = FlxG.save.data.timeBarType;
@@ -249,6 +323,14 @@ class ClientPrefs {
 				keyBinds.set(control, keys);
 			}
 			reloadControls();
+		}
+
+		if (save != null && save.data.customControllerBinds != null) {
+			var loadedGamepadBinds:Map<String, Array<FlxGamepadInputID>> = save.data.customControllerBinds;
+			for (gamepadBind => binds in loadedGamepadBinds) {
+				controllerBinds.set(gamepadBind, binds);
+			}
+			PlayerSettings.updateGamepads();
 		}
 	}
 

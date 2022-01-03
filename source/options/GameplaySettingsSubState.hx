@@ -41,19 +41,19 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			false);
 		addOption(option);
 
+		var option:Option = new Option('Disable Reset Button',
+			"If checked, pressing Reset won't do anything.",
+			'noReset',
+			'bool',
+			false);
+		addOption(option);
+
 		//I'd suggest using "Downscroll" as an example for making your own option since it is the simplest here
 		var option:Option = new Option('Downscroll', //Name
 			'If checked, notes go Down instead of Up, simple enough.', //Description
 			'downScroll', //Save data variable name
 			'bool', //Variable type
 			false); //Default value
-		addOption(option);
-
-		var option:Option = new Option('Middlescroll',
-			'If checked, your notes get centered.',
-			'middleScroll',
-			'bool',
-			false);
 		addOption(option);
 
 		var option:Option = new Option('Ghost Tapping',
@@ -63,10 +63,32 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 
-		var option:Option = new Option('Disable Reset Button',
-			"If checked, pressing Reset won't do anything.",
-			'noReset',
+		var option:Option = new Option('Middlescroll',
+			'If checked, your notes get centered.',
+			'middleScroll',
 			'bool',
+			false);
+		addOption(option);
+
+		var option:Option = new Option('Miss Sounds',
+		"If unchecked, Miss Sounds will be disabled entirely",
+		'playMissSounds',
+		'bool',
+		true);
+	addOption(option);
+
+		var Option = new Option('Light CPU Strums',
+		"If disabled, CPU Notes will no longer light once the CPU hits them",
+		'lightcpustrums',
+		'bool',
+		true);
+		addOption(Option);
+
+
+		var option:Option = new Option('Move Camera in Note Direction', 
+			"If checked, the camera will move in note's direction", 
+			'moveCameraInNoteDirection',
+			'bool', 
 			false);
 		addOption(option);
 
@@ -80,6 +102,14 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		option.minValue = 0;
 		option.maxValue = 500;
 		addOption(option);*/
+
+		var option:Option = new Option('Hit Sounds:', 
+			"You can set your Hit Sound here.",
+			'playHitSounds',
+			'string',
+			'Disabled',
+			['Default', 'Softer', 'Type 1', 'Type 2', 'Type 3', 'Type 4', 'Disabled']);
+		addOption(option);
 
 		var option:Option = new Option('Rating Offset',
 			'Changes how late/early you have to hit for a "Sick!"\nHigher values mean you have to hit later.',

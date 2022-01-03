@@ -34,69 +34,115 @@ class VisualsUISubState extends BaseOptionsMenu
 		title = 'Visuals and UI';
 		rpcTitle = 'Visuals & UI Settings Menu'; //for Discord Rich Presence
 
-		var option:Option = new Option('Note Splashes',
-			"If unchecked, hitting \"Sick!\" notes won't show particles.",
-			'noteSplashes',
-			'bool',
-			true);
-		addOption(option);
-
-		var option:Option = new Option('Hide HUD',
-			'If checked, hides most HUD elements.',
-			'hideHud',
-			'bool',
-			false);
-		addOption(option);
-		
-		var option:Option = new Option('Time Bar:',
-			"What should the Time Bar display?",
-			'timeBarType',
-			'string',
-			'Time Left',
-			['Time Left', 'Time Elapsed', 'Song Name', 'Disabled']);
-		addOption(option);
-
-		var option:Option = new Option('Flashing Lights',
-			"Uncheck this if you're sensitive to flashing lights!",
-			'flashing',
-			'bool',
-			true);
-		addOption(option);
-
-		var option:Option = new Option('Camera Zooms',
+			var option:Option = new Option('Camera Zooms',
 			"If unchecked, the camera won't zoom in on a beat hit.",
 			'camZooms',
 			'bool',
 			true);
 		addOption(option);
 
-		var option:Option = new Option('Score Text Zoom on Hit',
-			"If unchecked, disables the Score text zooming\neverytime you hit a note.",
-			'scoreZoom',
+			var option:Option = new Option('Flashing Lights',
+			"Uncheck this if you're sensitive to flashing lights!",
+			'flashing',
 			'bool',
 			true);
 		addOption(option);
-
-		var option:Option = new Option('Health Bar Transparency',
-			'How much transparent should the health bar and icons be.',
-			'healthBarAlpha',
-			'percent',
-			1);
-		option.scrollSpeed = 1.6;
-		option.minValue = 0.0;
-		option.maxValue = 1;
-		option.changeValue = 0.1;
-		option.decimals = 1;
-		addOption(option);
-		
-		#if !mobile
-		var option:Option = new Option('FPS Counter',
+	
+			#if !mobile
+			var option:Option = new Option('FPS Counter',
 			'If unchecked, hides FPS Counter.',
 			'showFPS',
 			'bool',
 			true);
 		addOption(option);
 		option.onChange = onChangeFPSCounter;
+
+			var option:Option = new Option('Hide HUD',
+			'If checked, hides most HUD elements.',
+			'hideHud',
+			'bool',
+			false);
+		addOption(option);
+
+			var option:Option = new Option('Note Splashes',
+			"If unchecked, hitting \"Sick!\" notes won't show particles.",
+			'noteSplashes',
+			'bool',
+			true);
+		addOption(option);
+
+			var option:Option = new Option('Score Text Zoom on Hit',
+			"If unchecked, disables the Score text zooming\neverytime you hit a note.",
+			'scoreZoom',
+			'bool',
+			true);
+		addOption(option);
+
+			var option:Option = new Option('Show Watermarks',
+			'If unchecked, will hide Engine Watermarks during Songs',
+			'showWatermarks',
+			'bool',
+			false);
+		addOption(option);
+
+
+			var option:Option = new Option('Health Bar Opacity',
+			'How much opaque should the health bar and icons be.',
+			'healthBarAlpha',
+			'percent',
+			1);
+			option.scrollSpeed = 1.6;
+			option.minValue = 0.0;
+			option.maxValue = 1;
+			option.changeValue = 0.1;
+			option.decimals = 1;
+		addOption(option);
+
+		var option:Option = new Option('Info Type:',
+		"What should the Info Bar show? Simple shows your Accuracy and Misses along with your Ratings\nDetailed separates Ratings from Accuracy\nMinimal shows Integer Ratings and Misses, with no Accuracy",
+		'infoType',
+		'string',
+		'Simple Info',
+		['Simple Info', 'Detailed Info', 'Minimal Info']);
+	addOption(option);
+
+		var option:Option = new Option('Text Borders:',
+		"What should the Info Bar and Botplay Text Border look like?",
+		'infoTextBorder',
+		'string',
+		'Outline',
+		['Outline', 'Shadow', 'Outline Fast', 'None']);
+	addOption(option); 
+		
+		var option:Option = new Option('Lane Transparency',
+		"Change your lane underlay's transparency here",
+		'underlay',
+		'float',
+		true);
+		option.displayFormat = '%v';
+		option.scrollSpeed = 100;
+		option.changeValue = 0.1;
+		option.decimals = 1;
+		option.minValue = 0;
+		option.maxValue = 1;
+	addOption(option);
+		
+		var option:Option = new Option('Time Bar:',
+		"What should the Time Bar display?",
+		'timeBarType',
+		'string',
+		'Time Left',
+		['Time Left', 'Time Elapsed', 'Song Name', 'Disabled']);
+	addOption(option);
+
+		var option:Option = new Option('UI Skin:',
+		"What should your Judgements look like?",
+		'uiSkin',
+		'string',
+		'Default',
+		['Default', 'Forever', 'Kade', 'Simplylove']);
+	addOption(option);
+
 		#end
 
 		super();

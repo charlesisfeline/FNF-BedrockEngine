@@ -79,7 +79,6 @@ class MasterEditorMenu extends MusicBeatState
 		changeDirectory();
 		#end
 		changeSelection();
-
 		FlxG.mouse.visible = false;
 		super.create();
 	}
