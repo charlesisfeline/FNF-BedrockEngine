@@ -7,10 +7,10 @@ Credits:
 * lemz1 - Play as Opponent - https://github.com/ShadowMario/FNF-PsychEngine/pull/2770
 * l1ttleO - Made ProjectFNF 2.X, Menu Animations, Hit Sounds, Miss Sounds Toggle, Camera Follows Note Direction - https://github.com/l1ttleO/ProjectFNF
 * nintendofan44 - Lane Underlay - https://github.com/ShadowMario/FNF-PsychEngine/pull/1481
-* RafaelGiacom - Winning Icons - https://github.com/RafaelGiacom/Psych-Engine-Winning-Icons (its a dead link however)
 * Stilic - Freeplay Bump, Max Optimization - https://github.com/ShadowMario/FNF-PsychEngine/pull/1809
 * tposejank - Controller Support, Sustains now wont do anything if the note that start it was missed - https://github.com/ShadowMario/FNF-PsychEngine/pull/2229, https://github.com/ShadowMario/FNF-PsychEngine/pull/2817
-* Yoshubs - made Forever Engine, Dad, bf-pixel and Senpai's Death Icons - https://github.com/Yoshubs/Forever-Engine-Legacy
+* Verwex - made Mic'd Up Engine, Winning Icons
+* Yoshubs - made Forever Engine, Main Inspiration for Letter Grades and Detailed Info Bar - https://github.com/Yoshubs/Forever-Engine-Legacy
 
 # Current Features
 

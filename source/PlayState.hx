@@ -2343,6 +2343,16 @@ class PlayState extends MusicBeatState
 		if(ClientPrefs.infoType == "Minimal Info")
 			scoreTxt.text = 'Score: ' + songScore + ' - Misses: ' + songMisses + ' [' + ratingFC + ']';
 
+		//in case you have Botplay on
+		if(ClientPrefs.infoType ==  "Simple Info" && ClientPrefs.getGameplaySetting('botplay', false))
+			scoreTxt.text = '';
+
+		if(ClientPrefs.infoType ==  "Detailed Info" && ClientPrefs.getGameplaySetting('botplay', false))
+			scoreTxt.text = '';
+
+		if(ClientPrefs.infoType ==  "Minimal Info" && ClientPrefs.getGameplaySetting('botplay', false))
+			scoreTxt.text = '';
+
 		if(botplayTxt.visible) {
 			botplaySine += 180 * elapsed;
 			botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);
@@ -2408,11 +2418,15 @@ class PlayState extends MusicBeatState
 
 		if (healthBar.percent < 20)
 			a.animation.curAnim.curFrame = 1;
+		else if (healthBar.percent > 85)
+			a.animation.curAnim.curFrame = 2;
 		else
 			a.animation.curAnim.curFrame = 0;
 
-		if (healthBar.percent > 80)
+		if (healthBar.percent > 85)
 			b.animation.curAnim.curFrame = 1;
+		else if (healthBar.percent < 20)
+			b.animation.curAnim.curFrame = 2;
 		else
 			b.animation.curAnim.curFrame = 0;
 
