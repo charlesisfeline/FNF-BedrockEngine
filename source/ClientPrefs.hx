@@ -60,6 +60,7 @@ class ClientPrefs {
 	public static var playHitSounds:String = 'Disabled';
 	public static var moveCameraInNoteDirection:Bool = false;
 	public static var lightcpustrums:Bool = true;
+	public static var keAccuracy:Bool = false;
 
 	public static var comboOffset:Array<Int> = [0, 0, 0, 0];
 	public static var keSustains:Bool = false; //i was bored, okay?
@@ -163,6 +164,7 @@ class ClientPrefs {
 		FlxG.save.data.playHitSounds = playHitSounds;
 		FlxG.save.data.moveCameraInNoteDirection = moveCameraInNoteDirection;
 		FlxG.save.data.lightcpustrums = lightcpustrums;
+		FlxG.save.data.keAccuracy = keAccuracy;
 	
 		FlxG.save.flush();
 
@@ -213,6 +215,9 @@ class ClientPrefs {
 		}
 		if (FlxG.save.data.lightcpustrums != null) {
 			lightcpustrums = FlxG.save.data.lightcpustrums;
+		}
+		if (FlxG.save.data.keAccuracy != null) {
+			keAccuracy = FlxG.save.data.keAccuracy;
 		}
 		
 		if(FlxG.save.data.framerate != null) {

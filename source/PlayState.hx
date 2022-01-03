@@ -2344,13 +2344,7 @@ class PlayState extends MusicBeatState
 			scoreTxt.text = 'Score: ' + songScore + ' - Misses: ' + songMisses + ' [' + ratingFC + ']';
 
 		//in case you have Botplay on
-		if(ClientPrefs.infoType ==  "Simple Info" && ClientPrefs.getGameplaySetting('botplay', false))
-			scoreTxt.text = '';
-
-		if(ClientPrefs.infoType ==  "Detailed Info" && ClientPrefs.getGameplaySetting('botplay', false))
-			scoreTxt.text = '';
-
-		if(ClientPrefs.infoType ==  "Minimal Info" && ClientPrefs.getGameplaySetting('botplay', false))
+		if(ClientPrefs.getGameplaySetting('botplay', false))
 			scoreTxt.text = '';
 
 		if(botplayTxt.visible) {
@@ -3478,6 +3472,12 @@ class PlayState extends MusicBeatState
 		{
 			case "shit": // shit
 				score = 50;
+				totalNotesHit += 0.25;
+				shits++;
+			if(ClientPrefs.keAccuracy)
+				score = 50;
+				combo = 0;
+				songMisses++;
 				totalNotesHit += 0.25;
 				shits++;
 			case "bad": // bad
