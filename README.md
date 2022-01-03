@@ -9,7 +9,7 @@ Credits:
 * nintendofan44 - Lane Underlay - https://github.com/ShadowMario/FNF-PsychEngine/pull/1481
 * Stilic - Freeplay Bump, Max Optimization - https://github.com/ShadowMario/FNF-PsychEngine/pull/1809
 * tposejank - Controller Support, Sustains now wont do anything if the note that start it was missed - https://github.com/ShadowMario/FNF-PsychEngine/pull/2229, https://github.com/ShadowMario/FNF-PsychEngine/pull/2817
-* Verwex - made Mic'd Up Engine, Winning Icons
+* Verwex - made Mic'd Up Engine, Winning Icons - https://github.com/Verwex/Funkin-Mic-d-Up-SC
 * Yoshubs - made Forever Engine, Main Inspiration for Letter Grades and Detailed Info Bar - https://github.com/Yoshubs/Forever-Engine-Legacy
 
 # Current Features
