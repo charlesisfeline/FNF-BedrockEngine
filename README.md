@@ -39,8 +39,6 @@ this should be enough for any pc to run!
 
 ## Letter Grading System!
 
-![image](https://user-images.githubusercontent.com/45212377/146985347-52e5f1ec-7060-40e4-843a-6c5acb566ead.png)
-
 ![image](https://user-images.githubusercontent.com/45212377/147283059-d8555266-2e55-4e5d-9979-dd316c7004e7.png)
 
 * S+ 	100% Accuracy.
