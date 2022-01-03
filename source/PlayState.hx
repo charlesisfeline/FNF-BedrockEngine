@@ -1053,7 +1053,7 @@ class PlayState extends MusicBeatState
 		add(scoreTxt);
 
 		//Watermarks at the upper left corner, this is for Project Hypnosis
-		phWatermark = new FlxText(0, FlxG.height - 720, 0, " PH: v" + MainMenuState.projectHypnosisVersion, 16);
+		phWatermark = new FlxText(0, FlxG.height - 720, 0, " Project Hypnosis: v" + MainMenuState.projectHypnosisVersion, 16);
 		phWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		phWatermark.scrollFactor.set();
 		if(ClientPrefs.showWatermarks == false)
@@ -1061,7 +1061,7 @@ class PlayState extends MusicBeatState
 		add(phWatermark);
 
 		//And this is for Psych Engine
-		peWatermark = new FlxText(0, FlxG.height - 700, 0, " PE: v" + MainMenuState.psychEngineVersion, 16);
+		peWatermark = new FlxText(0, FlxG.height - 700, 0, " Psych Engine: v" + MainMenuState.psychEngineVersion, 16);
 		peWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		peWatermark.scrollFactor.set();
 		if(ClientPrefs.showWatermarks == false)
