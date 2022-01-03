@@ -3483,10 +3483,6 @@ class PlayState extends MusicBeatState
 		{
 			case "shit": // shit
 				score = 50;
-				totalNotesHit += 0.25;
-				shits++;
-			if(ClientPrefs.keAccuracy)
-				score = 50;
 				combo = 0;
 				songMisses++;
 				totalNotesHit += 0.25;
