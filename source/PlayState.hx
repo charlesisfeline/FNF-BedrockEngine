@@ -226,7 +226,9 @@ class PlayState extends MusicBeatState
 	public var scoreTxt:FlxText;
 	var timeTxt:FlxText;
 	var scoreTxtTween:FlxTween;
-	var versionTxt:FlxText;
+	var phWatermark:FlxText;
+	var peWatermark:FlxText;
+	var songNameTxt:FlxText;
 
 	public static var campaignScore:Int = 0;
 	public static var campaignMisses:Int = 0;
@@ -1050,20 +1052,27 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
 
-		//Watermarks during Songs
-
-		if(ClientPrefs.showWatermarks == true) {
-			versionTxt = new FlxText(0, FlxG.height - 24, 0, SONG.song + " - " + CoolUtil.watermarkDiffString() + " | PH: v" + MainMenuState.projectHypnosisVersion + " | PE: v" + MainMenuState.psychEngineVersion, 16);
-			versionTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			versionTxt.scrollFactor.set();
-			add(versionTxt);
-		}
-
+		//Watermarks at the upper left corner, this is for Project Hypnosis
+		phWatermark = new FlxText(0, FlxG.height - 720, 0, " PH: v" + MainMenuState.projectHypnosisVersion, 16);
+		phWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		phWatermark.scrollFactor.set();
 		if(ClientPrefs.showWatermarks == false)
-			versionTxt = new FlxText(0, FlxG.height - 24, 0, SONG.song + " - " + CoolUtil.watermarkDiffString());
-			versionTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			versionTxt.scrollFactor.set();
-			add(versionTxt);	
+		phWatermark = new FlxText(0, FlxG.height - 720, 0, "");
+		add(phWatermark);
+
+		//And this is for Psych Engine
+		peWatermark = new FlxText(0, FlxG.height - 700, 0, " PE: v" + MainMenuState.psychEngineVersion, 16);
+		peWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		peWatermark.scrollFactor.set();
+		if(ClientPrefs.showWatermarks == false)
+		peWatermark = new FlxText(0, FlxG.height - 710, 0, "");
+		add(peWatermark);
+
+		//Song Name + Difficulty Display at the lower left corner
+		songNameTxt = new FlxText(0, FlxG.height - 24, 0, SONG.song + " - " + CoolUtil.watermarkDiffString());
+		songNameTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		songNameTxt.scrollFactor.set();
+		add(songNameTxt);
 
 		//Text Borders
 		if(ClientPrefs.infoTextBorder == 'Outline') scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -1095,7 +1104,9 @@ class PlayState extends MusicBeatState
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
-		versionTxt.cameras = [camOther];
+		phWatermark.cameras = [camHUD];
+		peWatermark.cameras = [camHUD];
+		songNameTxt.cameras = [camHUD];
 		botplayTxt.cameras = [camHUD];
 		timeBar.cameras = [camHUD];
 		timeBarBG.cameras = [camHUD];
