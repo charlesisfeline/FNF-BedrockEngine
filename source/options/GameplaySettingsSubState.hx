@@ -63,12 +63,12 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 
-		var Option = new Option('Complex Accuracy',
-		"Complex Accuracy is meant to increase the precision of how accuracy is calculated, this makes it so Accuracy is way Harsher than normal\nFor example, Goods are worth 75% of a note, but Goods using complex accuracy can be worth between 85% to -100% in complex",
-		'keAccuracy',
-		'bool',
-		true);
-		addOption(Option);
+		//var Option = new Option('Complex Accuracy',
+		//"Complex Accuracy is meant to increase the precision of how accuracy is calculated, this makes it so Accuracy is way Harsher than normal\nFor example, Goods are worth 75% of a note, but Goods using complex accuracy can be worth between 85% to -100% in complex",
+		//'keAccuracy',
+		//'bool',
+		//true);
+		//addOption(Option);
 
 		var option:Option = new Option('Middlescroll',
 			'If checked, your notes get centered.',

@@ -41,7 +41,6 @@ typedef DialogueAnimArray = {
 // love u Shubs no homo :flushedh4:
 typedef DialogueFile = {
 	var dialogue:Array<DialogueLine>;
-	var song:Null<String>;
 }
 
 typedef DialogueLine = {

@@ -105,14 +105,6 @@ class VisualsUISubState extends BaseOptionsMenu
 		'Simple Info',
 		['Simple Info', 'Detailed Info', 'Minimal Info']);
 	addOption(option);
-
-		var option:Option = new Option('Text Borders:',
-		"What should the Info Bar and Botplay Text Border look like?",
-		'infoTextBorder',
-		'string',
-		'Outline',
-		['Outline', 'Shadow', 'Outline Fast', 'None']);
-	addOption(option); 
 		
 		var option:Option = new Option('Lane Transparency',
 		"Change your lane underlay's transparency here",

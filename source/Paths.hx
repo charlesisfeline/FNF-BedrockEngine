@@ -283,7 +283,6 @@ class Paths
 		if(FileSystem.exists(modsXml(key))) {
 			xmlExists = true;
 		}
-		
 		return FlxAtlasFrames.fromSparrow(graphic, (xmlExists ? File.getContent(modsXml(key)) : file('images/$key.xml', library)));
 		#else
 		return FlxAtlasFrames.fromSparrow(image(key, library), file('images/$key.xml', library));
@@ -318,6 +317,7 @@ class Paths
 				var newBitmap:BitmapData = BitmapData.fromFile(modsImages(key));
 				var newGraphic:FlxGraphic = FlxGraphic.fromBitmapData(newBitmap, false, key);
 				currentTrackedAssets.set(key, newGraphic);
+				
 			}
 			localTrackedAssets.push(key);
 			return currentTrackedAssets.get(key);

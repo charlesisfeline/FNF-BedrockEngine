@@ -62,7 +62,11 @@
 		-150,
 		100
 	],
+<<<<<<< HEAD
 	"healthicon": "spirit",
+=======
+	"healthicon": "spirit-pixel",
+>>>>>>> upstream/main
 	"flip_x": false,
 	"healthbar_colors": [
 		255,

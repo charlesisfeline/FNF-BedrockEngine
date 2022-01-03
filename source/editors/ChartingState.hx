@@ -66,7 +66,6 @@ class ChartingState extends MusicBeatState
 	];
 	private var noteTypeIntMap:Map<Int, String> = new Map<Int, String>();
 	private var noteTypeMap:Map<String, Null<Int>> = new Map<String, Null<Int>>();
-
 	var undos:Array<SwagSong> = [];
 	var redos:Array<SwagSong> = [];
 	var eventStuff:Array<Dynamic> =
@@ -2572,7 +2571,7 @@ class ChartingState extends MusicBeatState
 		curUndoIndex--;
 		_song = undos[curUndoIndex];
 		redos.push(undos.pop());
-	}*/ 
+	}*/
 	function getStrumTime(yPos:Float, doZoomCalc:Bool = true):Float
 	{
 		var leZoom:Float = zoomList[curZoom];

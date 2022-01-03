@@ -62,7 +62,11 @@
 		150,
 		360
 	],
+<<<<<<< HEAD
 	"healthicon": "senpai",
+=======
+	"healthicon": "senpai-pixel",
+>>>>>>> upstream/main
 	"flip_x": false,
 	"healthbar_colors": [
 		255,

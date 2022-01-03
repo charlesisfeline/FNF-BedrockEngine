@@ -66,7 +66,6 @@ class GitarooPause extends MusicBeatState
 				PlayState.usedPractice = false;
 				PlayState.changedDifficulty = false;
 				PlayState.seenCutscene = false;
-				PlayState.setOnLuas('seenCutscene', false);
 				PlayState.deathCounter = 0;
 				PlayState.cpuControlled = false;
 				MusicBeatState.switchState(new MainMenuState());
