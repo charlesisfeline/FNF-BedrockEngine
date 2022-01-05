@@ -34,6 +34,13 @@ class VisualsUISubState extends BaseOptionsMenu
 		title = 'Visuals and UI';
 		rpcTitle = 'Visuals & UI Settings Menu'; //for Discord Rich Presence
 
+			var option:Option = new Option('Big Font Size on Info Bar',
+			"If checked, the text size on the Info bar will be increased from 16 to 20",
+			'biggerInfo',
+			'bool',
+			false);
+		addOption(option);
+
 			var option:Option = new Option('Camera Zooms',
 			"If unchecked, the camera won't zoom in on a beat hit.",
 			'camZooms',
@@ -97,14 +104,6 @@ class VisualsUISubState extends BaseOptionsMenu
 			option.changeValue = 0.1;
 			option.decimals = 1;
 		addOption(option);
-
-		var option:Option = new Option('Info Type:',
-		"What should the Info Bar show? Simple shows your Accuracy and Misses along with your Ratings\nDetailed separates Ratings from Accuracy\nMinimal shows Integer Ratings and Misses, with no Accuracy",
-		'infoType',
-		'string',
-		'Simple Info',
-		['Simple Info', 'Detailed Info', 'Minimal Info']);
-	addOption(option);
 		
 		var option:Option = new Option('Lane Transparency',
 		"Change your lane underlay's transparency here",
