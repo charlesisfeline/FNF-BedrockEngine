@@ -4,6 +4,7 @@ package options;
 import Discord.DiscordClient;
 #end
 import flash.text.TextField;
+import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.display.FlxGridOverlay;
@@ -24,6 +25,7 @@ import flixel.util.FlxTimer;
 import flixel.input.keyboard.FlxKey;
 import flixel.graphics.FlxGraphic;
 import Controls;
+import openfl.Lib;
 
 using StringTools;
 
@@ -71,7 +73,32 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		false);
 	addOption(option);
 
-	/*
+		#if !html5 //Apparently other framerates isn't correctly supported on Browser? Probably it has some V-Sync shit enabled by default, idk
+		var option:Option = new Option('Framerate',
+			"Pretty self explanatory, isn't it?",
+			'framerate',
+			'int',
+			60);
+		addOption(option);
+		option.minValue = 60;
+		option.maxValue = 240;
+		option.displayFormat = '%v FPS';
+		option.onChange = onChangeFramerate;
+		
+		
+		var option:Option = new Option('Screen Resolution',
+			"Size of the window (Changes will apply once leaving)",
+			'screenRes',
+			'string',
+			'1280 x 720', ['1280 x 720',
+			'1280 x 960',
+			'FULLSCREEN'
+			]);
+		addOption(option);
+		//option.onChange = onChangeRes;
+		#end
+
+		/*
 		var option:Option = new Option('Persistent Cached Data',
 			'If checked, images loaded will stay in memory\nuntil the game is closed, this increases memory usage,\nbut basically makes reloading times instant.',
 			'imagesPersist',
@@ -108,4 +135,20 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 			FlxG.updateFramerate = ClientPrefs.framerate;
 		}
 	}
+	public static function onChangeRes()
+	{
+		FlxG.fullscreen = ClientPrefs.screenRes == "FULLSCREEN";
+		if (!FlxG.fullscreen){
+		var res = ClientPrefs.screenRes.split(" x ");
+		  FlxG.resizeWindow(Std.parseInt(res[0]), Std.parseInt(res[1]));
+		//  FlxG.resizeWindow(Std.parseInt(res[0]), Std.parseInt(res[1]));
+		 // FlxG.resizeGame(Std.parseInt(res[0]), Std.parseInt(res[1]));
+		 // Lib.application.window.width = Std.parseInt(res[0]);
+		 // Lib.application.window.height = Std.parseInt(res[1]);
+		  //Lib.current.stage.width = Std.parseInt(res[0]);
+		 // Lib.current.stage.height = Std.parseInt(res[1]);
+			FlxCamera.defaultZoom = 1280/Std.parseInt(res[0]);
+		}
+	}
+
 }
