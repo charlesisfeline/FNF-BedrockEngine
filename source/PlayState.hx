@@ -2426,6 +2426,9 @@ class PlayState extends MusicBeatState
 			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' // Combo Breaks: ' + songMisses + ' // Rank: ' +  ratingName;
 		}
 
+		if(ClientPrefs.hideAccuracy == true)
+			scoreTxt.text = 'Score: ' + songScore + ' // Misses: ' + songMisses;
+
 		//in case you have Botplay on
 		if(ClientPrefs.getGameplaySetting('botplay', false))
 			scoreTxt.text = '';
