@@ -15,6 +15,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxPoint;
 import flixel.system.FlxSound;
 import flixel.util.FlxTimer;
+import flixel.util.FlxSave;
 import flixel.FlxSprite;
 import flixel.FlxCamera;
 import flixel.util.FlxColor;
@@ -1553,6 +1554,36 @@ class FunkinLua {
 			}
 		});
 
+		Lua_helper.add_callback(lua, "toggleWeekVisibility", function(week:String, ?mode:String = '', ?state:Null<Bool> = null) {
+			if(state != null) {
+				if(mode.toLowerCase() == 'story') {
+					CoolUtil.setPropertyFromClass('flixel.FlxG', 'save.data.' + week + 'StoryVisible', state);
+					CoolUtil.setPropertyFromClass('flixel.FlxG', 'save.data.' + week + 'StoryHidden', !state);
+				} else if(mode.toLowerCase() == 'freeplay') {
+					CoolUtil.setPropertyFromClass('flixel.FlxG', 'save.data.' + week + 'FreeplayVisible', state);
+					CoolUtil.setPropertyFromClass('flixel.FlxG', 'save.data.' + week + 'FreeplayHidden', !state);
+				} else {
+					CoolUtil.setPropertyFromClass('flixel.FlxG', 'save.data.' + week + 'StoryVisible', state);
+					CoolUtil.setPropertyFromClass('flixel.FlxG', 'save.data.' + week + 'StoryHidden', !state);
+					CoolUtil.setPropertyFromClass('flixel.FlxG', 'save.data.' + week + 'FreeplayVisible', state);
+					CoolUtil.setPropertyFromClass('flixel.FlxG', 'save.data.' + week + 'FreeplayHidden', !state);
+				}
+			} else {
+				if(mode.toLowerCase() == 'story') {
+					CoolUtil.setPropertyFromClass('flixel.FlxG', 'save.data.' + week + 'StoryVisible', false);
+					CoolUtil.setPropertyFromClass('flixel.FlxG', 'save.data.' + week + 'StoryHidden', false);
+				} else if(mode.toLowerCase() == 'freeplay') {
+					CoolUtil.setPropertyFromClass('flixel.FlxG', 'save.data.' + week + 'FreeplayVisible', false);
+					CoolUtil.setPropertyFromClass('flixel.FlxG', 'save.data.' + week + 'FreeplayHidden', false);
+				} else {
+					CoolUtil.setPropertyFromClass('flixel.FlxG', 'save.data.' + week + 'StoryVisible', false);
+					CoolUtil.setPropertyFromClass('flixel.FlxG', 'save.data.' + week + 'StoryHidden', false);
+					CoolUtil.setPropertyFromClass('flixel.FlxG', 'save.data.' + week + 'FreeplayVisible', false);
+					CoolUtil.setPropertyFromClass('flixel.FlxG', 'save.data.' + week + 'FreeplayHidden', false);
+				}
+			}
+			FlxG.save.flush();
+		});
 
 		// DEPRECATED, DONT MESS WITH THESE SHITS, ITS JUST THERE FOR BACKWARD COMPATIBILITY
 		Lua_helper.add_callback(lua, "luaSpriteMakeGraphic", function(tag:String, width:Int, height:Int, color:String) {

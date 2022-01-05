@@ -133,4 +133,74 @@ class CoolUtil
 		FlxG.openURL(site);
 		#end
 	}
+
+	static public function getProperty(variable:String) {
+		var killMe:Array<String> = variable.split('.');
+		if(killMe.length > 1) {
+			var coverMeInPiss:Dynamic = null;
+			if(PlayState.instance.modchartSprites.exists(killMe[0])) {
+				coverMeInPiss = PlayState.instance.modchartSprites.get(killMe[0]);
+			} else if(PlayState.instance.modchartTexts.exists(killMe[0])) {
+				coverMeInPiss = PlayState.instance.modchartTexts.get(killMe[0]);
+			} else {
+				coverMeInPiss = Reflect.getProperty(getInstance(), killMe[0]);
+			}
+
+			for (i in 1...killMe.length-1) {
+				coverMeInPiss = Reflect.getProperty(coverMeInPiss, killMe[i]);
+			}
+			return Reflect.getProperty(coverMeInPiss, killMe[killMe.length-1]);
+		}
+		return Reflect.getProperty(getInstance(), variable);
+	}
+
+	static public function setProperty(variable:String, value:Dynamic) {
+		var killMe:Array<String> = variable.split('.');
+		if(killMe.length > 1) {
+			var coverMeInPiss:Dynamic = null;
+			if(PlayState.instance.modchartSprites.exists(killMe[0])) {
+				coverMeInPiss = PlayState.instance.modchartSprites.get(killMe[0]);
+			} else if(PlayState.instance.modchartTexts.exists(killMe[0])) {
+				coverMeInPiss = PlayState.instance.modchartTexts.get(killMe[0]);
+			} else {
+				coverMeInPiss = Reflect.getProperty(getInstance(), killMe[0]);
+			}
+
+			for (i in 1...killMe.length-1) {
+				coverMeInPiss = Reflect.getProperty(coverMeInPiss, killMe[i]);
+			}
+			return Reflect.setProperty(coverMeInPiss, killMe[killMe.length-1], value);
+		}
+		return Reflect.setProperty(getInstance(), variable, value);
+	}
+
+	static public function getPropertyFromClass(classVar:String, variable:String) {
+		var killMe:Array<String> = variable.split('.');
+		if(killMe.length > 1) {
+			var coverMeInPiss:Dynamic = Reflect.getProperty(Type.resolveClass(classVar), killMe[0]);
+			for (i in 1...killMe.length-1) {
+				coverMeInPiss = Reflect.getProperty(coverMeInPiss, killMe[i]);
+			}
+			return Reflect.getProperty(coverMeInPiss, killMe[killMe.length-1]);
+		}
+		return Reflect.getProperty(Type.resolveClass(classVar), variable);
+	}
+
+	static public function setPropertyFromClass(classVar:String, variable:String, value:Dynamic) {
+		var killMe:Array<String> = variable.split('.');
+		if(killMe.length > 1) {
+			var coverMeInPiss:Dynamic = Reflect.getProperty(Type.resolveClass(classVar), killMe[0]);
+			for (i in 1...killMe.length-1) {
+				coverMeInPiss = Reflect.getProperty(coverMeInPiss, killMe[i]);
+			}
+			return Reflect.setProperty(coverMeInPiss, killMe[killMe.length-1], value);
+		}
+		return Reflect.setProperty(Type.resolveClass(classVar), variable, value);
+	}
+	static inline function getInstance()
+	{
+		return PlayState.instance.isDead ? GameOverSubstate.instance : PlayState.instance;
+	}
+
+	//REFERENCIA:
 }

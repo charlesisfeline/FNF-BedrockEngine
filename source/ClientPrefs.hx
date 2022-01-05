@@ -363,8 +363,6 @@ class ClientPrefs {
 		
 		if (ClientPrefs.screenRes == "FULLSCREEN") res = ["1280", "720"];
 		
-		
-		
 		return [Std.parseInt(res[0]),Std.parseInt(res[1])];
 	}
 	public static function copyKey(arrayToCopy:Array<FlxKey>):Array<FlxKey> {
