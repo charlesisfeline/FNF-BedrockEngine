@@ -1054,7 +1054,7 @@ class PlayState extends MusicBeatState
 
 		//Info Bar Text
 		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.SHADOW, FlxColor.BLACK);
+		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		if(ClientPrefs.biggerInfo)
 			scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
@@ -2421,9 +2421,9 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		if (ratingFC == "Unrated") {
-			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy:' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' // Misses: ' + songMisses + ' // Rank: ?';
+			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy:' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' // Combo Breaks: ' + songMisses + ' // Rank: ?';
 		} else {
-			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy:' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' // Misses: ' + songMisses + ' // Rank: ' +  ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy:' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' // Combo Breaks: ' + songMisses + ' // Rank: ' +  ratingName;
 		}
 
 		//in case you have Botplay on
