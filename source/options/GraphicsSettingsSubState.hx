@@ -72,19 +72,6 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		'bool',
 		false);
 	addOption(option);
-
-		#if !html5 //Apparently other framerates isn't correctly supported on Browser? Probably it has some V-Sync shit enabled by default, idk
-		var option:Option = new Option('Framerate',
-			"Pretty self explanatory, isn't it?",
-			'framerate',
-			'int',
-			60);
-		addOption(option);
-		option.minValue = 60;
-		option.maxValue = 240;
-		option.displayFormat = '%v FPS';
-		option.onChange = onChangeFramerate;
-		
 		
 		var option:Option = new Option('Screen Resolution',
 			"Size of the window (Changes will apply once leaving)",

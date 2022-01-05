@@ -43,7 +43,6 @@ import openfl.Assets;
 using StringTools;
 typedef TitleData =
 {
-	
 	titlex:Float,
 	titley:Float,
 	startx:Float,
@@ -263,9 +262,6 @@ class TitleState extends MusicBeatState
 		// bg.antialiasing = ClientPrefs.globalAntialiasing;
 		// bg.setGraphicSize(Std.int(bg.width * 0.6));
 		// bg.updateHitbox();
-		
-		
-		
 		
 		add(bg);
 

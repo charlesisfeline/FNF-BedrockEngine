@@ -135,11 +135,10 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollowPos, null, 1);
 
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 70, 0, "Project Hypnosis v" + projectHypnosisVersion, 12);
+		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 64, 0, "Project Hpnosis v" + projectHypnosisVersion, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 47, 0, "Psych Engine v" + psychEngineVersion + "", 12);
 		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 44, 0, "Psych Engine v" + psychEngineVersion, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -210,11 +209,11 @@ class MainMenuState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				MusicBeatState.switchState(new TitleState());
 				//Main Menu Back Animations
-				FlxTween.tween(FlxG.camera, {zoom: 5}, 0.8, {ease: FlxEase.expoIn});
-				FlxTween.tween(bg, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
-				FlxTween.tween(magenta, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
-				FlxTween.tween(bg, {alpha: 0}, 0.8, {ease: FlxEase.expoIn});
-				FlxTween.tween(magenta, {alpha: 0}, 0.8, {ease: FlxEase.expoIn});
+				//FlxTween.tween(FlxG.camera, {zoom: 5}, 0.8, {ease: FlxEase.expoIn});
+				//FlxTween.tween(bg, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
+				//FlxTween.tween(magenta, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
+				//FlxTween.tween(bg, {alpha: 0}, 0.8, {ease: FlxEase.expoIn});
+				//FlxTween.tween(magenta, {alpha: 0}, 0.8, {ease: FlxEase.expoIn});
 			}
 
 			if (controls.ACCEPT)
@@ -235,18 +234,18 @@ class MainMenuState extends MusicBeatState
 						if (curSelected != spr.ID)
 						{
 							//Main Menu Select Animations
-							FlxTween.tween(FlxG.camera, {zoom: 5}, 0.8, {ease: FlxEase.expoIn});
-							FlxTween.tween(bg, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
-							FlxTween.tween(magenta, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
-							FlxTween.tween(bg, {alpha: 0}, 0.8, {ease: FlxEase.expoIn});
-							FlxTween.tween(magenta, {alpha: 0}, 0.8, {ease: FlxEase.expoIn});
+							//FlxTween.tween(FlxG.camera, {zoom: 5}, 0.8, {ease: FlxEase.expoIn});
+							//FlxTween.tween(bg, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
+							//FlxTween.tween(magenta, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
+							//FlxTween.tween(bg, {alpha: 0}, 0.8, {ease: FlxEase.expoIn});
+							//FlxTween.tween(magenta, {alpha: 0}, 0.8, {ease: FlxEase.expoIn});
 							FlxTween.tween(spr, {alpha: 0}, 0.4, {
 								ease: FlxEase.quadOut,
 								onComplete: function(twn:FlxTween)
 								{
 									spr.kill();
 								}
-							});
+							}); //note to self: fix the god damn animations -Gui iago
 						}
 						else
 						{
