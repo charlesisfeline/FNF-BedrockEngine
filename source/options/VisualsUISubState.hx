@@ -125,15 +125,15 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.maxValue = 1;
 	addOption(option);
 
-		var option:Option = new Option('Note Skin:',
-		"Funny notes dropping down, how should they look like?",
-		'noteSkin',
-		'string',
-		'Default',
-		['Default', 'Future', 'Chip']);
-		option.showNotes = true;
-		option.onChange = onChangeNoteSkin;
-		addOption(option);
+		//var option:Option = new Option('Note Skin:',
+		//"Funny notes dropping down, how should they look like?",
+		//'noteSkin',
+		//'string',
+		//'Default',
+		//['Default', 'Future', 'Chip']);
+		//option.showNotes = true;
+		//option.onChange = onChangeNoteSkin;
+	//addOption(option);
 		
 		var option:Option = new Option('Time Bar:',
 		"What should the Time Bar display?",
