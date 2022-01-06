@@ -25,7 +25,7 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var projectHypnosisVersion:String = '0.2.1-Rev'; //This is also used for Discord RPC
+	public static var projectHypnosisVersion:String = '0.2.2'; //This is also used for Discord RPC
 	public static var psychEngineVersion:String = '0.5.1'; //this one too
 	public static var curSelected:Int = 0;
 
@@ -52,7 +52,7 @@ class MainMenuState extends MusicBeatState
 	{
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("In the Main Menu", null);
 		#end
 		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 

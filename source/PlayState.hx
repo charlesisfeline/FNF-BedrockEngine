@@ -1064,23 +1064,23 @@ class PlayState extends MusicBeatState
 		add(scoreTxt);
 
 		//Watermarks at the upper left corner, this is for Project Hypnosis
-		phWatermark = new FlxText(0, FlxG.height - 720, 0, "Project Hypnosis: v" + MainMenuState.projectHypnosisVersion, 16);
+		phWatermark = new FlxText(0, FlxG.height - 700, 0, "Project Hypnosis: v" + MainMenuState.projectHypnosisVersion, 16);
 		phWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		phWatermark.scrollFactor.set();
 		if(ClientPrefs.showWatermarks == false)
-		phWatermark = new FlxText(0, FlxG.height - 720, 0, "");
+		phWatermark = new FlxText(0, FlxG.height - 700, 0, "");
 		add(phWatermark);
 
 		//And this is for Psych Engine
-		peWatermark = new FlxText(0, FlxG.height - 700, 0, "Psych Engine: v" + MainMenuState.psychEngineVersion, 16);
+		peWatermark = new FlxText(0, FlxG.height - 680, 0, "Psych Engine: v" + MainMenuState.psychEngineVersion, 16);
 		peWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		peWatermark.scrollFactor.set();
 		if(ClientPrefs.showWatermarks == false)
-		peWatermark = new FlxText(0, FlxG.height - 710, 0, "");
+		peWatermark = new FlxText(0, FlxG.height - 680, 0, "");
 		add(peWatermark);
 
 		//Song Name + Difficulty Display at the lower left corner
-		songNameTxt = new FlxText(0, FlxG.height - 24, 0, SONG.song + " - " + CoolUtil.watermarkDiffString());
+		songNameTxt = new FlxText(0, FlxG.height - 24, 0, SONG.song + " - " + CoolUtil.difficultyString());
 		songNameTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		songNameTxt.scrollFactor.set();
 		add(songNameTxt);
