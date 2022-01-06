@@ -124,6 +124,16 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.minValue = 0;
 		option.maxValue = 1;
 	addOption(option);
+
+		var option:Option = new Option('Note Skin:',
+		"Funny notes dropping down, how should they look like?",
+		'noteSkin',
+		'string',
+		'Default',
+		['Default', 'Future', 'Chip']);
+		option.showNotes = true;
+		option.onChange = onChangeNoteSkin;
+		addOption(option);
 		
 		var option:Option = new Option('Time Bar:',
 		"What should the Time Bar display?",
@@ -134,7 +144,7 @@ class VisualsUISubState extends BaseOptionsMenu
 	addOption(option);
 
 		var option:Option = new Option('UI Skin:',
-		"What should your Judgements look like?",
+		"How should your Judgements look like?",
 		'uiSkin',
 		'string',
 		'Default',
@@ -144,6 +154,11 @@ class VisualsUISubState extends BaseOptionsMenu
 		#end
 
 		super();
+	}
+
+	function onChangeNoteSkin()
+	{
+		updateNotes();
 	}
 
 	#if !mobile

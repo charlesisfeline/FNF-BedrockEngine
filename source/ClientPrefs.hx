@@ -35,6 +35,7 @@ class ClientPrefs {
 	public static var healthBarAlpha:Float = 1;
 	public static var controllerMode:Bool = false;
 	public static var screenRes:String = "1280 x 720";
+	public static var noteSkin:String = 'Default';
 	public static var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
 		'scrolltype' => 'multiplicative', 
@@ -154,6 +155,7 @@ class ClientPrefs {
 		FlxG.save.data.screenRes = screenRes;
 		FlxG.save.data.biggerInfo = biggerInfo;
 		FlxG.save.data.hideAccuracy = hideAccuracy;
+		FlxG.save.data.noteSkin = noteSkin;
 	
 		FlxG.save.flush();
 
@@ -209,6 +211,9 @@ class ClientPrefs {
 		}
 		if (FlxG.save.data.biggerInfo != null) {
 			biggerInfo = FlxG.save.data.biggerInfo;
+		}
+		if(FlxG.save.data.noteSkin != null) {
+			noteSkin = FlxG.save.data.noteSkin;
 		}
 		
 		if(FlxG.save.data.framerate != null) {

@@ -70,6 +70,12 @@ class NotesSubState extends MusicBeatSubstate
 				grpNumbers.add(optionText);
 			}
 
+			var coolswag:String = '';
+			if(ClientPrefs.noteSkin != 'Default')
+			{
+				coolswag = '-' + ClientPrefs.noteSkin.toLowerCase().replace(' ', '-');
+			}
+
 			var note:FlxSprite = new FlxSprite(posX, yPos);
 			note.frames = Paths.getSparrowAtlas('NOTE_assets');
 			var animations:Array<String> = ['purple0', 'blue0', 'green0', 'red0'];

@@ -15,6 +15,21 @@ class StrumNote extends FlxSprite
 	public var downScroll:Bool = false;//plan on doing scroll directions soon -bb
 
 	private var player:Int;
+
+	private static var strumOffsets:Map<String, Array<Dynamic>> = [
+		'Future' => [
+			[2.5, -2.4],
+			[4.5, -3.4],
+			[3.0, -3.0],
+			[4.0, -1.0]
+		],
+		'Chip' => [
+			[0, 2],
+			[-1, 2],
+			[2, -2],
+			[1, -2]
+		]
+	];
 	
 	public var texture(default, set):String = null;
 	private function set_texture(value:String):String {
@@ -25,6 +40,7 @@ class StrumNote extends FlxSprite
 		return value;
 	}
 
+	var confirmOffsets:Array<Float> = [0, 0];
 	public function new(x:Float, y:Float, leData:Int, player:Int) {
 		colorSwap = new ColorSwap();
 		shader = colorSwap.shader;
@@ -38,12 +54,27 @@ class StrumNote extends FlxSprite
 		texture = skin; //Load texture and anims
 
 		scrollFactor.set();
+
+		if(strumOffsets.exists(ClientPrefs.noteSkin))
+		{
+			var addOffset:Array<Dynamic> = strumOffsets.get(ClientPrefs.noteSkin);
+			if(noteData < addOffset.length)
+			{
+				confirmOffsets = addOffset[noteData];
+			}
+		}
 	}
 
 	public function reloadNote()
 	{
 		var lastAnim:String = null;
 		if(animation.curAnim != null) lastAnim = animation.curAnim.name;
+
+		var coolswag:String = '';
+		if(ClientPrefs.noteSkin != 'Default')
+		{
+			coolswag = '-' + ClientPrefs.noteSkin.toLowerCase().replace(' ', '-');
+		}
 
 		if(PlayState.isPixelStage)
 		{
