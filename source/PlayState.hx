@@ -3644,9 +3644,26 @@ class PlayState extends MusicBeatState
 			pixelShitPart2 = '-pixel';
 		}
 		
-		//hardcoded UI Skins thing, hopefully I can make this softcoded in the future
+		//Judgement Skins
+		
+		//Full Sick Combo (SFC) Skin
+		if(ClientPrefs.uiSkin == 'Default')
+		{
+			if (sicks > 0)
+			pixelShitPart1 = 'skins/full-sick-ui/';
+			pixelShitPart2 = '';
+			if (goods > 0)
+			pixelShitPart1 = '';
+			pixelShitPart2 = '';
+		}
+
+		//Default Pixel stuff
 		if(ClientPrefs.uiSkin == 'Default' && PlayState.isPixelStage)
 		{
+			//if (sicks > 0)
+			//pixelShitPart1 = 'skins/full-sick-pixelui/';
+			//pixelShitPart2 = '';
+			//if (goods > 0)
 			pixelShitPart1 = 'pixelUI/';
 			pixelShitPart2 = '-pixel';
 		}
@@ -3654,12 +3671,20 @@ class PlayState extends MusicBeatState
 		//Forever Engine Skin
 		if(ClientPrefs.uiSkin == 'Forever')
 		{
+			if (sicks > 0)
+			pixelShitPart1 = 'skins/full-sick-ui/'; //I'm obsessed with Forever Engine by Shrubs -Gui iago
+			pixelShitPart2 = '';
+		 	if (goods > 0)
 			pixelShitPart1 = 'skins/foreverUI/';
 			pixelShitPart2 = '';
 		}
 		//Forever Engine Pixel Skin
 		if(ClientPrefs.uiSkin == 'Forever' && PlayState.isPixelStage)
 		{
+			//if (sicks > 0)
+			//pixelShitPart1 = 'skins/full-sick-pixelui/';
+			//pixelShitPart2 = '';
+			//if (goods > 0)
 			pixelShitPart1 = 'skins/foreverUI/';
 			pixelShitPart2 = '-pixel';
 		}
@@ -3667,6 +3692,10 @@ class PlayState extends MusicBeatState
 		//Kade Engine Skin
 		if(ClientPrefs.uiSkin == 'Kade')
 		{
+			if (sicks > 0)
+			pixelShitPart1 = 'skins/full-sick-ui/';
+			pixelShitPart2 = '';
+			if (goods > 0)
 			pixelShitPart1 = 'skins/kadeUI/';
 			pixelShitPart2 = '';
 		}
@@ -3674,6 +3703,10 @@ class PlayState extends MusicBeatState
 		//Kade Engine Pixel Skin
 		if(ClientPrefs.uiSkin == 'Kade' && PlayState.isPixelStage)
 		{
+			//if (sicks > 0)
+			//pixelShitPart1 = 'skins/full-sick-pixelui/';
+			//pixelShitPart2 = '';
+			//if (goods > 0)
 			pixelShitPart1 = 'skins/kadeUI/';
 			pixelShitPart2 = '-pixel';
 		}
@@ -3685,13 +3718,14 @@ class PlayState extends MusicBeatState
 			pixelShitPart2 = '';
 		}
 
-		//Simplylove doesn't have a Pixel skin, so it will just use the default skin instead (which will be fixed in later updates)
+		//Simplylove doesn't have a Pixel skin, so it will just use the default skin instead
 		if(ClientPrefs.uiSkin == 'Simplylove' && PlayState.isPixelStage)
 		{
 			pixelShitPart1 = 'pixelUI/';
 			pixelShitPart2 = '-pixel';
 		}
-			//I hope to clean this code up in the future because rn it sucks
+			//I hope to clean this code up in the future because rn it sucks, works at the very least -Gui iago
+			//Note to self 01-05-22: Add Pixel Full Sick files -Gui iago
 
 		rating.loadGraphic(Paths.image(pixelShitPart1 + daRating + pixelShitPart2));
 		rating.cameras = [camHUD];
