@@ -34,9 +34,24 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		title = 'Gameplay Settings';
 		rpcTitle = 'Gameplay Settings Menu'; //for Discord Rich Presence
 		
-		var option:Option = new Option('Controller Mode',
-			'Check this if you want to play with\na controller instead of using your Keyboard.',
-			'controllerMode',
+		//var option:Option = new Option('Controller Mode',
+		//	'Check this if you want to play with\na controller instead of using your Keyboard.',
+		//	'controllerMode',
+		//	'bool',
+		//	false);
+	//	addOption(option);
+	//note to self: remove enhanced controller support before making this a thing again
+
+		var option:Option = new Option('Camera follows Note Direction', 
+			"If checked, the camera will move in the note's direction", 
+			'moveCameraInNoteDirection',
+			'bool', 
+			false);
+		addOption(option);
+
+		var option:Option = new Option('Centered Notefield',
+			'If checked, your notes get centered.',
+			'middleScroll',
 			'bool',
 			false);
 		addOption(option);
@@ -70,15 +85,8 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			false);
 		addOption(Option);
 
-		var option:Option = new Option('Middlescroll',
-			'If checked, your notes get centered.',
-			'middleScroll',
-			'bool',
-			false);
-		addOption(option);
-
-		var option:Option = new Option('Miss Sounds',
-		"If unchecked, Miss Sounds will be disabled entirely",
+		var option:Option = new Option('Missing Note Sounds',
+		"If unchecked, Sounds for when you Miss a Note will be disabled entirely",
 		'playMissSounds',
 		'bool',
 		true);
@@ -90,14 +98,6 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		'bool',
 		true);
 		addOption(Option);
-
-
-		var option:Option = new Option('Move Camera in Note Direction', 
-			"If checked, the camera will move in note's direction", 
-			'moveCameraInNoteDirection',
-			'bool', 
-			false);
-		addOption(option);
 
 		/*var option:Option = new Option('Note Delay',
 			'Changes how late a note is spawned.\nUseful for preventing audio lag from wireless earphones.',
