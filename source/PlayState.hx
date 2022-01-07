@@ -3674,10 +3674,10 @@ class PlayState extends MusicBeatState
 		//Default Pixel stuff
 		if(ClientPrefs.uiSkin == 'Default' && PlayState.isPixelStage)
 		{
-			//if (sicks > 0)
-			//pixelShitPart1 = 'skins/full-sick-pixelui/';
-			//pixelShitPart2 = '';
-			//if (goods > 0)
+			if (sicks > 0)
+			pixelShitPart1 = 'skins/full-sick-pixelui/';
+			pixelShitPart2 = '';
+			if (goods > 0)
 			pixelShitPart1 = 'pixelUI/';
 			pixelShitPart2 = '-pixel';
 		}
@@ -3695,10 +3695,10 @@ class PlayState extends MusicBeatState
 		//Forever Engine Pixel Skin
 		if(ClientPrefs.uiSkin == 'Forever' && PlayState.isPixelStage)
 		{
-			//if (sicks > 0)
-			//pixelShitPart1 = 'skins/full-sick-pixelui/';
-			//pixelShitPart2 = '';
-			//if (goods > 0)
+			if (sicks > 0)
+			pixelShitPart1 = 'skins/full-sick-pixelui/';
+			pixelShitPart2 = '';
+			if (goods > 0)
 			pixelShitPart1 = 'skins/foreverUI/';
 			pixelShitPart2 = '-pixel';
 		}
@@ -3717,10 +3717,10 @@ class PlayState extends MusicBeatState
 		//Kade Engine Pixel Skin
 		if(ClientPrefs.uiSkin == 'Kade' && PlayState.isPixelStage)
 		{
-			//if (sicks > 0)
-			//pixelShitPart1 = 'skins/full-sick-pixelui/';
-			//pixelShitPart2 = '';
-			//if (goods > 0)
+			if (sicks > 0)
+			pixelShitPart1 = 'skins/full-sick-pixelui/';
+			pixelShitPart2 = '';
+			if (goods > 0)
 			pixelShitPart1 = 'skins/kadeUI/';
 			pixelShitPart2 = '-pixel';
 		}
@@ -3739,7 +3739,6 @@ class PlayState extends MusicBeatState
 			pixelShitPart2 = '-pixel';
 		}
 			//I hope to clean this code up in the future because rn it sucks, works at the very least -Gui iago
-			//Note to self 01-05-22: Add Pixel Full Sick files -Gui iago
 
 		rating.loadGraphic(Paths.image(pixelShitPart1 + daRating + pixelShitPart2));
 		rating.cameras = [camHUD];
