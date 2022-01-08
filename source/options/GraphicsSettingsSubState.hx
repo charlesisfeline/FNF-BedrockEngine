@@ -36,14 +36,6 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		title = 'Graphics';
 		rpcTitle = 'Graphics Settings Menu'; //for Discord Rich Presence
 
-		//I'd suggest using "Low Quality" as an example for making your own option since it is the simplest here
-		var option:Option = new Option('Low Quality', //Name
-			'If checked, disables some background details,\ndecreases loading times and improves performance.', //Description
-			'lowQuality', //Save data variable name
-			'bool', //Variable type
-			false); //Default value
-		addOption(option);
-
 		var option:Option = new Option('Anti-Aliasing',
 			'If unchecked, disables anti-aliasing, increases performance\nat the cost of sharper visuals.',
 			'globalAntialiasing',
@@ -64,7 +56,21 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		option.maxValue = 240;
 		option.displayFormat = '%v FPS';
 		option.onChange = onChangeFramerate;
-		
+
+		//I'd suggest using "Low Quality" as an example for making your own option since it is the simplest here
+		var option:Option = new Option('Low Quality', //Name
+			'If checked, disables some background details,\ndecreases loading times and improves performance.', //Description
+			'lowQuality', //Save data variable name
+			'bool', //Variable type
+			false); //Default value
+		addOption(option);
+
+		var option:Option = new Option('Max Optimization',
+			'If checked, disables everything except the HUD.',
+			'maxOptimization',
+			'bool',
+			false);
+		addOption(option);
 		
 		var option:Option = new Option('Screen Resolution',
 			"Size of the window (Changes will apply once leaving)",

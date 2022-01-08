@@ -25,7 +25,8 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var psychEngineVersion:String = '0.5.1'; //This is also used for Discord RPC
+	public static var projectHypnosisVersion:String = '0.3'; //This is also used for Discord RPC
+	public static var psychEngineVersion:String = '0.5.1'; //this one too
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
@@ -43,6 +44,7 @@ class MainMenuState extends MusicBeatState
 	];
 
 	var magenta:FlxSprite;
+	var bg:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
 	var debugKeys:Array<FlxKey>;
@@ -51,7 +53,7 @@ class MainMenuState extends MusicBeatState
 	{
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("In the Main Menu", null);
 		#end
 		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 
@@ -69,7 +71,12 @@ class MainMenuState extends MusicBeatState
 		persistentUpdate = persistentDraw = true;
 
 		var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
-		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
+		camFollow = new FlxObject(0, 0, 1, 1);
+		camFollowPos = new FlxObject(0, 0, 1, 1);
+		add(camFollow);
+		add(camFollowPos);
+
+		bg = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
 		bg.scrollFactor.set(0, yScroll);
 		bg.setGraphicSize(Std.int(bg.width * 1.175*scaleRatio ));
 		bg.updateHitbox();
@@ -77,19 +84,16 @@ class MainMenuState extends MusicBeatState
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 
-		camFollow = new FlxObject(0, 0, 1, 1);
-		camFollowPos = new FlxObject(0, 0, 1, 1);
-		add(camFollow);
-		add(camFollowPos);
+		// magenta.scrollFactor.set();
 
 		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
 		magenta.scrollFactor.set(0, yScroll);
 		magenta.setGraphicSize(Std.int(magenta.width * 1.175*scaleRatio ));
 		magenta.updateHitbox();
 		magenta.screenCenter();
-		magenta.visible = false;
 		magenta.antialiasing = ClientPrefs.globalAntialiasing;
 		magenta.color = 0xFFfd719b;
+		magenta.visible = false;
 		add(magenta);
 		
 		// magenta.scrollFactor.set();
@@ -125,6 +129,10 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollowPos, null, 1);
 
+		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 64, 0, "Project Hypnosis v" + projectHypnosisVersion, 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
 		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 44, 0, "Psych Engine v" + psychEngineVersion, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -133,7 +141,7 @@ class MainMenuState extends MusicBeatState
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
-
+		
 		// NG.core.calls.event.logEvent('swag').send();
 
 		changeItem();
@@ -194,6 +202,12 @@ class MainMenuState extends MusicBeatState
 				selectedSomethin = true;
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				MusicBeatState.switchState(new TitleState());
+				//Main Menu Back Animations
+				FlxTween.tween(FlxG.camera, {zoom: 5}, 0.8, {ease: FlxEase.expoIn});
+				FlxTween.tween(bg, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
+				FlxTween.tween(magenta, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
+				FlxTween.tween(bg, {alpha: 0}, 0.8, {ease: FlxEase.expoIn});
+				FlxTween.tween(magenta, {alpha: 0}, 0.8, {ease: FlxEase.expoIn});
 			}
 
 			if (controls.ACCEPT)
@@ -213,6 +227,12 @@ class MainMenuState extends MusicBeatState
 					{
 						if (curSelected != spr.ID)
 						{
+							//Main Menu Select Animations
+							FlxTween.tween(FlxG.camera, {zoom: 5}, 0.8, {ease: FlxEase.expoIn});
+							FlxTween.tween(bg, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
+							FlxTween.tween(magenta, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
+							FlxTween.tween(bg, {alpha: 0}, 0.8, {ease: FlxEase.expoIn});
+							FlxTween.tween(magenta, {alpha: 0}, 0.8, {ease: FlxEase.expoIn});
 							FlxTween.tween(spr, {alpha: 0}, 0.4, {
 								ease: FlxEase.quadOut,
 								onComplete: function(twn:FlxTween)
@@ -292,4 +312,10 @@ class MainMenuState extends MusicBeatState
 			}
 		});
 	}
-}
+	override function beatHit()
+		{
+			super.beatHit();
+			if (curBeat % 4 == 0 && ClientPrefs.camZooms)
+				FlxG.camera.zoom = 1.015;
+		}
+	}

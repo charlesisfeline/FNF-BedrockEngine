@@ -14,7 +14,7 @@ class ClientPrefs {
 	public static var globalAntialiasing:Bool = true;
 	public static var noteSplashes:Bool = true;
 	public static var lowQuality:Bool = false;
-	public static var framerate:Int = 60;
+	public static var framerate:Int = 120;
 	public static var cursing:Bool = true;
 	public static var violence:Bool = true;
 	public static var camZooms:Bool = true;
@@ -58,6 +58,17 @@ class ClientPrefs {
 	public static var goodWindow:Int = 90;
 	public static var badWindow:Int = 135;
 	public static var safeFrames:Float = 10;
+
+	//Things Added by Project Hypnosis
+	public static var maxOptimization:Bool = true;
+	public static var showWatermarks:Bool = true;
+	public static var uiSkin:String = 'Default';
+	public static var playMissSounds:Bool = true;
+	public static var playHitSounds:String = 'Disabled';
+	public static var lightcpustrums:Bool = true;
+	public static var biggerInfo:Bool = false;
+	public static var hideAccuracy:Bool = false;
+	public static var fpsRainbow:Bool = false;
 
 	//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
 	public static var keyBinds:Map<String, Array<FlxKey>> = [
@@ -129,6 +140,17 @@ class ClientPrefs {
 		FlxG.save.data.gameplaySettings = gameplaySettings;
 		FlxG.save.data.controllerMode = controllerMode;
 		FlxG.save.data.screenRes = screenRes;
+
+		//Things Added by Project Hypnosis
+		FlxG.save.data.maxOptimization = maxOptimization;
+		FlxG.save.data.showWatermarks = showWatermarks;
+		FlxG.save.data.playMissSounds = playMissSounds;
+		FlxG.save.data.playHitSounds = playHitSounds;
+		FlxG.save.data.uiSkin = uiSkin;
+		FlxG.save.data.lightcpustrums = lightcpustrums;
+		FlxG.save.data.biggerInfo = biggerInfo;
+		FlxG.save.data.hideAccuracy = hideAccuracy;
+		FlxG.save.data.fpsRainbow = fpsRainbow;
 	
 		FlxG.save.flush();
 
@@ -239,6 +261,31 @@ class ClientPrefs {
 			{
 				gameplaySettings.set(name, value);
 			}
+		}
+		//Things Added by Project Hypnosis
+		if(FlxG.save.data.maxOptimization != null) {
+			maxOptimization = FlxG.save.data.maxOptimization;
+		}
+		if (FlxG.save.data.showWatermarks != null) {
+			showWatermarks = FlxG.save.data.showWatermarks;
+		}
+		if (FlxG.save.data.playHitSounds != null) {
+			playHitSounds = FlxG.save.data.playHitSounds;
+		}
+		if (FlxG.save.data.playMissSounds != null) {
+			playMissSounds = FlxG.save.data.playMissSounds;
+		}
+		if(FlxG.save.data.uiSkin != null) {
+			uiSkin = FlxG.save.data.uiSkin;
+		}
+		if(FlxG.save.data.fpsRainbow != null) {
+			fpsRainbow = FlxG.save.data.fpsRainbow;
+		}
+		if (FlxG.save.data.lightcpustrums != null) {
+			lightcpustrums = FlxG.save.data.lightcpustrums;
+		}
+		if (FlxG.save.data.biggerInfo != null) {
+			biggerInfo = FlxG.save.data.biggerInfo;
 		}
 		
 		// flixel automatically saves your volume!
