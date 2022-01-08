@@ -24,10 +24,6 @@ https://user-images.githubusercontent.com/45212377/147199518-663ddd81-288a-4228-
 
 https://user-images.githubusercontent.com/45212377/147199769-1146c459-1448-4b33-b0c4-63319513c49e.mp4
 
-## Lane Underlay
-
-![image](https://user-images.githubusercontent.com/45212377/147282896-42119cc1-95d2-431a-ab8b-91760cd89fcf.png)
-
 ## Max Optimiztion Mode
 wanna play some FNF but your pc can't run it without crashing every 10 seconds? don't worry, we got the solution!
 
@@ -61,13 +57,6 @@ can be enabled on the Gameplay Changers menu
 ## Pixel Note Splashes
 
 https://user-images.githubusercontent.com/45212377/147283320-2cad2193-d1e9-42ee-b8d9-3ab4a267112b.mp4
-
-## Text Borders
-pretty self explanatory, this applies to both the Info Bar Text and Botplay Text!
-![image](https://user-images.githubusercontent.com/45212377/146986656-be657b6e-ab7a-463e-a561-20e7dc847865.png)
-
-(No Borders Enabled)
-![image](https://user-images.githubusercontent.com/45212377/147283197-656ea881-8650-4ecd-9be9-459001c8f7fa.png)
 
 ## UI Skins
 You can now Change your Judgements' Appearance with the new UI Skins
