@@ -34,6 +34,13 @@ class VisualsUISubState extends BaseOptionsMenu
 		title = 'Visuals and UI';
 		rpcTitle = 'Visuals & UI Settings Menu'; //for Discord Rich Presence
 
+		var option:Option = new Option('Bigger Info Bar Text',
+			'If checked, the text on the Info Bar goes bigger, from 16 to 20',
+			'biggerInfo',
+			'bool',
+			false);
+		addOption(option);
+
 		var option:Option = new Option('Camera Zooms',
 			"If unchecked, the camera won't zoom in on a beat hit.",
 			'camZooms',
@@ -86,6 +93,12 @@ class VisualsUISubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 
+		var option:Option = new Option('Show Watermarks',
+			"If unchecked, hides engine watermarks from the top left corner.",
+			'showWatermarks',
+			'bool',
+			true);
+		addOption(option);
 
 		var option:Option = new Option('Health Bar Opacity',
 			'How much opaque should the health bar and icons be.',
@@ -105,6 +118,14 @@ class VisualsUISubState extends BaseOptionsMenu
 			'string',
 			'Time Left',
 			['Time Left', 'Time Elapsed', 'Song Name', 'Disabled']);
+		addOption(option);
+
+		var option:Option = new Option('UI Skin',
+			"What should your Judgements look like?",
+			'uiSkin',
+			'string',
+			'Default',
+			['Default', 'Forever', 'Kade', 'Simplylove']);
 		addOption(option);
 
 		super();

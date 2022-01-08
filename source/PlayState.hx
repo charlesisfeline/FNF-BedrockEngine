@@ -2377,6 +2377,8 @@ class PlayState extends MusicBeatState
 			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' // Combo Breaks: ' + songMisses + ' // Rank: ?';
 		} else {
 			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' // Combo Breaks: ' + songMisses + ' // Rank: ' +  ratingName;
+		if (songMisses > 1)
+			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' // Combo Breaks: ' + songMisses + ' // Rank: ' +  ratingName;
 		}
 
 		if(ClientPrefs.hideAccuracy == true)
