@@ -4036,6 +4036,9 @@ class PlayState extends MusicBeatState
 			if(boyfriend.hasMissAnimations && !opponentChart) {
 				boyfriend.playAnim(singAnimations[Std.int(Math.abs(direction))] + 'miss', true);
 			}
+			if(ClientPrefs.playMissSounds == false)
+				vocals.volume = 1; //for whatever reason this doesn't work, gonna check it later
+			else
 			vocals.volume = 0;
 		}
 	}
