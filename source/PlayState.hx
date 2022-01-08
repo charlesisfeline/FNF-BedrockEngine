@@ -849,10 +849,17 @@ class PlayState extends MusicBeatState
 			dialogueJson = DialogueBoxPsych.parseDialogue(file);
 		}
 
-		var file:String = Paths.txt(songName + '/' + songName + 'Dialogue'); //Checks for vanilla/Senpai dialogue
-		if (OpenFlAssets.exists(file)) {
-			dialogue = CoolUtil.coolTextFile(file);
-		}
+		if (!ClientPrefs.hideGf) {
+			var file:String = Paths.txt(songName + '/' + songName + 'Dialogue'); //Checks for vanilla/Senpai dialogue
+			if (OpenFlAssets.exists(file)) {
+				dialogue = CoolUtil.coolTextFile(file);
+			}
+			} else if (ClientPrefs.hideGf) {
+			var file:String = Paths.txt(songName + '/' + songName + 'DialogueNoGf'); //Checks for vanilla/Senpai dialogue without GF
+			if (OpenFlAssets.exists(file)) {
+				dialogue = CoolUtil.coolTextFile(file);
+			}
+			}
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
 		// doof.x += 70;
 		// doof.y = FlxG.height * 0.5;
@@ -1055,8 +1062,6 @@ class PlayState extends MusicBeatState
 
 		//Song Name + Difficulty Display at the lower left corner
 		songNameTxt = new FlxText(0, FlxG.height - 24, 0, SONG.song + " - " + CoolUtil.difficultyString());
-		if (opponentChart)
-		songNameTxt = new FlxText(0, FlxG.height - 24, 0, SONG.song + " - " + CoolUtil.difficultyString() + " - OPPONENT");
 		songNameTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		songNameTxt.scrollFactor.set();
 		add(songNameTxt);

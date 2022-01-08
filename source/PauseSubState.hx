@@ -19,12 +19,13 @@ class PauseSubState extends MusicBeatSubstate
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
 	var menuItems:Array<String> = [];
-	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Change Difficulty', 'Exit to menu'];
+	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Change Difficulty', 'Toggle Play as Opponent', 'Exit to menu'];
 	var difficultyChoices = [];
 	var curSelected:Int = 0;
 
 	var pauseMusic:FlxSound;
 	var practiceText:FlxText;
+	var opponentText:FlxText;
 	//var botplayText:FlxText;
 
 	public static var transCamera:FlxCamera;
@@ -86,6 +87,14 @@ class PauseSubState extends MusicBeatSubstate
 		practiceText.updateHitbox();
 		practiceText.visible = PlayState.instance.practiceMode;
 		add(practiceText);
+
+		opponentText = new FlxText(20, 15 + 130, 0, "OPPONENT MODE", 32);
+		opponentText.scrollFactor.set();
+		opponentText.setFormat(Paths.font('vcr.ttf'), 32);
+		opponentText.x = FlxG.width - (opponentText.width + 20);
+		opponentText.updateHitbox();
+		opponentText.visible = PlayState.instance.opponentChart;
+		add(opponentText);
 
 		var chartingText:FlxText = new FlxText(20, 15 + 101, 0, "CHARTING MODE", 32);
 		chartingText.scrollFactor.set();
@@ -180,6 +189,15 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.instance.botplayTxt.visible = PlayState.instance.cpuControlled;
 					PlayState.instance.botplayTxt.alpha = 1;
 					PlayState.instance.botplaySine = 0;
+				//case 'Toggle Play as Opponent':
+					//PlayState.instance.opponentChart = !PlayState.instance.opponentChart;
+					//PlayState.changedDifficulty = true;
+					//opponentText.visible = PlayState.instance.opponentChart;
+					//menuItemsOG.remove('Resume');
+					//menuItemsOG.remove('Toggle Play as Opponent');
+					//menuItemsOG.remove('Toggle Practice Mode');
+					//menuItemsOG.remove('Change Difficulty');
+					//regenMenu();
 				case "Exit to menu":
 					PlayState.deathCounter = 0;
 					PlayState.seenCutscene = false;
