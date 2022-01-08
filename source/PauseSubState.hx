@@ -19,8 +19,9 @@ class PauseSubState extends MusicBeatSubstate
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
 	var menuItems:Array<String> = [];
-	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Change Difficulty', 'Toggle Play as Opponent', 'Exit to menu'];
+	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Change Difficulty', /*'Toggle Play as Opponent',*/ 'Exit to menu'];
 	var difficultyChoices = [];
+	var openGameplayChangers = [];
 	var curSelected:Int = 0;
 
 	var pauseMusic:FlxSound;
@@ -189,15 +190,15 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.instance.botplayTxt.visible = PlayState.instance.cpuControlled;
 					PlayState.instance.botplayTxt.alpha = 1;
 					PlayState.instance.botplaySine = 0;
-				//case 'Toggle Play as Opponent':
-					//PlayState.instance.opponentChart = !PlayState.instance.opponentChart;
-					//PlayState.changedDifficulty = true;
-					//opponentText.visible = PlayState.instance.opponentChart;
-					//menuItemsOG.remove('Resume');
-					//menuItemsOG.remove('Toggle Play as Opponent');
-					//menuItemsOG.remove('Toggle Practice Mode');
-					//menuItemsOG.remove('Change Difficulty');
-					//regenMenu();
+				/*case 'Toggle Play as Opponent':
+					PlayState.instance.opponentChart = !PlayState.instance.opponentChart;
+					PlayState.changedDifficulty = true;
+					opponentText.visible = PlayState.instance.opponentChart;
+					menuItemsOG.remove('Resume');
+					menuItemsOG.remove('Toggle Play as Opponent');
+					menuItemsOG.remove('Toggle Practice Mode');
+					menuItemsOG.remove('Change Difficulty');
+					regenMenu();*/
 				case "Exit to menu":
 					PlayState.deathCounter = 0;
 					PlayState.seenCutscene = false;
