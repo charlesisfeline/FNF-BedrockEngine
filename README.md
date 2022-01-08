@@ -3,7 +3,6 @@ a fork of Psych Engine which adds a bunch of features from Pull Requests around 
 Credits:
 * CerBor - Difficulty Drop Down on Chart Menu - https://github.com/ShadowMario/FNF-PsychEngine/pull/2896
 * HiroMizuki - Pixel Note Splashes - https://github.com/ShadowMario/FNF-PsychEngine/pull/1792
-* KadeDev - Constant Scroll Speeds - https://github.com/ShadowMario/FNF-PsychEngine/pull/2823
 * lemz1 - Play as Opponent - https://github.com/ShadowMario/FNF-PsychEngine/pull/2770
 * l1ttleO - Made ProjectFNF 2.X, Menu Animations, Hit Sounds, Miss Sounds Toggle, Camera Follows Note Direction - https://github.com/l1ttleO/ProjectFNF
 * nintendofan44 - Lane Underlay - https://github.com/ShadowMario/FNF-PsychEngine/pull/1481
