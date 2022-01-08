@@ -689,6 +689,10 @@ class PlayState extends MusicBeatState
 			introSoundsSuffix = '-pixel';
 		}
 
+		if(ClientPrefs.hideGf == true) {
+			remove(gfGroup); //won't do anything if she's the opponent
+		}
+		else
 		add(gfGroup);
 
 		// Shitty layering but whatev it works LOL
@@ -1486,7 +1490,7 @@ class PlayState extends MusicBeatState
 			startCountdown();
 		}
 	}
-
+	
 	var dialogueCount:Int = 0;
 	public var psychDialogue:DialogueBoxPsych;
 	//You don't have to add a song, just saying. You can just do "startDialogue(dialogueJson);" and it should work
