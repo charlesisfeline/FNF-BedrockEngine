@@ -68,7 +68,6 @@ class ClientPrefs {
 	public static var lightcpustrums:Bool = true;
 	public static var biggerInfo:Bool = false;
 	public static var hideAccuracy:Bool = false;
-	public static var fpsRainbow:Bool = false;
 	public static var hideGf:Bool = false;
 
 	//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
@@ -151,7 +150,6 @@ class ClientPrefs {
 		FlxG.save.data.lightcpustrums = lightcpustrums;
 		FlxG.save.data.biggerInfo = biggerInfo;
 		FlxG.save.data.hideAccuracy = hideAccuracy;
-		FlxG.save.data.fpsRainbow = fpsRainbow;
 		FlxG.save.data.hideGf = hideGf;
 	
 		FlxG.save.flush();
@@ -279,9 +277,6 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.uiSkin != null) {
 			uiSkin = FlxG.save.data.uiSkin;
-		}
-		if(FlxG.save.data.fpsRainbow != null) {
-			fpsRainbow = FlxG.save.data.fpsRainbow;
 		}
 		if (FlxG.save.data.lightcpustrums != null) {
 			lightcpustrums = FlxG.save.data.lightcpustrums;
