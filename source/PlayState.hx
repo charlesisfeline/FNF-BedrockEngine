@@ -1025,7 +1025,9 @@ class PlayState extends MusicBeatState
 		reloadHealthBarColors();
 
 		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		if(ClientPrefs.biggerInfo)
+			scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.hideHud;
@@ -2440,22 +2442,26 @@ class PlayState extends MusicBeatState
 		if (health > 2)
 			health = 2;
 
-		var a = iconP1;
-		var b = iconP2;
+		var bf = iconP1;
+		var dad = iconP2;
 		if (opponentChart) {
-			a = iconP2;
-			b = iconP1;
+			bf = iconP2;
+			dad = iconP1;
 		}
 
-		if (healthBar.percent < 20)
-			a.animation.curAnim.curFrame = 1;
-		else
-			a.animation.curAnim.curFrame = 0;
-
-		if (healthBar.percent > 80)
-			b.animation.curAnim.curFrame = 1;
-		else
-			b.animation.curAnim.curFrame = 0;
+	if (healthBar.percent < 20)
+		bf.animation.curAnim.curFrame = 1;
+	else if (healthBar.percent > 85)
+		bf.animation.curAnim.curFrame = 2;
+	else
+		bf.animation.curAnim.curFrame = 0;
+	
+	if (healthBar.percent > 85)
+		dad.animation.curAnim.curFrame = 1;
+	else if (healthBar.percent < 20)
+		dad.animation.curAnim.curFrame = 2;
+	else
+		dad.animation.curAnim.curFrame = 0;
 
 		if (FlxG.keys.anyJustPressed(debugKeysCharacter) && !endingSong && !inCutscene) {
 			persistentUpdate = false;
