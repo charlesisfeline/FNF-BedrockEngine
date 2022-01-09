@@ -62,7 +62,6 @@ class ClientPrefs {
 	//Things Added by Bedrock Engine 
 	public static var maxOptimization:Bool = true;
 	public static var showWatermarks:Bool = true;
-	public static var uiSkin:String = 'Default';
 	public static var playMissSounds:Bool = true;
 	public static var playHitSounds:String = 'Disabled';
 	public static var lightcpustrums:Bool = true;
@@ -146,7 +145,6 @@ class ClientPrefs {
 		FlxG.save.data.showWatermarks = showWatermarks;
 		FlxG.save.data.playMissSounds = playMissSounds;
 		FlxG.save.data.playHitSounds = playHitSounds;
-		FlxG.save.data.uiSkin = uiSkin;
 		FlxG.save.data.lightcpustrums = lightcpustrums;
 		FlxG.save.data.biggerInfo = biggerInfo;
 		FlxG.save.data.hideAccuracy = hideAccuracy;
@@ -274,9 +272,6 @@ class ClientPrefs {
 		}
 		if (FlxG.save.data.playMissSounds != null) {
 			playMissSounds = FlxG.save.data.playMissSounds;
-		}
-		if(FlxG.save.data.uiSkin != null) {
-			uiSkin = FlxG.save.data.uiSkin;
 		}
 		if (FlxG.save.data.lightcpustrums != null) {
 			lightcpustrums = FlxG.save.data.lightcpustrums;
