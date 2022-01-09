@@ -2365,13 +2365,12 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		if (ratingFC == "Unrated") {
+		if (ratingFC == "Unrated")
 			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' // Combo Breaks: ' + songMisses + ' // Rank: ?';
-		} else {
-			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' // Combo Breaks: ' + songMisses + ' // Rank: ' +  ratingName;
+		 else 
+   			 scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' // Combo Breaks: ' + songMisses + ' // Rank: ' +  ratingName;
 		if (songMisses > 1)
-			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' // Combo Breaks: ' + songMisses + ' // Rank: ' +  ratingName;
-		}
+    		scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' // Combo Breaks: ' + songMisses + ' // Rank: ' +  ratingName;
 
 		if(ClientPrefs.hideAccuracy == true)
 			scoreTxt.text = 'Score: ' + songScore + ' // Misses: ' + songMisses;
