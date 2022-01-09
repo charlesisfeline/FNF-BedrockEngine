@@ -59,7 +59,7 @@ class ClientPrefs {
 	public static var badWindow:Int = 135;
 	public static var safeFrames:Float = 10;
 
-	//Things Added by Project Hypnosis
+	//Things Added by Bedrock Engine 
 	public static var maxOptimization:Bool = true;
 	public static var showWatermarks:Bool = true;
 	public static var uiSkin:String = 'Default';
@@ -141,7 +141,7 @@ class ClientPrefs {
 		FlxG.save.data.controllerMode = controllerMode;
 		FlxG.save.data.screenRes = screenRes;
 
-		//Things Added by Project Hypnosis
+		//Things Added by Bedrock Engine 
 		FlxG.save.data.maxOptimization = maxOptimization;
 		FlxG.save.data.showWatermarks = showWatermarks;
 		FlxG.save.data.playMissSounds = playMissSounds;
@@ -262,7 +262,7 @@ class ClientPrefs {
 				gameplaySettings.set(name, value);
 			}
 		}
-		//Things Added by Project Hypnosis
+		//Things Added by Bedrock Engine
 		if(FlxG.save.data.maxOptimization != null) {
 			maxOptimization = FlxG.save.data.maxOptimization;
 		}

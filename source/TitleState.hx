@@ -556,7 +556,7 @@ class TitleState extends MusicBeatState
 			switch (sickBeats)
 			{
 				case 1:
-					createCoolText(['Project Hypnosis by'], 45);
+					createCoolText(['Bedrock Engine by'], 45);
 				// credTextShit.visible = true;
 				case 3:
 					addMoreText('', 45);

@@ -231,9 +231,8 @@ class PlayState extends MusicBeatState
 	public var scoreTxt:FlxText;
 	var timeTxt:FlxText;
 	var scoreTxtTween:FlxTween;
-	var phWatermark:FlxText;
+	var beWatermark:FlxText;
 	var peWatermark:FlxText;
-	var songNameTxt:FlxText;
 
 	public static var campaignScore:Int = 0;
 	public static var campaignMisses:Int = 0;
@@ -1044,13 +1043,13 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
 
-		//Watermarks at the upper left corner, this is for Project Hypnosis
-		phWatermark = new FlxText(0, FlxG.height - 700, 0, "Project Hypnosis: v" + MainMenuState.projectHypnosisVersion, 16);
-		phWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		phWatermark.scrollFactor.set();
+		//Watermarks at the upper left corner, this is for Bedrock Engine
+		beWatermark = new FlxText(0, FlxG.height - 700, 0, "Bedrock Engine: v" + MainMenuState.bedrockEngineVersion, 16);
+		beWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		beWatermark.scrollFactor.set();
 		if(ClientPrefs.showWatermarks == false)
-		phWatermark = new FlxText(0, FlxG.height - 700, 0, "");
-		add(phWatermark);
+		beWatermark = new FlxText(0, FlxG.height - 700, 0, "");
+		add(beWatermark);
 
 		//And this is for Psych Engine
 		peWatermark = new FlxText(0, FlxG.height - 680, 0, "Psych Engine: v" + MainMenuState.psychEngineVersion, 16);
@@ -1059,12 +1058,6 @@ class PlayState extends MusicBeatState
 		if(ClientPrefs.showWatermarks == false)
 		peWatermark = new FlxText(0, FlxG.height - 680, 0, "");
 		add(peWatermark);
-
-		//Song Name + Difficulty Display at the lower left corner
-		songNameTxt = new FlxText(0, FlxG.height - 24, 0, SONG.song + " - " + CoolUtil.difficultyString());
-		songNameTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		songNameTxt.scrollFactor.set();
-		add(songNameTxt);
 
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
 		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -1084,9 +1077,8 @@ class PlayState extends MusicBeatState
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
-		phWatermark.cameras = [camHUD];
+		beWatermark.cameras = [camHUD];
 		peWatermark.cameras = [camHUD];
-		songNameTxt.cameras = [camHUD];
 		botplayTxt.cameras = [camHUD];
 		timeBar.cameras = [camHUD];
 		timeBarBG.cameras = [camHUD];
