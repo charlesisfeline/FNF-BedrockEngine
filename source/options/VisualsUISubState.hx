@@ -113,6 +113,14 @@ class VisualsUISubState extends BaseOptionsMenu
 			['Time Left', 'Time Elapsed', 'Song Name', 'Disabled']);
 		addOption(option);
 
+		var option:Option = new Option('UI Skin:',
+			"What should your judgements look like?",
+			'uiSkin',
+			'string',
+			'Bedrock',
+			['Classic', 'Bedrock']);
+		addOption(option);
+
 		super();
 	}
 

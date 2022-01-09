@@ -68,6 +68,7 @@ class ClientPrefs {
 	public static var biggerInfo:Bool = false;
 	public static var hideAccuracy:Bool = false;
 	public static var hideGf:Bool = false;
+	public static var uiSkin:String = 'Bedrock';
 
 	//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
 	public static var keyBinds:Map<String, Array<FlxKey>> = [
@@ -149,6 +150,7 @@ class ClientPrefs {
 		FlxG.save.data.biggerInfo = biggerInfo;
 		FlxG.save.data.hideAccuracy = hideAccuracy;
 		FlxG.save.data.hideGf = hideGf;
+		FlxG.save.data.uiSkin = uiSkin;
 	
 		FlxG.save.flush();
 
@@ -281,6 +283,9 @@ class ClientPrefs {
 		}
 		if (FlxG.save.data.hideGf != null) {
 			hideGf = FlxG.save.data.hideGf;
+		}
+		if (FlxG.save.data.uiSkin != null) {
+			uiSkin = FlxG.save.data.uiSkin;
 		}
 		
 		// flixel automatically saves your volume!

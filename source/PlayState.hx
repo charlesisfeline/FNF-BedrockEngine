@@ -3565,9 +3565,33 @@ class PlayState extends MusicBeatState
 		var pixelShitPart1:String = "";
 		var pixelShitPart2:String = '';
 
+		//Judgement Skins (using preload for now)
+
+		//Classic Skin
+		if(ClientPrefs.uiSkin == 'Classic' && PlayState.isPixelStage)
+		{
+			pixelShitPart1 = 'judgements/vanilla/';
+			pixelShitPart2 = '';
+		}
+
+		//Classic Pixel Skin
 		if (PlayState.isPixelStage)
 		{
 			pixelShitPart1 = 'pixelUI/';
+			pixelShitPart2 = '-pixel';
+		}
+
+		//Bedrock Engine Skin
+		if(ClientPrefs.uiSkin == 'Bedrock')
+		{
+			pixelShitPart1 = 'judgements/bedrock/';
+			pixelShitPart2 = '';
+		}
+
+		//Bedrock Engine Pixel Skin
+		if(ClientPrefs.uiSkin == 'Bedrock' && PlayState.isPixelStage)
+		{
+			pixelShitPart1 = 'judgements/bedrock/';
 			pixelShitPart2 = '-pixel';
 		}
 
