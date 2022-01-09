@@ -1,4 +1,4 @@
-# Friday Night Funkin' - Project Hypnosis!
+# Friday Night Funkin' - Bedrock Engine!
 a fork of Psych Engine which adds a bunch of features from Pull Requests around the Main Branch, and even other forks!
 Credits:
 * CerBor - Difficulty Drop Down on Chart Menu - https://github.com/ShadowMario/FNF-PsychEngine/pull/2896
@@ -9,7 +9,7 @@ Credits:
 * tposejank - Sustains now wont do anything if the note that start it was missed - https://github.com/ShadowMario/FNF-PsychEngine/pull/2817
 * Verwex - made Mic'd Up Engine, Winning Icons - https://github.com/Verwex/Funkin-Mic-d-Up-SC
 * XtraXD1 - Show/Hide Weeks temporally + Getting/Setting on Source Code - https://github.com/ShadowMario/FNF-PsychEngine/pull/3192
-* Yoshubs - made Forever Engine, Main Inspiration for Rank Names and Detailed Info Bar, Full Sick Combo assets - https://github.com/Yoshubs/Forever-Engine-Legacy
+* Yoshubs - made Forever Engine, Main Inspiration - https://github.com/Yoshubs/Forever-Engine-Legacy
 
 # Current Features
 
