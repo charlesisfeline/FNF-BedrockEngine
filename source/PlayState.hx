@@ -1044,19 +1044,19 @@ class PlayState extends MusicBeatState
 		add(scoreTxt);
 
 		//Watermarks at the upper left corner, this is for Bedrock Engine
-		beWatermark = new FlxText(0, FlxG.height - 700, 0, "Bedrock Engine: v" + MainMenuState.bedrockEngineVersion, 16);
+		beWatermark = new FlxText(0, FlxG.height - 44, 0, "Bedrock Engine: v" + MainMenuState.bedrockEngineVersion, 16);
 		beWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		beWatermark.scrollFactor.set();
 		if(ClientPrefs.showWatermarks == false)
-		beWatermark = new FlxText(0, FlxG.height - 700, 0, "");
+		beWatermark = new FlxText(0, FlxG.height - 44, 0, "");
 		add(beWatermark);
 
 		//And this is for Psych Engine
-		peWatermark = new FlxText(0, FlxG.height - 680, 0, "Psych Engine: v" + MainMenuState.psychEngineVersion, 16);
+		peWatermark = new FlxText(0, FlxG.height - 24, 0, "Psych Engine: v" + MainMenuState.psychEngineVersion, 16);
 		peWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		peWatermark.scrollFactor.set();
 		if(ClientPrefs.showWatermarks == false)
-		peWatermark = new FlxText(0, FlxG.height - 680, 0, "");
+		peWatermark = new FlxText(0, FlxG.height - 24, 0, "");
 		add(peWatermark);
 
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
