@@ -85,7 +85,7 @@ class CreditsState extends MusicBeatState
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
 			['Bedrock Engine Team'],
 			['Gui iago',	'gui-iago',	'Engine Coder and Publisher', 'https://github.com/Gui-iago', 'FFFF00'],
-			['AquaStrikr',	'aqua', 	'Judgments Design', 'https://twitter.com/aqua_strikr', '2596be'],
+			['AquaStrikr',	'aqua', 	'Judgements Design', 'https://twitter.com/aqua_strikr', '2596be'],
 			[''],
 			['Original Pull Requests'],
 			['CerBor', 'placeholder', 'Difficulty Drop Down on Chart Menu', 'https://github.com/ShadowMario/FNF-PsychEngine/pull/2896', '31b0d1'],
