@@ -32,7 +32,7 @@ using StringTools;
 
 class LowEndMenuState extends MusicBeatState
 {
-	var options:Array<String> = ['Story Mode', 'Freeplay', 'Mods', 'Awards', 'Donate', 'Options'];
+	var options:Array<String> = ['Story Mode', 'Freeplay', 'Mods', 'Awards', 'Credits', 'Donate', 'Options'];
 	public static var bedrockEngineVersion:String = '0.3'; //This is also used for Discord RPC
 	public static var psychEngineVersion:String = '0.5.1'; //this one too
 	private var grpOptions:FlxTypedGroup<Alphabet>;
