@@ -16,6 +16,7 @@ import flixel.FlxSubState;
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.FlxCamera;
 import flixel.util.FlxSave;
 import flixel.effects.FlxFlicker;
 import haxe.Json;
@@ -33,7 +34,13 @@ using StringTools;
 
 class SimpleMenuState extends MusicBeatState
 {
-	var options:Array<String> = ['Story Mode', 'Freeplay', 'Mods', 'Awards', 'Donate', 'Options'];
+	var options:Array<String> = ['Story Mode', 
+	'Freeplay', 
+	#if MODS_ALLOWED 'Mods', #end
+	#if ACHIEVEMENTS_ALLOWED 'Awards', #end
+	'Credits',
+	#if !switch 'Donate', #end
+	'Options'];
 
 	public static var bedrockEngineVersion:String = '0.3'; // This is also used for Discord RPC
 	public static var psychEngineVersion:String = '0.5.1'; // this one too
@@ -41,6 +48,7 @@ class SimpleMenuState extends MusicBeatState
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 
 	private static var curSelected:Int = 0;
+	private var camAchievement:FlxCamera;
 	public static var menuBG:FlxSprite;
 
 	var debugKeys:Array<FlxKey>;
@@ -183,6 +191,29 @@ class SimpleMenuState extends MusicBeatState
 				selectorRight.y = item.y;
 			}
 		}
+		camAchievement = new FlxCamera();
+		camAchievement.bgColor.alpha = 0;
+		FlxG.cameras.add(camAchievement);
+		#if ACHIEVEMENTS_ALLOWED
+		// Unlocks "Freaky on a Friday Night" achievement
+		function giveAchievement() {
+			add(new AchievementObject('friday_night_play', camAchievement));
+			FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
+			trace('Giving achievement "friday_night_play"');
+		}
+		#end
+		#if ACHIEVEMENTS_ALLOWED
+		Achievements.loadAchievements();
+		var leDate = Date.now();
+		if (leDate.getDay() == 5 && leDate.getHours() >= 18) {
+		var achieveID:Int = Achievements.getAchievementIndex('friday_night_play');
+		if(!Achievements.isAchievementUnlocked(Achievements.achievementsStuff[achieveID][2])) { //It's a friday night. WEEEEEEEEEEEEEEEEEE
+			Achievements.achievementsMap.set(Achievements.achievementsStuff[achieveID][2], true);
+			giveAchievement();
+			ClientPrefs.saveSettings();
+		}
+	}
+		#end
 		FlxG.sound.play(Paths.sound('scrollMenu'));
 	}
 }

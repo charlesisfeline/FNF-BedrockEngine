@@ -73,7 +73,7 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		addOption(option);
 
 		var option:Option = new Option('Simple Main Menu',
-			'If checked, disables all menu details and makes it more simple, \nshould decrease loading times too',
+			'If checked, disables all menu details and makes it more simple, \nThis should decrease loading times for the Main Menu',
 			'lowEndMode',
 			'bool',
 			false);
