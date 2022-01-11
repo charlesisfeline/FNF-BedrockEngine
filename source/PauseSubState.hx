@@ -44,7 +44,6 @@ class PauseSubState extends MusicBeatSubstate
 
 		for (i in 0...CoolUtil.difficulties.length) {
 			var diff:String = '' + CoolUtil.difficulties[i];
-			FlxG.sound.play(Paths.sound('confirmMenu'));
 			difficultyChoices.push(diff);
 		}
 		difficultyChoices.push('BACK');
