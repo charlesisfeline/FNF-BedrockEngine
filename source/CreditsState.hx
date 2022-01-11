@@ -92,6 +92,7 @@ class CreditsState extends MusicBeatState
 			['HiroMizuki', 'placeholder', 'Pixel Note Splashes', 'https://github.com/ShadowMario/FNF-PsychEngine/pull/1792', '31b0d1'],
 			['lemz1', 'placeholder', 'Play as Opponent', 'https://github.com/ShadowMario/FNF-PsychEngine/pull/2770', '31b0d1'],
 			['l1ttleO', 'placeholder', 'Menu Animations, Hit Sounds, Miss Sounds Toggle', 'https://github.com/l1ttleO/ProjectFNF', '31b0d1'],
+			['Starmapo', 'placeholder', 'Time Signatures', 'https://github.com/ShadowMario/FNF-PsychEngine/pull/1809', '31b0d1'],
 			['Stilic', 'placeholder', 'Freeplay Bump, Max Optimization', 'https://github.com/ShadowMario/FNF-PsychEngine/pull/1809', '31b0d1'],
 			['tposejank', 'placeholder', 'Better Sustains',	'https://github.com/ShadowMario/FNF-PsychEngine/pull/2817', '31b0d1'],
 			['XtraXD1', 'placeholder', 'Show/Hide Weeks temporally + Getting/Setting on Source Code', 'https://github.com/ShadowMario/FNF-PsychEngine/pull/3192', '31b0d1'],
