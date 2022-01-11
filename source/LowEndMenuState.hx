@@ -73,12 +73,13 @@ class LowEndMenuState extends MusicBeatState
 	}
 
 	var selectorLeft:Alphabet;
-	var selectorRight:Alphabet;
+
+	// var selectorRight:Alphabet;
 
 	override function create()
 	{
 		#if desktop
-		DiscordClient.changePresence("in the Main Menu", null);
+		DiscordClient.changePresence("In the Main Menu", null);
 		#end
 
 		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
@@ -118,8 +119,8 @@ class LowEndMenuState extends MusicBeatState
 
 		selectorLeft = new Alphabet(0, 0, '>', true, false);
 		add(selectorLeft);
-		selectorRight = new Alphabet(0, 0, '<', true, false);
-		add(selectorRight);
+		// selectorRight = new Alphabet(0, 0, '<', true, false);
+		// add(selectorRight);
 
 		changeSelection();
 		// ClientPrefs.saveSettings();
@@ -185,8 +186,8 @@ class LowEndMenuState extends MusicBeatState
 				item.alpha = 1;
 				selectorLeft.x = item.x - 63;
 				selectorLeft.y = item.y;
-				selectorRight.x = item.x + item.width + 15;
-				selectorRight.y = item.y;
+				// selectorRight.x = item.x + item.width + 15;
+				// selectorRight.y = item.y;
 			}
 		}
 		FlxG.sound.play(Paths.sound('scrollMenu'));
