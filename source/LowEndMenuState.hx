@@ -71,7 +71,7 @@ class LowEndMenuState extends MusicBeatState
 
 	override function create() {
 		#if desktop
-		DiscordClient.changePresence("in the Main Menu", null);
+		DiscordClient.changePresence("In the Main Menu", null);
 		#end
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBG'));
@@ -108,11 +108,10 @@ class LowEndMenuState extends MusicBeatState
 
 		selectorLeft = new Alphabet(0, 0, '>', true, false);
 		add(selectorLeft);
-		selectorRight = new Alphabet(0, 0, '<', true, false);
-		add(selectorRight);
+		//selectorRight = new Alphabet(0, 0, '<', true, false);
+		//add(selectorRight);
 
 		changeSelection();
-		//ClientPrefs.saveSettings();
 
 		super.create();
 	}
