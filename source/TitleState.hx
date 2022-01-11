@@ -439,6 +439,9 @@ class TitleState extends MusicBeatState
 					} else {
 						MusicBeatState.switchState(new MainMenuState());
 					}
+					if (ClientPrefs.lowEndMode == true) {
+						MusicBeatState.switchState(new LowEndMenuState());
+					}
 					closedState = true;
 				});
 				// FlxG.sound.play(Paths.music('titleShoot'), 0.7);

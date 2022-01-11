@@ -1,4 +1,4 @@
-package options;
+package;
 
 #if desktop
 import Discord.DiscordClient;
@@ -21,33 +21,48 @@ import haxe.Json;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
+import lime.app.Application;
 import flixel.input.keyboard.FlxKey;
 import flixel.graphics.FlxGraphic;
+import Achievements;
+import editors.MasterEditorMenu;
 import Controls;
 
 using StringTools;
 
-class OptionsState extends MusicBeatState
+class LowEndMenuState extends MusicBeatState
 {
-	var options:Array<String> = ['Note Colors', 'Controls', 'Adjust Delay and Combo', 'Graphics', 'Visuals and UI', 'Gameplay'];
+	var options:Array<String> = ['Story Mode', 'Freeplay', 'Mods', 'Awards', 'Donate', 'Options'];
+	public static var bedrockEngineVersion:String = '0.3'; //This is also used for Discord RPC
+	public static var psychEngineVersion:String = '0.5.1'; //this one too
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 	private static var curSelected:Int = 0;
 	public static var menuBG:FlxSprite;
+	var debugKeys:Array<FlxKey>;
 
 	function openSelectedSubstate(label:String) {
 		switch(label) {
-			case 'Note Colors':
-				openSubState(new options.NotesSubState());
-			case 'Controls':
-				openSubState(new options.ControlsSubState());
-			case 'Graphics':
-				openSubState(new options.GraphicsSettingsSubState());
-			case 'Visuals and UI':
-				openSubState(new options.VisualsUISubState());
-			case 'Gameplay':
-				openSubState(new options.GameplaySettingsSubState());
-			case 'Adjust Delay and Combo':
-				LoadingState.loadAndSwitchState(new options.NoteOffsetState());
+			case 'Story Mode':
+				MusicBeatState.switchState(new StoryMenuState());
+			FlxG.sound.play(Paths.sound('confirmMenu'), 1);
+			case 'Freeplay':
+				MusicBeatState.switchState(new FreeplayState());
+			FlxG.sound.play(Paths.sound('confirmMenu'), 1);
+			case 'Mods':
+				MusicBeatState.switchState(new ModsMenuState());
+			FlxG.sound.play(Paths.sound('confirmMenu'), 1);
+			case 'Awards':
+				MusicBeatState.switchState(new AchievementsMenuState());
+			FlxG.sound.play(Paths.sound('confirmMenu'), 1);
+			case 'Credits':
+				MusicBeatState.switchState(new CreditsState());
+			FlxG.sound.play(Paths.sound('confirmMenu'), 1);
+			case 'Donate':
+				CoolUtil.browserLoad('https://ninja-muffin24.itch.io/funkin');
+			FlxG.sound.play(Paths.sound('confirmMenu'), 1);
+			case 'Options':
+				MusicBeatState.switchState(new options.OptionsState());
+			FlxG.sound.play(Paths.sound('confirmMenu'), 1);
 		}
 	}
 
@@ -56,11 +71,11 @@ class OptionsState extends MusicBeatState
 
 	override function create() {
 		#if desktop
-		DiscordClient.changePresence("Options Menu", null);
+		DiscordClient.changePresence("in the Main Menu", null);
 		#end
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		bg.color = 0xFFea71fd;
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBG'));
+		//bg.color = 0xFFea71fd;
 		bg.setGraphicSize(Std.int(bg.width * 1.1*scaleRatio));
 		bg.updateHitbox();
 		bg.screenCenter();
@@ -69,6 +84,19 @@ class OptionsState extends MusicBeatState
 
 		grpOptions = new FlxTypedGroup<Alphabet>();
 		add(grpOptions);
+
+		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 64, 0, "Bedrock Engine v" + bedrockEngineVersion, 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
+		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 44, 0, "Psych Engine v" + psychEngineVersion, 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
+		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 24, 0, "Friday Night Funkin' v" + Application.current.meta.get('version'), 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
 
 		for (i in 0...options.length)
 		{
@@ -84,14 +112,13 @@ class OptionsState extends MusicBeatState
 		add(selectorRight);
 
 		changeSelection();
-		ClientPrefs.saveSettings();
+		//ClientPrefs.saveSettings();
 
 		super.create();
 	}
 
 	override function closeSubState() {
 		super.closeSubState();
-		ClientPrefs.saveSettings();
 	}
 
 	override function update(elapsed:Float) {
@@ -106,10 +133,7 @@ class OptionsState extends MusicBeatState
 
 		if (controls.BACK) {
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			MusicBeatState.switchState(new MainMenuState());
-			if (ClientPrefs.lowEndMode == true) {
-				MusicBeatState.switchState(new LowEndMenuState());
-			}
+			MusicBeatState.switchState(new TitleState());
 		}
 
 		if (controls.ACCEPT) {

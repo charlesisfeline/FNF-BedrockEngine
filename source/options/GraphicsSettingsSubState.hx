@@ -72,6 +72,13 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 			false); //Default value
 		addOption(option);
 
+		var option:Option = new Option('Low End Mode',
+			'If checked, disables most in-game menu details,\ndecreases loading times and improves performance.',
+			'lowEndMode',
+			'bool',
+			false);
+		addOption(option);
+
 		var option:Option = new Option('Max Optimization',
 			'If checked, disables everything except the HUD.',
 			'maxOptimization',
