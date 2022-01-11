@@ -26,7 +26,19 @@ using StringTools;
 class MainMenuState extends MusicBeatState
 {
 	public static var bedrockEngineVersion:String = '0.3'; //This is also used for Discord RPC
-	public static var psychEngineVersion:String = '0.5.1'; //this one too
+	#if web
+	public static var bedrockEngineVersion:String = '0.3 (Non Release Build)';
+	#end
+	#if debug
+	public static var bedrockEngineVersion:String = '0.3 (Debug Build)';
+	#end
+	public static var psychEngineVersion:String = '0.5.1';
+	#if web
+	public static var psychEngineVersion:String = '0.5.1 (Non Release Build)';
+	#end
+	#if debug
+	public static var psychEngineVersion:String = '0.5.1 (Debug Build)';
+	#end
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
