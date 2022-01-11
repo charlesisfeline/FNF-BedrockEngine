@@ -247,9 +247,6 @@ class TitleState extends MusicBeatState
 		if (shouldUseBl) {
 		//trace(path, FileSystem.exists(path));
 		logoBl.frames = FlxAtlasFrames.fromSparrow(BitmapData.fromFile(path),File.getContent(StringTools.replace(path,".png",".xml")));
-		#else
-		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
-		#end
 
 		logoBl.antialiasing = ClientPrefs.globalAntialiasing;
 		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24, false);
@@ -267,7 +264,9 @@ class TitleState extends MusicBeatState
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
 		}
-
+    
+		#end
+		
 		swagShader = new ColorSwap();
 		gfDance = new FlxSprite(titleJSON.gfx, titleJSON.gfy);
 
@@ -559,12 +558,20 @@ class TitleState extends MusicBeatState
 			switch (sickBeats)
 			{
 				case 1:
-					createCoolText(['Bedrock Engine by'], 45);
+					#if PSYCH_WATERMARKS
+					createCoolText(['Psych Engine by'], 15);
+					#else
+					createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
+					#end
 				// credTextShit.visible = true;
 				case 3:
-					addMoreText('', 45);
-					addMoreText('Gui iago', 45);
-					addMoreText('', 45);
+					#if PSYCH_WATERMARKS
+					addMoreText('Shadow Mario', 15);
+					addMoreText('RiverOaken', 15);
+					addMoreText('bb-panzu', 15);
+					#else
+					addMoreText('present');
+					#end
 				// credTextShit.text += '\npresent...';
 				// credTextShit.addText();
 				case 4:
@@ -573,10 +580,18 @@ class TitleState extends MusicBeatState
 				// credTextShit.text = 'In association \nwith';
 				// credTextShit.screenCenter();
 				case 5:
-					createCoolText(['Not associated with'], -60);
+					#if PSYCH_WATERMARKS
+					createCoolText(['Bedrock Engine', 'by'], -40);
+					#else
+					createCoolText(['In association', 'with'], -40);
+					#end
 				case 7:
-					addMoreText('Newgrounds', -60);
+					#if PSYCH_WATERMARKS
+					addMoreText('Gui iago', -40);
+					ngSpr.visible = false;
+					#else
 					ngSpr.visible = true;
+					#end
 				// credTextShit.text += '\nNewgrounds';
 				case 8:
 					deleteCoolText();
@@ -606,6 +621,9 @@ class TitleState extends MusicBeatState
 					addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
 
 				case 16:
+					#if PSYCH_WATERMARKS
+					addMoreText('Bedrock Engine')
+					#end;
 					skipIntro();
 			}
 		}
