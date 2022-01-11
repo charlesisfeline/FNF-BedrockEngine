@@ -31,7 +31,7 @@ import Controls;
 
 using StringTools;
 
-class LowEndMenuState extends MusicBeatState
+class SimpleMenuState extends MusicBeatState
 {
 	var options:Array<String> = ['Story Mode', 'Freeplay', 'Mods', 'Awards', 'Donate', 'Options'];
 
