@@ -1200,6 +1200,8 @@ class PlayState extends MusicBeatState
 		#if desktop
 		// Updating Discord Rich Presence.
 		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+		if (opponentChart)
+		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")" + " - Playing as Opponent", iconP2.getCharacter());
 		#end
 
 		if(!ClientPrefs.controllerMode)
@@ -1827,6 +1829,8 @@ class PlayState extends MusicBeatState
 		#if desktop
 		// Updating Discord Rich Presence (with Time Left)
 		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter(), true, songLength);
+		if (opponentChart)
+		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")" + " - Playing as Opponent", iconP2.getCharacter(), true, songLength);
 		#end
 		setOnLuas('songLength', songLength);
 		callOnLuas('onSongStart', []);
@@ -2175,10 +2179,14 @@ class PlayState extends MusicBeatState
 			if (startTimer.finished)
 			{
 				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter(), true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+				if (opponentChart)
+				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")" + " - Playing as Opponent ", iconP2.getCharacter(), true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
 			}
 			else
 			{
 				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+				if (opponentChart)
+				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")" + " - Playing as Opponent ", iconP2.getCharacter());
 			}
 			#end
 		}
@@ -2194,10 +2202,14 @@ class PlayState extends MusicBeatState
 			if (Conductor.songPosition > 0.0)
 			{
 				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter(), true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+				if (opponentChart)
+				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")" + " - Playing as Opponent ", iconP2.getCharacter(), true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
 			}
 			else
 			{
 				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+				if (opponentChart)
+				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")" + " - Playing as Opponent ", iconP2.getCharacter());
 			}
 		}
 		#end
@@ -2211,6 +2223,8 @@ class PlayState extends MusicBeatState
 		if (health > 0 && !paused)
 		{
 			DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+			if (opponentChart)
+			DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")" + " - Playing as Opponent ", iconP2.getCharacter());
 		}
 		#end
 
@@ -2415,6 +2429,8 @@ class PlayState extends MusicBeatState
 		
 				#if desktop
 				DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+				if (opponentChart)
+				DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")" + " - Playing as Opponent ", iconP2.getCharacter());
 				#end
 			}
 		}

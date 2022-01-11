@@ -19,6 +19,7 @@ import flixel.FlxSprite;
 import flixel.FlxCamera;
 import flixel.util.FlxSave;
 import flixel.effects.FlxFlicker;
+import flixel.util.FlxTimer;
 import haxe.Json;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -81,10 +82,6 @@ class SimpleMenuState extends MusicBeatState
 				MusicBeatState.switchState(new options.OptionsState());
 		}
 	}
-
-	var selectorLeft:Alphabet;
-	var selectorRight:Alphabet;
-	var magenta:FlxSprite;
 
 	override function create()
 	{
@@ -149,11 +146,6 @@ class SimpleMenuState extends MusicBeatState
 			grpOptions.add(optionText);
 		}
 
-		selectorLeft = new Alphabet(0, 0, '>', true, false);
-		add(selectorLeft);
-		selectorRight = new Alphabet(0, 0, '<', true, false);
-		add(selectorRight);
-
 		changeSelection();
 
 		super.create();
@@ -183,11 +175,22 @@ class SimpleMenuState extends MusicBeatState
 			MusicBeatState.switchState(new TitleState());
 		}
 
-		if (controls.ACCEPT)
-		{
+		if (controls.ACCEPT && ClientPrefs.flashing) {
 			FlxG.sound.play(Paths.sound('confirmMenu'));
-			openSelectedSubstate(options[curSelected]);
+			grpOptions.forEach(function(grpOptions:Alphabet) {
+				FlxFlicker.flicker(grpOptions, 1, 0.06, false, false, function(flick:FlxFlicker) {
+					openSelectedSubstate(options[curSelected]);
+				});
+			});
 		}
+
+		if (controls.ACCEPT && !ClientPrefs.flashing) {
+			FlxG.sound.play(Paths.sound('confirmMenu'));
+			new FlxTimer().start(1, function (tmr:FlxTimer) {
+				openSelectedSubstate(options[curSelected]);
+			});
+		}
+
 
 		#if desktop
 		else if (FlxG.keys.anyJustPressed(debugKeys))
@@ -216,10 +219,6 @@ class SimpleMenuState extends MusicBeatState
 			if (item.targetY == 0)
 			{
 				item.alpha = 1;
-				selectorLeft.x = item.x - 63;
-				selectorLeft.y = item.y;
-				selectorRight.x = item.x + item.width + 15;
-				selectorRight.y = item.y;
 			}
 		}
 		camAchievement = new FlxCamera();
