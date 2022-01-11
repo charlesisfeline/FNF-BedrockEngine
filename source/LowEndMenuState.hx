@@ -67,7 +67,7 @@ class LowEndMenuState extends MusicBeatState
 	}
 
 	var selectorLeft:Alphabet;
-	var selectorRight:Alphabet;
+	//var selectorRight:Alphabet;
 
 	override function create() {
 		#if desktop
@@ -158,8 +158,8 @@ class LowEndMenuState extends MusicBeatState
 				item.alpha = 1;
 				selectorLeft.x = item.x - 63;
 				selectorLeft.y = item.y;
-				selectorRight.x = item.x + item.width + 15;
-				selectorRight.y = item.y;
+				//selectorRight.x = item.x + item.width + 15;
+				//selectorRight.y = item.y;
 			}
 		}
 		FlxG.sound.play(Paths.sound('scrollMenu'));
