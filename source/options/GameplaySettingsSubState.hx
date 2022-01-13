@@ -77,6 +77,13 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			false);
 		addOption(Option);
 
+		var option:Option = new Option('Play Hit Sounds',
+			"If checked, will play a sound when you hit a note",
+			'playHitSounds',
+			'bool',
+			true);
+	addOption(option);
+
 		var option:Option = new Option('Missing Note Sounds',
 			"If unchecked, Sounds for when you Miss a Note will be disabled entirely",
 			'playMissSounds',
@@ -101,14 +108,6 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		option.minValue = 0;
 		option.maxValue = 500;
 		addOption(option);*/
-
-		var option:Option = new Option('Hit Sounds:', 
-			"You can set your Hit Sound here.",
-			'playHitSounds',
-			'string',
-			'Disabled',
-			['Default', 'Softer', 'Type 1', 'Type 2', 'Type 3', 'Type 4', 'Disabled']);
-		addOption(option);
 
 		var option:Option = new Option('Rating Offset',
 			'Changes how late/early you have to hit for a "Sick!"\nHigher values mean you have to hit later.',

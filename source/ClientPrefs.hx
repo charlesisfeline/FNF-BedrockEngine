@@ -62,11 +62,11 @@ class ClientPrefs {
 	public static var badWindow:Int = 135;
 	public static var safeFrames:Float = 10;
 
-	//Things Added by Bedrock Engine 
+	// Added by Bedrock Engine
 	public static var maxOptimization:Bool = true;
 	public static var showWatermarks:Bool = true;
 	public static var playMissSounds:Bool = true;
-	public static var playHitSounds:String = 'Disabled';
+	public static var playHitSounds:Bool = false;
 	public static var lightcpustrums:Bool = true;
 	public static var biggerInfo:Bool = false;
 	public static var hideAccuracy:Bool = false;
@@ -146,7 +146,7 @@ class ClientPrefs {
 		FlxG.save.data.screenRes = screenRes;
 		FlxG.save.data.screenScaleMode = screenScaleMode;
 
-		//Things Added by Bedrock Engine 
+		// Added by Bedrock Engine 
 		FlxG.save.data.maxOptimization = maxOptimization;
 		FlxG.save.data.showWatermarks = showWatermarks;
 		FlxG.save.data.playMissSounds = playMissSounds;
@@ -271,7 +271,7 @@ class ClientPrefs {
 				gameplaySettings.set(name, value);
 			}
 		}
-		//Things Added by Bedrock Engine
+		// Added by Bedrock Engine 
 		if(FlxG.save.data.maxOptimization != null) {
 			maxOptimization = FlxG.save.data.maxOptimization;
 		}

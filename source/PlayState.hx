@@ -3910,23 +3910,8 @@ class PlayState extends MusicBeatState
 		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + ClientPrefs.ratingOffset);
 		// trace(noteDiff, ' ' + Math.abs(note.strumTime - Conductor.songPosition));
 
-		switch (ClientPrefs.playHitSounds)
-		{
-			case 'Default':
-				FlxG.sound.play(Paths.sound('ChartingTick'));
-			case 'Softer':
-				FlxG.sound.play(Paths.sound('ChartingTickButSofter'));
-			case 'Type 1':
-				FlxG.sound.play(Paths.sound('LoudBop'));
-			case 'Type 2':
-				FlxG.sound.play(Paths.sound('Tak'));
-			case 'Type 3':
-				FlxG.sound.play(Paths.sound('Tok'));
-			case 'Type 4':
-				FlxG.sound.play(Paths.sound('Tock'));
-			case 'Disabled':
-				// FlxG.sound.play(Paths.sound('nothing'));
-		}
+		if (ClientPrefs.playHitSounds)
+			FlxG.sound.play(Paths.sound('ChartingTick'));
 
 		// boyfriend.playAnim('hey');
 		vocals.volume = 1;
