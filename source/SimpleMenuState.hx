@@ -16,7 +16,10 @@ import flixel.FlxSubState;
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.FlxCamera;
 import flixel.util.FlxSave;
+import flixel.effects.FlxFlicker;
+import flixel.util.FlxTimer;
 import haxe.Json;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -30,16 +33,31 @@ import Controls;
 
 using StringTools;
 
-class LowEndMenuState extends MusicBeatState
+class SimpleMenuState extends MusicBeatState
 {
-	var options:Array<String> = ['Story Mode', 'Freeplay', 'Mods', 'Awards', 'Donate', 'Options'];
+	var options:Array<String> = ['Story Mode', 
+	'Freeplay', 
+	#if MODS_ALLOWED 'Mods', #end
+	#if ACHIEVEMENTS_ALLOWED 'Awards', #end
+	'Credits',
+	#if !switch 'Donate', #end
+	'Options'];
 
-	public static var bedrockEngineVersion:String = '0.3'; // This is also used for Discord RPC
-	public static var psychEngineVersion:String = '0.5.1'; // this one too
+	#if web
+	public static var bedrockWebVersion:String = '0.3 (Non Release Build)';
+	public static var psychWebVersion:String = '0.5.1 (Non Release Build)';
+	#end
+	#if debug
+	public static var bedrockDebugVersion:String = '0.3 (Debug Build)';
+	public static var psychDebugVersion:String = '0.5.1 (Debug Build)';
+	#end
+	public static var bedrockEngineVersion:String = '0.3'; //This is also used for Discord RPC
+	public static var psychEngineVersion:String = '0.5.1'; //this one too
 
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 
 	private static var curSelected:Int = 0;
+	private var camAchievement:FlxCamera;
 	public static var menuBG:FlxSprite;
 
 	var debugKeys:Array<FlxKey>;
@@ -50,31 +68,20 @@ class LowEndMenuState extends MusicBeatState
 		{
 			case 'Story Mode':
 				MusicBeatState.switchState(new StoryMenuState());
-				FlxG.sound.play(Paths.sound('confirmMenu'), 1);
 			case 'Freeplay':
 				MusicBeatState.switchState(new FreeplayState());
-				FlxG.sound.play(Paths.sound('confirmMenu'), 1);
 			case 'Mods':
 				MusicBeatState.switchState(new ModsMenuState());
-				FlxG.sound.play(Paths.sound('confirmMenu'), 1);
 			case 'Awards':
 				MusicBeatState.switchState(new AchievementsMenuState());
-				FlxG.sound.play(Paths.sound('confirmMenu'), 1);
 			case 'Credits':
 				MusicBeatState.switchState(new CreditsState());
-				FlxG.sound.play(Paths.sound('confirmMenu'), 1);
 			case 'Donate':
 				CoolUtil.browserLoad('https://ninja-muffin24.itch.io/funkin');
-				FlxG.sound.play(Paths.sound('confirmMenu'), 1);
 			case 'Options':
 				MusicBeatState.switchState(new options.OptionsState());
-				FlxG.sound.play(Paths.sound('confirmMenu'), 1);
 		}
 	}
-
-	var selectorLeft:Alphabet;
-
-	// var selectorRight:Alphabet;
 
 	override function create()
 	{
@@ -85,7 +92,6 @@ class LowEndMenuState extends MusicBeatState
 		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBG'));
-		// bg.color = 0xFFea71fd;
 		bg.setGraphicSize(Std.int(bg.width * 1.1 * scaleRatio));
 		bg.updateHitbox();
 		bg.screenCenter();
@@ -95,6 +101,7 @@ class LowEndMenuState extends MusicBeatState
 		grpOptions = new FlxTypedGroup<Alphabet>();
 		add(grpOptions);
 
+		//Version Text
 		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 64, 0, "Bedrock Engine v" + bedrockEngineVersion, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -103,8 +110,30 @@ class LowEndMenuState extends MusicBeatState
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
-		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 24, 0, "Friday Night Funkin' v" + Application.current.meta.get('version'),
-			12);
+		//Web Version Text
+		#if web
+		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 64, 0, "Bedrock Engine v" + bedrockWebVersion, 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
+		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 44, 0, "Psych Engine v" + psychWebVersion, 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
+		#end
+		//Debug Build Version Text
+		#if debug
+		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 64, 0, "Bedrock Engine v" + bedrockDebugVersion, 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
+		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 44, 0, "Psych Engine v" + psychDebugVersion, 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
+		#end
+		//FNF Version Text (Global)
+		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 24, 0, "Friday Night Funkin' v" + Application.current.meta.get('version'), 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -117,13 +146,7 @@ class LowEndMenuState extends MusicBeatState
 			grpOptions.add(optionText);
 		}
 
-		selectorLeft = new Alphabet(0, 0, '>', true, false);
-		add(selectorLeft);
-		// selectorRight = new Alphabet(0, 0, '<', true, false);
-		// add(selectorRight);
-
 		changeSelection();
-		// ClientPrefs.saveSettings();
 
 		super.create();
 	}
@@ -152,10 +175,22 @@ class LowEndMenuState extends MusicBeatState
 			MusicBeatState.switchState(new TitleState());
 		}
 
-		if (controls.ACCEPT)
-		{
-			openSelectedSubstate(options[curSelected]);
+		if (controls.ACCEPT && ClientPrefs.flashing) {
+			FlxG.sound.play(Paths.sound('confirmMenu'));
+			grpOptions.forEach(function(grpOptions:Alphabet) {
+				FlxFlicker.flicker(grpOptions, 1, 0.06, false, false, function(flick:FlxFlicker) {
+					openSelectedSubstate(options[curSelected]);
+				});
+			});
 		}
+
+		if (controls.ACCEPT && !ClientPrefs.flashing) {
+			FlxG.sound.play(Paths.sound('confirmMenu'));
+			new FlxTimer().start(1, function (tmr:FlxTimer) {
+				openSelectedSubstate(options[curSelected]);
+			});
+		}
+
 
 		#if desktop
 		else if (FlxG.keys.anyJustPressed(debugKeys))
@@ -184,12 +219,31 @@ class LowEndMenuState extends MusicBeatState
 			if (item.targetY == 0)
 			{
 				item.alpha = 1;
-				selectorLeft.x = item.x - 63;
-				selectorLeft.y = item.y;
-				// selectorRight.x = item.x + item.width + 15;
-				// selectorRight.y = item.y;
 			}
 		}
+		camAchievement = new FlxCamera();
+		camAchievement.bgColor.alpha = 0;
+		FlxG.cameras.add(camAchievement);
+		#if ACHIEVEMENTS_ALLOWED
+		// Unlocks "Freaky on a Friday Night" achievement
+		function giveAchievement() {
+			add(new AchievementObject('friday_night_play', camAchievement));
+			FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
+			trace('Giving achievement "friday_night_play"');
+		}
+		#end
+		#if ACHIEVEMENTS_ALLOWED
+		Achievements.loadAchievements();
+		var leDate = Date.now();
+		if (leDate.getDay() == 5 && leDate.getHours() >= 18) {
+		var achieveID:Int = Achievements.getAchievementIndex('friday_night_play');
+		if(!Achievements.isAchievementUnlocked(Achievements.achievementsStuff[achieveID][2])) { //It's a friday night. WEEEEEEEEEEEEEEEEEE
+			Achievements.achievementsMap.set(Achievements.achievementsStuff[achieveID][2], true);
+			giveAchievement();
+			ClientPrefs.saveSettings();
+		}
+	}
+		#end
 		FlxG.sound.play(Paths.sound('scrollMenu'));
 	}
 }

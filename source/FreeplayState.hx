@@ -288,8 +288,8 @@ class FreeplayState extends MusicBeatState
 			}
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			MusicBeatState.switchState(new MainMenuState());
-			if (ClientPrefs.lowEndMode == true) {
-				MusicBeatState.switchState(new LowEndMenuState());
+			if (ClientPrefs.lowEndMode) {
+				MusicBeatState.switchState(new SimpleMenuState());
 			}
 		}
 

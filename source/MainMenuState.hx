@@ -25,6 +25,14 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
+	#if web
+	public static var bedrockWebVersion:String = '0.3 (Non Release Build)';
+	public static var psychWebVersion:String = '0.5.1 (Non Release Build)';
+	#end
+	#if debug
+	public static var bedrockDebugVersion:String = '0.3 (Debug Build)';
+	public static var psychDebugVersion:String = '0.5.1 (Debug Build)';
+	#end
 	public static var bedrockEngineVersion:String = '0.3'; //This is also used for Discord RPC
 	public static var psychEngineVersion:String = '0.5.1'; //this one too
 	public static var curSelected:Int = 0;
@@ -129,6 +137,7 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollowPos, null, 1);
 
+		//Version Text
 		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 64, 0, "Bedrock Engine v" + bedrockEngineVersion, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -137,6 +146,29 @@ class MainMenuState extends MusicBeatState
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
+		//Web Version Text
+		#if web
+		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 64, 0, "Bedrock Engine v" + bedrockWebVersion, 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
+		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 44, 0, "Psych Engine v" + psychWebVersion, 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
+		#end
+		//Debug Build Version Text
+		#if debug
+		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 64, 0, "Bedrock Engine v" + bedrockDebugVersion, 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
+		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 44, 0, "Psych Engine v" + psychDebugVersion, 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
+		#end
+		//FNF Version Text (Global)
 		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 24, 0, "Friday Night Funkin' v" + Application.current.meta.get('version'), 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);

@@ -348,6 +348,8 @@ class PlayState extends MusicBeatState
 		if (SONG == null)
 			SONG = Song.loadFromJson('tutorial');
 
+		Conductor.numerator = SONG.numerator;
+		Conductor.denominator = SONG.denominator;
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
 
@@ -1253,6 +1255,8 @@ class PlayState extends MusicBeatState
 		#if desktop
 		// Updating Discord Rich Presence.
 		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+		if (opponentChart)
+			DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")" + " - Playing as Opponent", iconP2.getCharacter());
 		#end
 
 		if (!ClientPrefs.controllerMode)
@@ -1745,9 +1749,12 @@ class PlayState extends MusicBeatState
 				// if(ClientPrefs.middleScroll) opponentStrums.members[i].visible = false;
 			}
 
+			var modifiedCrochet:Float = (Conductor.crochet * (Conductor.denominator / 4)); // slows or speeds up to mimic normal quarter notes
+			// this makes the characters suddenly start bopping slower/faster once the song starts but
+			// let's just agree that they assume every song is 4/4 before hearing it
 			startedCountdown = true;
 			Conductor.songPosition = 0;
-			Conductor.songPosition -= Conductor.crochet * 5;
+			Conductor.songPosition -= modifiedCrochet * 5;
 			setOnLuas('startedCountdown', true);
 			callOnLuas('onCountdownStarted', []);
 
@@ -1759,7 +1766,7 @@ class PlayState extends MusicBeatState
 				Conductor.songPosition -= Conductor.crochet;
 				swagCounter = 3;
 			}
-			startTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
+			startTimer = new FlxTimer().start(modifiedCrochet / 1000, function(tmr:FlxTimer)
 			{
 				if (tmr.loopsLeft % gfSpeed == 0
 					&& !gf.stunned
@@ -1825,7 +1832,7 @@ class PlayState extends MusicBeatState
 						countdownReady.screenCenter();
 						countdownReady.antialiasing = antialias;
 						add(countdownReady);
-						FlxTween.tween(countdownReady, {/*y: countdownReady.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
+						FlxTween.tween(countdownReady, {/*y: countdownReady.y + 100,*/ alpha: 0}, modifiedCrochet / 1000, {
 							ease: FlxEase.cubeInOut,
 							onComplete: function(twn:FlxTween)
 							{
@@ -1844,7 +1851,7 @@ class PlayState extends MusicBeatState
 						countdownSet.screenCenter();
 						countdownSet.antialiasing = antialias;
 						add(countdownSet);
-						FlxTween.tween(countdownSet, {/*y: countdownSet.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
+						FlxTween.tween(countdownSet, {/*y: countdownSet.y + 100,*/ alpha: 0}, modifiedCrochet / 1000, {
 							ease: FlxEase.cubeInOut,
 							onComplete: function(twn:FlxTween)
 							{
@@ -1867,7 +1874,7 @@ class PlayState extends MusicBeatState
 							countdownGo.screenCenter();
 							countdownGo.antialiasing = antialias;
 							add(countdownGo);
-							FlxTween.tween(countdownGo, {/*y: countdownGo.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
+							FlxTween.tween(countdownGo, {/*y: countdownGo.y + 100,*/ alpha: 0}, modifiedCrochet / 1000, {
 								ease: FlxEase.cubeInOut,
 								onComplete: function(twn:FlxTween)
 								{
@@ -1938,6 +1945,9 @@ class PlayState extends MusicBeatState
 		#if desktop
 		// Updating Discord Rich Presence (with Time Left)
 		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter(), true, songLength);
+		if (opponentChart)
+			DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")" + " - Playing as Opponent", iconP2.getCharacter(), true,
+				songLength);
 		#end
 		setOnLuas('songLength', songLength);
 		callOnLuas('onSongStart', []);
@@ -2328,10 +2338,21 @@ class PlayState extends MusicBeatState
 					songLength
 					- Conductor.songPosition
 					- ClientPrefs.noteOffset);
+				if (opponentChart)
+					DiscordClient.changePresence(detailsText, SONG.song
+						+ " ("
+						+ storyDifficultyText
+						+ ")"
+						+ " - Playing as Opponent ", iconP2.getCharacter(),
+						true, songLength
+						- Conductor.songPosition
+						- ClientPrefs.noteOffset);
 			}
 			else
 			{
 				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+				if (opponentChart)
+					DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")" + " - Playing as Opponent ", iconP2.getCharacter());
 			}
 			#end
 		}
@@ -2353,10 +2374,21 @@ class PlayState extends MusicBeatState
 					songLength
 					- Conductor.songPosition
 					- ClientPrefs.noteOffset);
+				if (opponentChart)
+					DiscordClient.changePresence(detailsText, SONG.song
+						+ " ("
+						+ storyDifficultyText
+						+ ")"
+						+ " - Playing as Opponent ", iconP2.getCharacter(),
+						true, songLength
+						- Conductor.songPosition
+						- ClientPrefs.noteOffset);
 			}
 			else
 			{
 				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+				if (opponentChart)
+					DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")" + " - Playing as Opponent ", iconP2.getCharacter());
 			}
 		}
 		#end
@@ -2370,6 +2402,8 @@ class PlayState extends MusicBeatState
 		if (health > 0 && !paused)
 		{
 			DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+			if (opponentChart)
+				DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")" + " - Playing as Opponent ", iconP2.getCharacter());
 		}
 		#end
 
@@ -2608,6 +2642,9 @@ class PlayState extends MusicBeatState
 
 				#if desktop
 				DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+				if (opponentChart)
+					DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")" + " - Playing as Opponent ",
+						iconP2.getCharacter());
 				#end
 			}
 		}
@@ -4453,7 +4490,7 @@ class PlayState extends MusicBeatState
 		{
 			var altAnim:String = "";
 
-			var curSection:Int = Math.floor(curStep / 16);
+			var curSection:Int = Math.floor(curStep / (Conductor.numerator * 4));
 			if (SONG.notes[curSection] != null)
 			{
 				if (SONG.notes[curSection].altAnim || note.noteType == 'Alt Animation')
@@ -4924,27 +4961,28 @@ class PlayState extends MusicBeatState
 			notes.sort(FlxSort.byY, ClientPrefs.downScroll ? FlxSort.ASCENDING : FlxSort.DESCENDING);
 		}
 
-		if (SONG.notes[Math.floor(curStep / 16)] != null)
+		var sectionLength:Int = (Conductor.numerator * 4);
+		if (SONG.notes[Math.floor(curStep / sectionLength)] != null)
 		{
-			if (SONG.notes[Math.floor(curStep / 16)].changeBPM)
+			if (SONG.notes[Math.floor(curStep / sectionLength)].changeBPM)
 			{
-				Conductor.changeBPM(SONG.notes[Math.floor(curStep / 16)].bpm);
+				Conductor.changeBPM(SONG.notes[Math.floor(curStep / sectionLength)].bpm);
 				// FlxG.log.add('CHANGED BPM!');
 				setOnLuas('curBpm', Conductor.bpm);
 				setOnLuas('crochet', Conductor.crochet);
 				setOnLuas('stepCrochet', Conductor.stepCrochet);
 			}
-			setOnLuas('mustHitSection', SONG.notes[Math.floor(curStep / 16)].mustHitSection);
-			setOnLuas('altAnim', SONG.notes[Math.floor(curStep / 16)].altAnim);
-			setOnLuas('gfSection', SONG.notes[Math.floor(curStep / 16)].gfSection);
+			setOnLuas('mustHitSection', SONG.notes[Math.floor(curStep / sectionLength)].mustHitSection);
+			setOnLuas('altAnim', SONG.notes[Math.floor(curStep / sectionLength)].altAnim);
+			setOnLuas('gfSection', SONG.notes[Math.floor(curStep / sectionLength)].gfSection);
 			// else
 			// Conductor.changeBPM(SONG.bpm);
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
 
-		if (generatedMusic && PlayState.SONG.notes[Std.int(curStep / 16)] != null && !endingSong && !isCameraOnForcedPos)
+		if (generatedMusic && PlayState.SONG.notes[Std.int(curStep / sectionLength)] != null && !endingSong && !isCameraOnForcedPos)
 		{
-			moveCameraSection(Std.int(curStep / 16));
+			moveCameraSection(Std.int(curStep / sectionLength));
 		}
 		if (camZooming && FlxG.camera.zoom < 1.35 && ClientPrefs.camZooms && curBeat % 4 == 0)
 		{

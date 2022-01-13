@@ -72,8 +72,8 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 			false); //Default value
 		addOption(option);
 
-		var option:Option = new Option('Low End Mode',
-			'If checked, disables most in-game menu details,\ndecreases loading times and improves performance.',
+		var option:Option = new Option('Simple Main Menu',
+			'If checked, disables all menu details and makes it more simple, \nThis should decrease loading times for the Main Menu',
 			'lowEndMode',
 			'bool',
 			false);
