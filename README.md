@@ -1,12 +1,21 @@
 # AT THE CURRENT TIME IN DEVELOPMENT, THIS README FILE IS *VERY* OUTDATED, I WILL UPDATE IT AS SOON AS 0.3 IS READY TO RELEASE!
 
+I'm currently working with https://github.com/Luisinhi010 to make this thing better
+Current Plans:
+
+* Fix all current issues with Opponent Mode
+* Noteskins on Options Menu
+* Softcoded Judgements (maybe??)
+* Separated Noteskins for each Player **(maybe??)**
+* Remove the Additional Hitsounds, making it a Toggle, and *(probably)* softcoding Hitsounds as a whole
+
 # Friday Night Funkin' - Bedrock Engine!
 a fork of Psych Engine which adds a bunch of features from Pull Requests around the Main Branch, and even other forks!
 Credits:
 * CerBor - Difficulty Drop Down on Chart Menu - https://github.com/ShadowMario/FNF-PsychEngine/pull/2896
 * HiroMizuki - Pixel Note Splashes - https://github.com/ShadowMario/FNF-PsychEngine/pull/1792
 * lemz1 - Play as Opponent - https://github.com/ShadowMario/FNF-PsychEngine/pull/2770
-* l1ttleO - Made ProjectFNF 2.X, Menu Animations, Hit Sounds, Miss Sounds Toggle - https://github.com/l1ttleO/ProjectFNF
+* l1ttleO - Made ProjectFNF 2.X, Menu Animations, Original Hit Sound Code, Miss Sounds Toggle - https://github.com/l1ttleO/ProjectFNF
 * Starmapo - Time Signatures - https://github.com/ShadowMario/FNF-PsychEngine/pull/3428
 * Stilic - Freeplay Bump, Max Optimization - https://github.com/ShadowMario/FNF-PsychEngine/pull/1809
 * tposejank - Sustains now wont do anything if the note that start it was missed - https://github.com/ShadowMario/FNF-PsychEngine/pull/2817
