@@ -26,6 +26,7 @@ class PauseSubState extends MusicBeatSubstate
 
 	var pauseMusic:FlxSound;
 	var practiceText:FlxText;
+	var opponentText:FlxText;
 	//var botplayText:FlxText;
 
 	public static var transCamera:FlxCamera;
@@ -79,6 +80,14 @@ class PauseSubState extends MusicBeatSubstate
 		blueballedTxt.setFormat(Paths.font('vcr.ttf'), 32);
 		blueballedTxt.updateHitbox();
 		add(blueballedTxt);
+
+		opponentText = new FlxText(20, 15 + 130, 0, "OPPONENT MODE", 32);
+		opponentText.scrollFactor.set();
+		opponentText.setFormat(Paths.font('vcr.ttf'), 32);
+		opponentText.x = FlxG.width - (opponentText.width + 20);
+		opponentText.updateHitbox();
+		opponentText.visible = PlayState.instance.opponentChart;
+		add(opponentText);
 
 		practiceText = new FlxText(20, 15 + 101, 0, "PRACTICE MODE", 32);
 		practiceText.scrollFactor.set();
