@@ -9,6 +9,8 @@ Current Plans:
 * Separated Noteskins for each Player **(maybe??)**
 * Remove the Additional Hitsounds, making it a Toggle, and *(probably)* softcoding Hitsounds as a whole
 
+* Updating this entire file because it's outdated at the moment lol
+
 # Friday Night Funkin' - Bedrock Engine!
 a fork of Psych Engine which adds a bunch of features from Pull Requests around the Main Branch, and even other forks!
 Credits:
