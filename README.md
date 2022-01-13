@@ -1,7 +1,8 @@
 # AT THE CURRENT TIME IN DEVELOPMENT, THIS README FILE IS *VERY* OUTDATED, I WILL UPDATE IT AS SOON AS 0.3 IS READY TO RELEASE!
 
 I'm currently working with https://github.com/Luisinhi010 to make this thing better
-Current Plans:
+
+# Current Plans:
 
 * Fix all current issues with Opponent Mode
 * Noteskins on Options Menu
