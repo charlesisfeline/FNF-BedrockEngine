@@ -233,7 +233,6 @@ class SimpleMenuState extends MusicBeatState
 		}
 		#end
 		#if ACHIEVEMENTS_ALLOWED
-		Achievements.loadAchievements();
 		var leDate = Date.now();
 		if (leDate.getDay() == 5 && leDate.getHours() >= 18) {
 		var achieveID:Int = Achievements.getAchievementIndex('friday_night_play');
