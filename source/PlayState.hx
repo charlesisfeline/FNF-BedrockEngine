@@ -70,8 +70,7 @@ class PlayState extends MusicBeatState
 
 	public static var ratingStuff:Array<Dynamic> = [
 		['F', 0.69], // 0-68%
-		['E', 0.75], // 70-74%
-		['D', 0.8], // 75-79%
+		['D', 0.8], // 75-70%
 		['C', 0.85], // 80-85%
 		['B', 0.9], // 86-89%
 		['A', 0.95], // 90-94%
@@ -1088,8 +1087,6 @@ class PlayState extends MusicBeatState
 
 		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		if (ClientPrefs.biggerInfo)
-			scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.hideHud;
@@ -2591,18 +2588,23 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		if (ratingFC == "Unrated")
-			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']'
-				+ ' // Combo Breaks: ' + songMisses + ' // Rank: ?';
+		if (ratingFC == "Unrated" && !ClientPrefs.hideCombo)
+			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' // Combo Breaks: ' + songMisses + ' // Rank: ?';
 		else
-			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']'
-				+ ' // Combo Breaks: ' + songMisses + ' // Rank: ' + ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' // Combo Breaks: ' + songMisses + ' // Rank: ' + ratingName;
 		if (songMisses > 1)
-			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' // Combo Breaks: ' + songMisses
-				+ ' // Rank: ' + ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' // Combo Breaks: ' + songMisses + ' // Rank: ' + ratingName;
 
-		if (ClientPrefs.hideAccuracy == true)
-			scoreTxt.text = 'Score: ' + songScore + ' // Misses: ' + songMisses;
+		if (ClientPrefs.hideCombo)
+			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' // Combo Breaks: ' + songMisses + ' // Combo: ' + combo + ' // Rank: ' + ratingName;
+		if (ClientPrefs.hideCombo && songMisses > 1)
+			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' // Combo Breaks: ' + songMisses + ' // Combo: ' + combo + ' // Rank: ' + ratingName;
+
+		if (ClientPrefs.hideAccuracy)
+			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses;
+
+		if (ClientPrefs.hideAccuracy && ClientPrefs.hideCombo)
+			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Combo: ' + combo;
 
 		// in case you have Botplay on
 		if (ClientPrefs.getGameplaySetting('botplay', false))
@@ -3995,7 +3997,7 @@ class PlayState extends MusicBeatState
 		// Classic Skin
 		if (ClientPrefs.uiSkin == 'Classic' && PlayState.isPixelStage)
 		{
-			pixelShitPart1 = 'judgements/vanilla/';
+			pixelShitPart1 = 'judgements/classic/';
 			pixelShitPart2 = '';
 		}
 
@@ -4099,7 +4101,7 @@ class PlayState extends MusicBeatState
 			numScore.velocity.x = FlxG.random.float(-5, 5);
 			numScore.visible = !ClientPrefs.hideHud;
 
-			if (combo >= 10 || combo == 0)
+			if (combo >= 1 || combo == 0)
 				insert(members.indexOf(strumLineNotes), numScore);
 
 			FlxTween.tween(numScore, {alpha: 0}, 0.2, {
@@ -4111,6 +4113,9 @@ class PlayState extends MusicBeatState
 			});
 
 			daLoop++;
+
+			if (ClientPrefs.hideCombo)
+				numScore.destroy();
 		}
 		/* 
 		trace(combo);

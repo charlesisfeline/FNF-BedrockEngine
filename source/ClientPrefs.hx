@@ -68,11 +68,16 @@ class ClientPrefs {
 	public static var playMissSounds:Bool = true;
 	public static var playHitSounds:Bool = false;
 	public static var lightcpustrums:Bool = true;
-	public static var biggerInfo:Bool = false;
+	//public static var infoSize:Bool = false;
 	public static var hideAccuracy:Bool = false;
 	public static var hideGf:Bool = false;
+	#if PSYCH_WATERMARKS
 	public static var uiSkin:String = 'Bedrock';
+	#else
+	public static var uiSkin:String = 'Classic';
+	#end
 	public static var lowEndMode:Bool = false;
+	public static var hideCombo:Bool = false;
 
 	//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
 	public static var keyBinds:Map<String, Array<FlxKey>> = [
@@ -152,12 +157,13 @@ class ClientPrefs {
 		FlxG.save.data.playMissSounds = playMissSounds;
 		FlxG.save.data.playHitSounds = playHitSounds;
 		FlxG.save.data.lightcpustrums = lightcpustrums;
-		FlxG.save.data.biggerInfo = biggerInfo;
+		//FlxG.save.data.infoSize = infoSize;
 		FlxG.save.data.hideAccuracy = hideAccuracy;
 		FlxG.save.data.hideGf = hideGf;
 		FlxG.save.data.uiSkin = uiSkin;
 		FlxG.save.data.lowEndMode = lowEndMode;
-	
+		FlxG.save.data.hideCombo = hideCombo;
+
 		FlxG.save.flush();
 
 		var save:FlxSave = new FlxSave();
@@ -287,9 +293,9 @@ class ClientPrefs {
 		if (FlxG.save.data.lightcpustrums != null) {
 			lightcpustrums = FlxG.save.data.lightcpustrums;
 		}
-		if (FlxG.save.data.biggerInfo != null) {
-			biggerInfo = FlxG.save.data.biggerInfo;
-		}
+		/*if (FlxG.save.data.infoSize != null) {
+			infoSize = FlxG.save.data.infoSize;
+		}*/
 		if (FlxG.save.data.hideGf != null) {
 			hideGf = FlxG.save.data.hideGf;
 		}

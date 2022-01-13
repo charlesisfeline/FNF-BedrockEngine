@@ -34,13 +34,6 @@ class VisualsUISubState extends BaseOptionsMenu
 		title = 'Visuals and UI';
 		rpcTitle = 'Visuals & UI Settings Menu'; //for Discord Rich Presence
 
-		var option:Option = new Option('Bigger Info Bar Text',
-			'If checked, the text on the Info Bar goes bigger, from 16 to 20',
-			'biggerInfo',
-			'bool',
-			false);
-		addOption(option);
-
 		var option:Option = new Option('Camera Zooms',
 			"If unchecked, the camera won't zoom in on a beat hit.",
 			'camZooms',
