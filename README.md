@@ -29,7 +29,7 @@ Credits:
 # Current Features
 
 ## All Psych Engine Features!
-I mean, it's based on Psych Engine, so... yeah
+I mean, it's a Psych Engine fork, what did you expect?
 
 ## Menu Animations and Freeplay Bump
 
