@@ -63,7 +63,7 @@ class ClientPrefs {
 	public static var safeFrames:Float = 10;
 
 	// Added by Bedrock Engine
-	public static var maxOptimization:Bool = true;
+	public static var maxOptimization:Bool = false;
 	public static var showWatermarks:Bool = true;
 	public static var playMissSounds:Bool = true;
 	public static var playHitSounds:Bool = false;
