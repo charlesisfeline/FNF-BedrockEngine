@@ -1,3 +1,5 @@
+# AT THE CURRENT TIME IN DEVELOPMENT, THIS README FILE IS *VERY* OUTDATED, I WILL UPDATE IT AS SOON AS 0.3 IS READY TO RELEASE!
+
 # Friday Night Funkin' - Bedrock Engine!
 a fork of Psych Engine which adds a bunch of features from Pull Requests around the Main Branch, and even other forks!
 Credits:
