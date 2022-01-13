@@ -9,7 +9,7 @@ I'm currently working with https://github.com/Luisinhi010 to make this thing bet
 * Softcoded Judgements (maybe??)
 * Separated Noteskins for each Player **(maybe??)**
 * Remove the Additional Hitsounds, making it a Toggle, and *(probably)* softcoding Hitsounds as a whole
-UPDATE - 91-13-22: did remove the additional hitsounds, now for the hard part I suppose!
+## UPDATE - 91-13-22: did remove the additional hitsounds, now for the hard part I suppose!
 
 * Updating this entire file because it's outdated at the moment lol
 
