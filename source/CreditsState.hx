@@ -365,7 +365,7 @@ class CreditsState extends MusicBeatState
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			MusicBeatState.switchState(new MainMenuState());
 			if (ClientPrefs.lowEndMode)
-				MusicBeatState.switchState(new LowEndMenuState());
+				MusicBeatState.switchState(new SimpleMenuState());
 		}
 		if (FlxG.keys.pressed.ENTER)
 		{
