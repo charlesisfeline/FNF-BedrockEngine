@@ -70,7 +70,7 @@ can be enabled on the Gameplay Changers menu
 
 https://user-images.githubusercontent.com/45212377/147283320-2cad2193-d1e9-42ee-b8d9-3ab4a267112b.mp4
 
-## UI Skins
+## Judgement Skins
 You can now Change your Judgements' Appearance with the new UI Skins
 
 ![image](https://user-images.githubusercontent.com/45212377/146613903-cc9dd497-d5cf-4e40-b435-210bc3d80f50.png)
