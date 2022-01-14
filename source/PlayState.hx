@@ -2589,16 +2589,21 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		if (ratingFC == "Unrated" && !ClientPrefs.hideCombo)
-			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' - Combo Breaks: ' + songMisses + ' - Rank: ?';
+			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']'
+				+ ' - Combo Breaks: ' + songMisses + ' - Rank: ?';
 		else
-			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' - Combo Breaks: ' + songMisses + ' - Rank: ' + ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']'
+				+ ' - Combo Breaks: ' + songMisses + ' - Rank: ' + ratingName;
 		if (songMisses > 1)
-			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' - Combo Breaks: ' + songMisses + ' - Rank: ' + ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' - Combo Breaks: ' + songMisses
+				+ ' - Rank: ' + ratingName;
 
 		if (ClientPrefs.hideCombo)
-			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' - Combo Breaks: ' + songMisses + ' - Combo: ' + combo + ' - Rank: ' + ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']'
+				+ ' - Combo Breaks: ' + songMisses + ' - Combo: ' + combo + ' - Rank: ' + ratingName;
 		if (ClientPrefs.hideCombo && songMisses > 1)
-			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' - Combo Breaks: ' + songMisses + ' - Combo: ' + combo + ' - Rank: ' + ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' - Combo Breaks: ' + songMisses
+				+ ' - Combo: ' + combo + ' - Rank: ' + ratingName;
 
 		if (ClientPrefs.hideAccuracy)
 			scoreTxt.text = 'Score: ' + songScore + ' - Combo Breaks: ' + songMisses;
@@ -3994,33 +3999,31 @@ class PlayState extends MusicBeatState
 
 		// Judgement Skins (using preload for now)
 
-		// Classic Skin
-		if (ClientPrefs.uiSkin == 'Classic' && PlayState.isPixelStage)
+		switch (ClientPrefs.uiSkin)
 		{
-			pixelShitPart1 = 'judgements/classic/';
-			pixelShitPart2 = '';
-		}
-
-		// Classic Pixel Skin
-		if (PlayState.isPixelStage)
-		{
-			pixelShitPart1 = 'pixelUI/';
-			pixelShitPart2 = '-pixel';
-		}
-
-		// Bedrock Engine Skin
-		if (ClientPrefs.uiSkin == 'Bedrock')
-		{
-			pixelShitPart1 = 'judgements/bedrock/';
-			pixelShitPart2 = '';
-		}
-
-		// Bedrock Engine Pixel Skin
-		if (ClientPrefs.uiSkin == 'Bedrock' && PlayState.isPixelStage)
-		{
-			pixelShitPart1 = 'judgements/bedrock/';
-			pixelShitPart2 = '-pixel';
-		}
+			case 'Classic':
+				if (isPixelStage)
+				{
+					pixelShitPart1 = 'pixelUI/';
+					pixelShitPart2 = '-pixel';
+				}
+				else
+				{
+					pixelShitPart1 = 'judgements/classic/';
+					pixelShitPart2 = '';
+				}
+			case 'Bedrock':
+				if (isPixelStage)
+				{
+					pixelShitPart1 = 'judgements/bedrock/';
+					pixelShitPart2 = '-pixel';
+				}
+				else
+				{
+					pixelShitPart1 = 'judgements/bedrock/';
+					pixelShitPart2 = '';
+				}
+		} // i made a switch for the skins -Luis
 
 		rating.loadGraphic(Paths.image(pixelShitPart1 + daRating + pixelShitPart2));
 		rating.cameras = [camHUD];
@@ -4996,20 +4999,19 @@ class PlayState extends MusicBeatState
 
 		var funny:Float = (healthBar.percent * 0.01) + 0.01;
 
-		if (curBeat % gfSpeed == 0) {
+		if (curBeat % gfSpeed == 0)
+		{
 			curBeat % (gfSpeed * 2) == 0 ? {
 				iconP1.scale.set(1.1, 0.8);
 				iconP2.scale.set(1.1, 1.3);
-
 				FlxTween.angle(iconP1, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
 				FlxTween.angle(iconP2, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
 			} : {
 				iconP1.scale.set(1.1, 1.3);
 				iconP2.scale.set(1.1, 0.8);
-
 				FlxTween.angle(iconP2, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
 				FlxTween.angle(iconP1, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
-			}
+				}
 
 			FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quadOut});
 			FlxTween.tween(iconP2, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quadOut});
@@ -5018,7 +5020,7 @@ class PlayState extends MusicBeatState
 			iconP2.updateHitbox();
 		}
 
-		//note to self: make it less "dave and bamb"ey - Gui iago
+		// note to self: make it less "dave and bamb"ey - Gui iago
 
 		if (curBeat % 2 == 0)
 		{
