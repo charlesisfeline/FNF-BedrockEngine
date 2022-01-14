@@ -2589,22 +2589,22 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		if (ratingFC == "Unrated" && !ClientPrefs.hideCombo)
-			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' // Combo Breaks: ' + songMisses + ' // Rank: ?';
+			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' - Combo Breaks: ' + songMisses + ' - Rank: ?';
 		else
-			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' // Combo Breaks: ' + songMisses + ' // Rank: ' + ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' - Combo Breaks: ' + songMisses + ' - Rank: ' + ratingName;
 		if (songMisses > 1)
-			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' // Combo Breaks: ' + songMisses + ' // Rank: ' + ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' - Combo Breaks: ' + songMisses + ' - Rank: ' + ratingName;
 
 		if (ClientPrefs.hideCombo)
-			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' // Combo Breaks: ' + songMisses + ' // Combo: ' + combo + ' // Rank: ' + ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']' + ' - Combo Breaks: ' + songMisses + ' - Combo: ' + combo + ' - Rank: ' + ratingName;
 		if (ClientPrefs.hideCombo && songMisses > 1)
-			scoreTxt.text = 'Score: ' + songScore + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' // Combo Breaks: ' + songMisses + ' // Combo: ' + combo + ' // Rank: ' + ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' - Combo Breaks: ' + songMisses + ' - Combo: ' + combo + ' - Rank: ' + ratingName;
 
 		if (ClientPrefs.hideAccuracy)
-			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses;
+			scoreTxt.text = 'Score: ' + songScore + ' - Combo Breaks: ' + songMisses;
 
 		if (ClientPrefs.hideAccuracy && ClientPrefs.hideCombo)
-			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Combo: ' + combo;
+			scoreTxt.text = 'Score: ' + songScore + ' - Combo Breaks: ' + songMisses + ' - Combo: ' + combo;
 
 		// in case you have Botplay on
 		if (ClientPrefs.getGameplaySetting('botplay', false))
