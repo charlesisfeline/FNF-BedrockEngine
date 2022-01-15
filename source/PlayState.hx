@@ -69,13 +69,14 @@ class PlayState extends MusicBeatState
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
 	public static var ratingStuff:Array<Dynamic> = [
-		['F', 0.69], // 0-68%
-		['D', 0.8], // 75-70%
-		['C', 0.85], // 80-85%
-		['B', 0.9], // 86-89%
-		['A', 0.95], // 90-94%
-		['S', 1], // 95-99%
-		['S+', 1] // the value on this one isn't used, since S+ is always "1"
+		['(D)', 0.4],
+		['(C)', 0.7],
+		['(B)', 0.8],
+		['(A)', 0.951],
+		['(AA)', 0.986],
+		['(AAA)', 0.991],
+		['(S)', 1],
+		['(S+)', 1]
 	];
 
 	public var modchartTweens:Map<String, FlxTween> = new Map<String, FlxTween>();
@@ -1084,7 +1085,7 @@ class PlayState extends MusicBeatState
 		reloadHealthBarColors();
 
 		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreTxt.setFormat(Paths.font("vcr.ttf"), 18, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.hideHud;
@@ -2601,22 +2602,15 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		if (ratingFC == "Unrated" && !ClientPrefs.hideCombo)
-			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']'
-				+ ' - Combo Breaks: ' + songMisses + ' - Rank: ?';
+		if (ratingFC == "" && !ClientPrefs.hideCombo)
+			scoreTxt.text = 'Score: ' + songScore + ' - Combo Breaks: ' + songMisses + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + '(?)';
 		else
-			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']'
-				+ ' - Combo Breaks: ' + songMisses + ' - Rank: ' + ratingName;
-		if (songMisses > 1)
-			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' - Combo Breaks: ' + songMisses
-				+ ' - Rank: ' + ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' - Combo Breaks: ' + songMisses + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + ratingName;
 
 		if (ClientPrefs.hideCombo)
-			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' [' + ratingFC + ']'
-				+ ' - Combo Breaks: ' + songMisses + ' - Combo: ' + combo + ' - Rank: ' + ratingName;
-		if (ClientPrefs.hideCombo && songMisses > 1)
-			scoreTxt.text = 'Score: ' + songScore + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' - Combo Breaks: ' + songMisses
-				+ ' - Combo: ' + combo + ' - Rank: ' + ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' - Combo Breaks: ' + songMisses + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + '(?)' + ' - Combo: ' + combo;
+		else if (ClientPrefs.hideCombo)
+			scoreTxt.text = 'Score: ' + songScore + ' - Combo Breaks: ' + songMisses + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + ratingName + ' - Combo: ' + combo;
 
 		if (ClientPrefs.hideAccuracy)
 			scoreTxt.text = 'Score: ' + songScore + ' - Combo Breaks: ' + songMisses;
@@ -2697,15 +2691,11 @@ class PlayState extends MusicBeatState
 
 		if (healthBar.percent < 20)
 			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 1;
-		else if (healthBar.percent > 80)
-			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 2;
 		else
 			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 0;
 
 		if (healthBar.percent > 80)
 			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 1;
-		else if (healthBar.percent < 20)
-			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 2;
 		else
 			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 0;
 
@@ -5183,17 +5173,17 @@ class PlayState extends MusicBeatState
 			}
 
 			// Rating FC
-			ratingFC = "Unrated"; // Prevent Empty "[]"
+			ratingFC = "";
 			if (sicks > 0)
-				ratingFC = "SFC";
+				ratingFC = "- SFC ";
 			if (goods > 0)
-				ratingFC = "GFC";
+				ratingFC = "- GFC ";
 			if (bads > 0 || shits > 0)
-				ratingFC = "FC";
+				ratingFC = "- FC ";
 			if (songMisses > 0 && songMisses < 10)
-				ratingFC = "SDCB";
+				ratingFC = "- SDCB ";
 			else if (songMisses >= 10)
-				ratingFC = "Clear";
+				ratingFC = "Clear - ";
 		}
 		setOnLuas('rating', ratingPercent);
 		setOnLuas('ratingName', ratingName);
