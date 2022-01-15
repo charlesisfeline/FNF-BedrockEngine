@@ -10,9 +10,10 @@ I'm currently working with https://github.com/Luisinhi010 to make this thing bet
 * Separated Noteskins for each Player **(maybe??)**
 * Remove the Additional Hitsounds, making it a Toggle, and *(probably)* softcoding Hitsounds as a whole
 * Updating this entire file because it's outdated at the moment lol
-# UPDATE - 01-13-22: did remove the additional hitsounds, now for the hard part I suppose!
 
-# UPDATE: 01-15-22: imma just make hitsounds less louder for now, softcoded ones will be added eventually, not on 0.3
+# UPDATES:
+* 01-13-22: did remove the additional hitsounds, now for the hard part I suppose!
+* 01-15-22: imma just make hitsounds less louder for now, softcoded ones will be added eventually, not on 0.3
 
 # Friday Night Funkin' - Bedrock Engine!
 a fork of Psych Engine which adds a bunch of features from Pull Requests around the Main Branch, and even other forks!
