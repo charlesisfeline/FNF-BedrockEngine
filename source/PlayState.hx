@@ -2621,7 +2621,7 @@ class PlayState extends MusicBeatState
 
 		// in case you have Botplay on
 		if (ClientPrefs.getGameplaySetting('botplay', false))
-			scoreTxt.text = '';
+			scoreTxt.text = 'Score: ' + songScore + ' - Combo Breaks: ' + songMisses + ' - Accuracy: 101% - ' + 'BFC ' + '(SS+)'; //Bot Full Combo
 
 		if (botplayTxt.visible)
 		{
