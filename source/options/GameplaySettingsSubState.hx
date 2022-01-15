@@ -91,13 +91,6 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			false);
 		addOption(Option);
 
-		var option:Option = new Option('Marvelous Rating',
-			'If unchecked, marvelous ratings will dissappear.',
-			'marvelouses',
-			'bool',
-			true);
-		addOption(option);
-
 		var option:Option = new Option('Play Hit Sounds',
 			"If checked, will play a sound when you hit a note",
 			'playHitSounds',
