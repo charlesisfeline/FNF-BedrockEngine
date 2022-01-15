@@ -1,6 +1,5 @@
 package;
 
-import openfl.display.Tile;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -43,7 +42,8 @@ class FreeplayState extends MusicBeatState
 	var intendedRating:Float = 0;
 
 	private var grpSongs:FlxTypedGroup<Alphabet>;
-	public static var curPlaying:Bool = false;
+	private var curPlaying:Bool = false;
+
 	private var iconArray:Array<HealthIcon> = [];
 
 	var bg:FlxSprite;
@@ -60,7 +60,7 @@ class FreeplayState extends MusicBeatState
 
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("in Freeplay", null);
+		DiscordClient.changePresence("In the Menus", null);
 		#end
 
 		for (i in 0...WeekData.weeksList.length) {
@@ -97,13 +97,11 @@ class FreeplayState extends MusicBeatState
 			}
 		}*/
 
-		#if PRELOAD_ALL
-		//if (!curPlaying) Conductor.changeBPM(TitleState.titleJSON.bpm);
-		#end
-
 		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
+		bg.scale.x = bg.scale.y = scaleRatio;
+		bg.screenCenter();
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
@@ -151,11 +149,6 @@ class FreeplayState extends MusicBeatState
 			lastDifficultyName = CoolUtil.defaultDifficulty;
 		}
 		curDifficulty = Math.round(Math.max(0, CoolUtil.defaultDifficulties.indexOf(lastDifficultyName)));
-
-		if(curPlaying)
-			{
-				iconArray[instPlaying].canBounce = true;
-			}	
 		
 		changeSelection();
 		changeDiff();
@@ -223,7 +216,7 @@ class FreeplayState extends MusicBeatState
 		}
 	}*/
 
-	public static var instPlaying:Int = -1;
+	var instPlaying:Int = -1;
 	private static var vocals:FlxSound = null;
 	override function update(elapsed:Float)
 	{
@@ -288,9 +281,6 @@ class FreeplayState extends MusicBeatState
 			}
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			MusicBeatState.switchState(new MainMenuState());
-			if (ClientPrefs.lowEndMode) {
-				MusicBeatState.switchState(new SimpleMenuState());
-			}
 		}
 
 		if(ctrl)
@@ -308,10 +298,10 @@ class FreeplayState extends MusicBeatState
 				var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
 				PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
 				if (PlayState.SONG.needsVoices)
-				vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
+					vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
 				else
-				vocals = new FlxSound();
-	
+					vocals = new FlxSound();
+
 				FlxG.sound.list.add(vocals);
 				FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 0.7);
 				vocals.play();
@@ -327,12 +317,6 @@ class FreeplayState extends MusicBeatState
 				#end
 			}
 		}
-
-		if (space)
-			{
-				curPlaying = false;
-				//openSubState(new GameplayChangersSubstate());
-			}
 
 		else if (accepted)
 		{
@@ -357,8 +341,6 @@ class FreeplayState extends MusicBeatState
 			if(colorTween != null) {
 				colorTween.cancel();
 			}
-
-			curPlaying = false;
 			
 			if (FlxG.keys.pressed.SHIFT){
 				LoadingState.loadAndSwitchState(new ChartingState());
@@ -376,22 +358,10 @@ class FreeplayState extends MusicBeatState
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 		}
 		super.update(elapsed);
-		for (i in 0...iconArray.length) {
-			var mult:Float = FlxMath.lerp(1, iconArray[i].scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1)); // playstate code lol -nintendofan44
-			iconArray[i].scale.set(mult, mult);
-			iconArray[i].updateHitbox();
-		}
 	}
 
 	override function beatHit() {
 		super.beatHit();
-
-		var mult:Float = 1.2; // also playstate code lol -nintendofan44
-		iconArray[curSelected].scale.set(mult, mult);
-		iconArray[curSelected].updateHitbox();
-
-		if (FlxG.camera.zoom < 1.35 && ClientPrefs.camZooms && curBeat % 1 == 0)
-			FlxG.camera.zoom += 0.015;
 
 		if (curPlaying)
 			iconArray[instPlaying].bounce();
