@@ -1085,7 +1085,7 @@ class PlayState extends MusicBeatState
 		reloadHealthBarColors();
 
 		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 18, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.hideHud;
@@ -5175,13 +5175,13 @@ class PlayState extends MusicBeatState
 			// Rating FC
 			ratingFC = "";
 			if (sicks > 0)
-				ratingFC = "- SFC ";
+				ratingFC = "- SFC "; //Sick Full Combo
 			if (goods > 0)
-				ratingFC = "- GFC ";
+				ratingFC = "- GFC "; // Good Full Combo
 			if (bads > 0 || shits > 0)
-				ratingFC = "- FC ";
+				ratingFC = "- FC "; // Full Combo
 			if (songMisses > 0 && songMisses < 10)
-				ratingFC = "- SDCB ";
+				ratingFC = "- SDCB "; //Single Digit Combo Break
 			else if (songMisses >= 10)
 				ratingFC = "Clear - ";
 		}
