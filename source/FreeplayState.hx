@@ -1,5 +1,6 @@
 package;
 
+import openfl.display.Tile;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -42,7 +43,8 @@ class FreeplayState extends MusicBeatState
 	var intendedRating:Float = 0;
 
 	private var grpSongs:FlxTypedGroup<Alphabet>;
-	private var curPlaying:Bool = false;
+	
+	public static var curPlaying:Bool = false;
 
 	private var iconArray:Array<HealthIcon> = [];
 
@@ -149,6 +151,11 @@ class FreeplayState extends MusicBeatState
 			lastDifficultyName = CoolUtil.defaultDifficulty;
 		}
 		curDifficulty = Math.round(Math.max(0, CoolUtil.defaultDifficulties.indexOf(lastDifficultyName)));
+
+		if(curPlaying)
+		{
+			iconArray[instPlaying].canBounce = true;
+		}
 		
 		changeSelection();
 		changeDiff();
@@ -216,7 +223,7 @@ class FreeplayState extends MusicBeatState
 		}
 	}*/
 
-	var instPlaying:Int = -1;
+	public static var instPlaying:Int = -1;
 	private static var vocals:FlxSound = null;
 	override function update(elapsed:Float)
 	{
@@ -260,13 +267,9 @@ class FreeplayState extends MusicBeatState
 		if(FlxG.keys.pressed.SHIFT) shiftMult = 3;
 
 		if (upP)
-		{
 			changeSelection(-shiftMult);
-		}
 		if (downP)
-		{
 			changeSelection(shiftMult);
-		}
 
 		if (controls.UI_LEFT_P)
 			changeDiff(-1);
@@ -341,6 +344,8 @@ class FreeplayState extends MusicBeatState
 			if(colorTween != null) {
 				colorTween.cancel();
 			}
+
+			curPlaying = false;
 			
 			if (FlxG.keys.pressed.SHIFT){
 				LoadingState.loadAndSwitchState(new ChartingState());
@@ -365,6 +370,8 @@ class FreeplayState extends MusicBeatState
 
 		if (curPlaying)
 			iconArray[instPlaying].bounce();
+		if (FlxG.camera.zoom < 1.35 && ClientPrefs.camZooms && curBeat % 1 == 0)
+			FlxG.camera.zoom += 0.015;
 	}
 
 	public static function destroyFreeplayVocals() {
