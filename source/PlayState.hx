@@ -167,7 +167,8 @@ class PlayState extends MusicBeatState
 	private var timeBarBG:AttachedSprite;
 
 	public var timeBar:FlxBar;
-
+	
+ 	public var marvelouses:Int = 0;
 	public var sicks:Int = 0;
 	public var goods:Int = 0;
 	public var bads:Int = 0;
@@ -3935,11 +3936,25 @@ class PlayState extends MusicBeatState
 			case "sick": // sick
 				totalNotesHit += 1;
 				sicks++;
+			case "marvelous": //marvelous
+				totalNotesHit += 1;
+				marvelouses++;
 		}
-
-		if (daRating == 'sick' && !note.noteSplashDisabled)
+		
+		if (ClientPrefs.marvelouses==true){	
+				
+		if (daRating == 'marvelous' && !note.noteSplashDisabled)
 		{
 			spawnNoteSplashOnNote(note);
+		}
+		}
+		
+		else{
+		
+		if (daRating == 'marvelous' && !note.noteSplashDisabled)
+		{
+			spawnNoteSplashOnNote(note);
+		}	
 		}
 
 		if (!practiceMode && !cpuControlled)
@@ -5174,6 +5189,7 @@ class PlayState extends MusicBeatState
 
 			// Rating FC
 			ratingFC = "";
+			if (marvelouses > 0) {ratingFC = "- MFC "}
 			if (sicks > 0)
 				ratingFC = "- SFC "; //Sick Full Combo
 			if (goods > 0)
