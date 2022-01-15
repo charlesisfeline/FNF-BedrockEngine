@@ -31,10 +31,133 @@ Credits:
 * XtraXD1 - Show/Hide Weeks temporally + Getting/Setting on Source Code - https://github.com/ShadowMario/FNF-PsychEngine/pull/3192
 * Yoshubs - made Forever Engine, Main Inspiration - https://github.com/Yoshubs/Forever-Engine-Legacy
 
+## Compiling:
+
+
+> ### Dependencies
+
+- Git
+- Haxel (LATEST VERSION, STOP USING 4.1.5!!!!)
+- VS Community (windows only!)
+
+> ### OPTIONAL Dependencies 
+
+- Visual Studio Code (for modifying the code itself)
+
+> ### Recommended VS Code Extensions
+
+- Lime
+- Bracket Pair Colorizer 2
+- HXCPP Debugger
+- Tabline
+
+# Downloads
+
+### Git 
+for Windows and Mac: https://git-scm.com/downloads
+* **after installing, open a Command Prompt or Terminal, and type in:**
+haxelib setup
+
+Linux (Ubuntu and Debian based Distros): 
+
+* sudo apt-get update
+* sudo apt-get install git -y
+
+Linux (Arch based Distros): 
+
+* sudo pacman -Sy git --noconfirm
+
+### Haxel
+
+for Windows and Mac: https://haxe.org/download/
+
+Linux (Ubuntu and Debian based Distros):
+
+* sudo add-apt-repository ppa:haxe/releases -y
+* sudo apt-get update
+* sudo apt-get install haxe -y
+* mkdir ~/haxelib && haxelib setup ~/haxelib
+
+Linux (Arch based Distros)
+
+* sudo pacman -Sy haxe --noconfirm
+
+### VS Community
+https://my.visualstudio.com/Downloads?q=visual%20studio%202017&wt.mc_id=o~msft~vscom~older-downloads
+
+> ### VS Community Setup
+
+once you download and install VS Community, on the "Workloads" tab, select "Desktop Development with C++"
+
+near the "Install" button, there's a Drop-Down menu, click on it, Select "Download first, then Install"
+
+now wait until it finishes, it is recommended to reboot your PC once it finishes, but it's not needed at all
+
+# Terminal Setup & Compiling Game
+
+on Windows, press "Windows+R" and type in "cmd", if you don't like cmd, or you just use something different, open that program instead
+cmd is usually faster, that's why I'm recommending it!
+
+on Linux, press "CTRL+ALT+T" and a Terminal window should open -- although, if you are on linux, you probably know that already
+
+type in these commands
+
+* haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
+* haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit.git
+* haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit
+* haxelib git faxe https://github.com/uhrobots/faxe
+* haxelib git polymod https://github.com/MasterEric/polymod.git
+* haxelib git extension-webm https://github.com/KadeDev/extension-webm
+* haxelib install lime 7.9.0
+* haxelib install openfl
+* haxelib install flixel
+* haxelib install flixel-tools
+* haxelib install flixel-ui
+* haxelib install hscript
+* haxelib install flixel-addons
+* haxelib install actuate
+* haxelib run lime setup
+* haxelib run lime setup flixel
+* haxelib run flixel-tools setup 
+
+***read carefully*** when it prompts for you to do anything (like: setup the lime command, setup flixel tools, etc)
+
+once it's done, do this command to compile the game
+
+### Windows
+
+lime test windows
+
+### Linux
+
+lime test linux
+
+### Mac
+lime test mac
+
+### for Debug Builds
+
+add a "-debug" flag at the end of "lime test <platform>"
+
+### VS Code Installation
+Windows and Mac: https://code.visualstudio.com/Download
+
+Linux (Ubuntu and Debian based Distros):
+* sudo apt install software-properties-common apt-transport-https wget
+* wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+* sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+* sudo apt install code
+
+Linux (Arch based distros):
+* sudo pacman -Sy code
+
+In case you don't want your mod to be able to run .lua scripts, delete the "LUA_ALLOWED" line on Project.xml
+
 # Current Features
 
 ## All Psych Engine Features!
-I mean, it's a Psych Engine fork, what did you expect?
+Being a Psych Engine fork has it's Perks
+* https://github.com/ShadowMario/FNF-PsychEngine
 
 ## Menu Animations and Freeplay Bump
 
