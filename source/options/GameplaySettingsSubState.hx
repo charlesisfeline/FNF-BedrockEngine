@@ -142,7 +142,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		option.displayFormat = '%vms';
 		option.scrollSpeed = 15;
 		option.minValue = 15;
-		option.maxValue = 35;
+		option.maxValue = 25;
 		addOption(option);
 
 		var option:Option = new Option('Sick! Hit Window',
