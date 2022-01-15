@@ -81,7 +81,6 @@ class ClientPrefs {
 	public static var lowEndMode:Bool = false;
 	public static var hideCombo:Bool = false;
 	public static var strumLineAlpha:Float = 1;
-	public static var marvelouses:Bool = true;
 
 	//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
 	public static var keyBinds:Map<String, Array<FlxKey>> = [
