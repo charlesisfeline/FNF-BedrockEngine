@@ -7,7 +7,6 @@ import flixel.graphics.FlxGraphic;
 import Controls;
 
 class ClientPrefs {
-	public static var marvelouses:Bool = true;
 	public static var downScroll:Bool = false;
 	public static var middleScroll:Bool = false;
 	public static var showFPS:Bool = true;
@@ -80,6 +79,7 @@ class ClientPrefs {
 	public static var lowEndMode:Bool = false;
 	public static var hideCombo:Bool = false;
 	public static var strumLineAlpha:Float = 1;
+	public static var marvelouses:Bool = true;
 
 	//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
 	public static var keyBinds:Map<String, Array<FlxKey>> = [
@@ -119,7 +119,6 @@ class ClientPrefs {
 	}
 
 	public static function saveSettings() {
-		FlxG.save.data.marvelouses = marvelouses;
 		FlxG.save.data.downScroll = downScroll;
 		FlxG.save.data.middleScroll = middleScroll;
 		FlxG.save.data.showFPS = showFPS;
@@ -167,6 +166,7 @@ class ClientPrefs {
 		FlxG.save.data.lowEndMode = lowEndMode;
 		FlxG.save.data.hideCombo = hideCombo;
 		FlxG.save.data.strumLineAlpha = strumLineAlpha;
+		FlxG.save.data.marvelouses = marvelouses;
 
 		FlxG.save.flush();
 
@@ -178,7 +178,6 @@ class ClientPrefs {
 	}
 
 	public static function loadPrefs() {
-		if(FlxG.save.data.marvelouses != null) {marvelouses = FlxG.save.data.marvelouses;}
 		if(FlxG.save.data.downScroll != null) {
 			downScroll = FlxG.save.data.downScroll;
 		}
@@ -313,6 +312,7 @@ class ClientPrefs {
 		if (FlxG.save.data.strumLineAlpha != null) {
 			strumLineAlpha = FlxG.save.data.strumLineAlpha;
 		}
+		if(FlxG.save.data.marvelouses != null) {marvelouses = FlxG.save.data.marvelouses;}
 		
 		// flixel automatically saves your volume!
 		if(FlxG.save.data.volume != null)
