@@ -243,6 +243,8 @@ class PlayState extends MusicBeatState
 	var scoreTxtTween:FlxTween;
 	var beWatermark:FlxText;
 	var peWatermark:FlxText;
+	var debugWatermark:FlxText;
+	var debugWatermark2:FlxText;
 
 	public static var campaignScore:Int = 0;
 	public static var campaignMisses:Int = 0;
@@ -1103,6 +1105,24 @@ class PlayState extends MusicBeatState
 		if (ClientPrefs.showWatermarks == false)
 			peWatermark = new FlxText(0, FlxG.height - 24, 0, "");
 		add(peWatermark);
+
+		#if debug
+		remove(beWatermark);
+		remove(peWatermark);
+		debugWatermark = new FlxText(0, FlxG.height - 44, 0, "Debug Build - BE v" + MainMenuState.bedrockEngineVersion, 16);
+		debugWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		debugWatermark.scrollFactor.set();
+		if (ClientPrefs.showWatermarks == false)
+			debugWatermark = new FlxText(0, FlxG.height - 44, 0, "");
+		add(debugWatermark);
+
+		debugWatermark2 = new FlxText(0, FlxG.height - 24, 0, "Press F2 to Open Logs - PE v" + MainMenuState.psychEngineVersion, 16);
+		debugWatermark2.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		debugWatermark2.scrollFactor.set();
+		if (ClientPrefs.showWatermarks == false)
+			debugWatermark2 = new FlxText(0, FlxG.height - 24, 0, "");
+		add(debugWatermark2);
+		#end
 
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
 		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);

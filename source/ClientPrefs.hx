@@ -78,6 +78,7 @@ class ClientPrefs {
 	#end
 	public static var lowEndMode:Bool = false;
 	public static var hideCombo:Bool = false;
+	public static var strumLineAlpha:Float = 1;
 
 	//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
 	public static var keyBinds:Map<String, Array<FlxKey>> = [
@@ -163,6 +164,7 @@ class ClientPrefs {
 		FlxG.save.data.uiSkin = uiSkin;
 		FlxG.save.data.lowEndMode = lowEndMode;
 		FlxG.save.data.hideCombo = hideCombo;
+		FlxG.save.data.strumLineAlpha = strumLineAlpha;
 
 		FlxG.save.flush();
 
@@ -304,6 +306,9 @@ class ClientPrefs {
 		}
 		if (FlxG.save.data.lowEndMode != null) {
 			lowEndMode = FlxG.save.data.lowEndMode;
+		}
+		if (FlxG.save.data.strumLineAlpha != null) {
+			strumLineAlpha = FlxG.save.data.strumLineAlpha;
 		}
 		
 		// flixel automatically saves your volume!
