@@ -1057,11 +1057,7 @@ class PlayState extends MusicBeatState
 		add(healthBarBG);
 		if (ClientPrefs.downScroll)
 			healthBarBG.y = 0.11 * FlxG.height;
-
-		var leftright = RIGHT_TO_LEFT;
-		if (opponentChart)
-			leftright = LEFT_TO_RIGHT;
-		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, leftright, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
+		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, (opponentChart ? LEFT_TO_RIGHT : RIGHT_TO_LEFT), Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
 			'health', 0, 2);
 		healthBar.scrollFactor.set();
 		// healthBar
@@ -1314,14 +1310,11 @@ class PlayState extends MusicBeatState
 		#end
 	}
 
-	public function reloadHealthBarColors()
-	{
-		if (!opponentChart)
-			healthBar.createFilledBar(FlxColor.fromRGB(dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]),
-				FlxColor.fromRGB(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]));
-		else
-			healthBar.createFilledBar(FlxColor.fromRGB(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]),
-				FlxColor.fromRGB(dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]));
+	public function reloadHealthBarColors() {
+		if (!opponentChart) healthBar.createFilledBar(FlxColor.fromRGB(dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]),
+			FlxColor.fromRGB(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]));
+		else healthBar.createFilledBar(FlxColor.fromRGB(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]),
+			FlxColor.fromRGB(dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]));
 		healthBar.updateBar();
 	}
 
@@ -2676,48 +2669,25 @@ class PlayState extends MusicBeatState
 
 		var iconOffset:Int = 26;
 
-		var offset:Float = 0;
-		var direction:Int = 1;
-		if (opponentChart)
-		{
-			offset = -593;
-			direction = -1;
-		}
-		iconP1.x = offset
-			+ healthBar.x
-			+ (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100 * direction, 100, 0) * 0.01))
-			+ (150 * iconP1.scale.x - 150) / 2
-			- iconOffset;
-		iconP2.x = offset
-			+ healthBar.x
-			+ (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100 * direction, 100, 0) * 0.01))
-			- (150 * iconP2.scale.x) / 2
-			- iconOffset * 2;
+		iconP1.x = (opponentChart ? -593 : 0) + healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, (opponentChart ? -100 : 100), 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
+		iconP2.x = (opponentChart ? -593 : 0) + healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, (opponentChart ? -100 : 100), 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
 
 		if (health > 2)
 			health = 2;
 
-		var bf = iconP1;
-		var dad = iconP2;
-		if (opponentChart)
-		{
-			bf = iconP2;
-			dad = iconP1;
-		}
-
 		if (healthBar.percent < 20)
-			bf.animation.curAnim.curFrame = 1;
-		else if (healthBar.percent > 85)
-			bf.animation.curAnim.curFrame = 2;
+			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 1;
+		else if (healthBar.percent > 80)
+			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 2;
 		else
-			bf.animation.curAnim.curFrame = 0;
+			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 0;
 
-		if (healthBar.percent > 85)
-			dad.animation.curAnim.curFrame = 1;
+		if (healthBar.percent > 80)
+			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 1;
 		else if (healthBar.percent < 20)
-			dad.animation.curAnim.curFrame = 2;
+			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 2;
 		else
-			dad.animation.curAnim.curFrame = 0;
+			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 0;
 
 		if (FlxG.keys.anyJustPressed(debugKeysCharacter) && !endingSong && !inCutscene)
 		{
@@ -4606,18 +4576,14 @@ class PlayState extends MusicBeatState
 				//	boyfriend.holdTimer = 0;
 				// }
 				// }else{
-				if (opponentChart && !note.gfNote)
-				{
-					dad.playAnim(animToPlay, true);
-					dad.holdTimer = 0;
-				}
-				if (note.gfNote)
-				{
+				if(note.gfNote) {
 					gf.playAnim(animToPlay + daAlt, true);
 					gf.holdTimer = 0;
 				}
-				else if (!opponentChart)
-				{
+				if(opponentChart) {
+					dad.playAnim(animToPlay, true);
+					dad.holdTimer = 0;
+				} else {
 					boyfriend.playAnim(animToPlay + daAlt, true);
 					boyfriend.holdTimer = 0;
 				}
