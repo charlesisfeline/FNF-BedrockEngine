@@ -31,7 +31,7 @@ Credits:
 * XtraXD1 - Show/Hide Weeks temporally + Getting/Setting on Source Code - https://github.com/ShadowMario/FNF-PsychEngine/pull/3192
 * Yoshubs - made Forever Engine, Main Inspiration - https://github.com/Yoshubs/Forever-Engine-Legacy
 
-# Compiling:
+# Compiling
 
 
 > ### Dependencies
