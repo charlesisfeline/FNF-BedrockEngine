@@ -4580,7 +4580,7 @@ class PlayState extends MusicBeatState
 					gf.playAnim(animToPlay + daAlt, true);
 					gf.holdTimer = 0;
 				}
-				if(opponentChart) {
+				if(opponentChart && !note.gfNote) {
 					dad.playAnim(animToPlay, true);
 					dad.holdTimer = 0;
 				} else {
