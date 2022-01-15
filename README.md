@@ -2,13 +2,13 @@
 
 I'm currently working with https://github.com/Luisinhi010 to make this thing better
 
-# Current Plans:
+# Current Plans
 
 * Fix all current issues with Opponent Mode
 * Noteskins on Options Menu
 * Updating this entire file because it's outdated at the moment lol
 
-# Future Plans:
+# Future Plans
 * Softcoded Judgements (maybe??)
 * Separated Noteskins for each Player
 * Remove the Additional Hitsounds, making it a Toggle, and *(probably)* softcoding Hitsounds as a whole
