@@ -58,7 +58,7 @@ for Windows and Mac: https://git-scm.com/downloads
 * **after installing, open a Command Prompt or Terminal, and type in:**
 haxelib setup
 
-Linux (Ubuntu and Debian based Distros): 
+- Linux (Ubuntu and Debian based Distros): 
 
 * sudo apt-get update
 * sudo apt-get install git -y
@@ -69,16 +69,16 @@ Linux (Arch based Distros):
 
 ### Haxel
 
-for Windows and Mac: https://haxe.org/download/
+- for Windows and Mac: https://haxe.org/download/
 
-Linux (Ubuntu and Debian based Distros):
+- Linux (Ubuntu and Debian based Distros):
 
 * sudo add-apt-repository ppa:haxe/releases -y
 * sudo apt-get update
 * sudo apt-get install haxe -y
 * mkdir ~/haxelib && haxelib setup ~/haxelib
 
-Linux (Arch based Distros)
+- Linux (Arch based Distros)
 
 * sudo pacman -Sy haxe --noconfirm
 
@@ -95,11 +95,13 @@ now wait until it finishes, it is recommended to reboot your PC once it finishes
 
 # Terminal Setup & Compiling Game
 
-on Windows, press "Windows+R" and type in "cmd", if you don't like cmd, or you just use something different, open that program instead
+- on Windows: press "Windows+R" and type in "cmd", if you don't like cmd, or you just use something different, open that program instead
 cmd is usually faster, that's why I'm recommending it!
 
-on Linux, press "CTRL+ALT+T" and a Terminal window should open -- although, if you are on linux, you probably know that already
+- on Some Linux Distros: Press "CTRL+ALT+T" and a Terminal window should open -- although, if you are on linux, you probably know that already
+- on other Linux Distros: Usually in your applications menu, or press Ctrl+Alt+2-6, Ctrl+Alt+7 usually get you back to your desktop
 
+- on Mac: Press cmd+space and type "Terminal" into spotlight or open Launchpad and look for Terminal
 type in these commands
 
 * haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
@@ -140,7 +142,7 @@ lime test mac
 add a "-debug" flag at the end of "lime test <platform>"
 
 ### VS Code Installation
-Windows and Mac: https://code.visualstudio.com/Download
+- Windows and Mac: https://code.visualstudio.com/Download
 
 Linux (Ubuntu and Debian based Distros):
 * sudo apt install software-properties-common apt-transport-https wget
