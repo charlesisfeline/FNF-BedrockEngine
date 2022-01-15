@@ -7,7 +7,6 @@ import flixel.graphics.FlxGraphic;
 import Controls;
 
 class ClientPrefs {
-	public static var marvelouses:Bool = true;
 	public static var downScroll:Bool = false;
 	public static var middleScroll:Bool = false;
 	public static var showFPS:Bool = true;
@@ -82,6 +81,9 @@ class ClientPrefs {
 	public static var hideCombo:Bool = false;
 	public static var strumLineAlpha:Float = 1;
 
+	// Added by Bedrock Engine (via Pull Requests)
+	public static var marvelouses:Bool = true;
+
 	//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
 	public static var keyBinds:Map<String, Array<FlxKey>> = [
 		//Key Bind, Name for ControlsSubState
@@ -120,7 +122,6 @@ class ClientPrefs {
 	}
 
 	public static function saveSettings() {//
-		FlxG.save.data.marvelouses = marvelouses;
 		FlxG.save.data.downScroll = downScroll;
 		FlxG.save.data.middleScroll = middleScroll;
 		FlxG.save.data.showFPS = showFPS;
@@ -146,7 +147,6 @@ class ClientPrefs {
 		FlxG.save.data.henchmenDeath = Achievements.henchmenDeath;
 
 		FlxG.save.data.ratingOffset = ratingOffset;
-		FlxG.save.data.marvelousWindow = marvelousWindow;
 		FlxG.save.data.sickWindow = sickWindow;
 		FlxG.save.data.goodWindow = goodWindow;
 		FlxG.save.data.badWindow = badWindow;
@@ -169,6 +169,8 @@ class ClientPrefs {
 		FlxG.save.data.lowEndMode = lowEndMode;
 		FlxG.save.data.hideCombo = hideCombo;
 		FlxG.save.data.strumLineAlpha = strumLineAlpha;
+		// Added by Bedrock Engine (via Pull Requests)
+		FlxG.save.data.marvelousWindow = marvelousWindow;
 		FlxG.save.data.marvelouses = marvelouses;
 
 		FlxG.save.flush();
@@ -181,7 +183,6 @@ class ClientPrefs {
 	}
 
 	public static function loadPrefs() {
-		if(FlxG.save.data.marvelouses != null){marvelouses = FlxG.save.data.marvelouses;}
 		if(FlxG.save.data.downScroll != null) {
 			downScroll = FlxG.save.data.downScroll;
 		}
@@ -256,9 +257,6 @@ class ClientPrefs {
 		if(FlxG.save.data.ratingOffset != null) {
 			ratingOffset = FlxG.save.data.ratingOffset;
 		}
-		if(FlxG.save.data.marvelousWindow != null) {
-			marvelousWindow = FlxG.save.data.marvelousWindow;
-		}
 		if(FlxG.save.data.sickWindow != null) {
 			sickWindow = FlxG.save.data.sickWindow;
 		}
@@ -319,7 +317,13 @@ class ClientPrefs {
 		if (FlxG.save.data.strumLineAlpha != null) {
 			strumLineAlpha = FlxG.save.data.strumLineAlpha;
 		}
-		if(FlxG.save.data.marvelouses != null) {marvelouses = FlxG.save.data.marvelouses;}
+		// Added by Bedrock Engine (via Pull Requests)
+		if(FlxG.save.data.marvelousWindow != null) {
+			marvelousWindow = FlxG.save.data.marvelousWindow;
+		}
+		if(FlxG.save.data.marvelouses != null) {
+			marvelouses = FlxG.save.data.marvelouses;
+		}
 		
 		// flixel automatically saves your volume!
 		if(FlxG.save.data.volume != null)

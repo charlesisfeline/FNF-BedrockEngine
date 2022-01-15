@@ -5189,7 +5189,8 @@ class PlayState extends MusicBeatState
 
 			// Rating FC
 			ratingFC = "";
-			if (marvelouses > 0) {ratingFC = "- MFC ";}
+			if (marvelouses > 0) 
+				ratingFC = "- MFC "; // Marvelous Full Combo
 			if (sicks > 0)
 				ratingFC = "- SFC "; //Sick Full Combo
 			if (goods > 0)

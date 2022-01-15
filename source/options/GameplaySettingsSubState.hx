@@ -34,13 +34,6 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		title = 'Gameplay Settings';
 		rpcTitle = 'Gameplay Settings Menu'; //for Discord Rich Presence
 		
-		var option:Option = new Option('Marvelous Ratings',
-			'If unchecked, marvelous ratings will disappear.',
-			'marvelouses',
-			'bool',
-			true);
-		addOption(option);
-		
 		var option:Option = new Option('Controller Mode',
 			'Check this if you want to play with\na controller instead of using your Keyboard.',
 			'controllerMode',
@@ -91,11 +84,18 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			false);
 		addOption(Option);
 
+		var option:Option = new Option('Marvelous Ratings',
+			'If unchecked, marvelous ratings will disappear.',
+			'marvelouses',
+			'bool',
+			true);
+		addOption(option);
+
 		var option:Option = new Option('Play Hit Sounds',
 			"If checked, will play a sound when you hit a note",
 			'playHitSounds',
 			'bool',
-			true);
+			false);
 	addOption(option);
 
 		var option:Option = new Option('Play Miss Sounds',
@@ -132,6 +132,17 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		option.scrollSpeed = 20;
 		option.minValue = -30;
 		option.maxValue = 30;
+		addOption(option);
+
+		var option:Option = new Option('Marvelous! Hit Window',
+			'Changes the amount of time you have\nfor hitting a "Marvelous!" in milliseconds.',
+			'marvelousWindow',
+			'int',
+			35);
+		option.displayFormat = '%vms';
+		option.scrollSpeed = 15;
+		option.minValue = 15;
+		option.maxValue = 35;
 		addOption(option);
 
 		var option:Option = new Option('Sick! Hit Window',
