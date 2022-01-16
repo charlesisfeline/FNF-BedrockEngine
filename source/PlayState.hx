@@ -240,6 +240,7 @@ class PlayState extends MusicBeatState
 	public var songHits:Int = 0;
 	public var songMisses:Int = 0;
 	public var scoreTxt:FlxText;
+	public var judgementTxt:FlxText;
 
 	var timeTxt:FlxText;
 	var scoreTxtTween:FlxTween;
@@ -1126,6 +1127,13 @@ class PlayState extends MusicBeatState
 		add(debugWatermark2);
 		#end
 
+		judgementTxt = new FlxText(0, healthBarBG.y + 56, FlxG.width, "", 20);
+		judgementTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		judgementTxt.scrollFactor.set();
+		judgementTxt.borderSize = 1.25;
+		judgementTxt.visible = !ClientPrefs.hideHud;
+		add(judgementTxt);
+
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
 		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
@@ -1145,6 +1153,7 @@ class PlayState extends MusicBeatState
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
+		judgementTxt.cameras = [camHUD];
 		beWatermark.cameras = [camHUD];
 		peWatermark.cameras = [camHUD];
 		botplayTxt.cameras = [camHUD];
@@ -2622,6 +2631,17 @@ class PlayState extends MusicBeatState
 		// in case you have Botplay on
 		if (ClientPrefs.getGameplaySetting('botplay', false))
 			scoreTxt.text = 'Score: ' + songScore + ' - Combo Breaks: ' + songMisses + ' - Accuracy: 101% - ' + 'BFC ' + '(SS+)'; //Bot Full Combo
+
+		if (ClientPrefs.judgementCounters)
+			judgementTxt.text = 'Sicks: ' + sicks + ' - Goods: ' + goods + ' - Bads: ' + bads + ' - Shits: ' + shits;
+		if (ClientPrefs.judgementCounters && ClientPrefs.marvelouses)
+			judgementTxt.text = 'Marvs: ' + marvelouses + ' - Sicks: ' + sicks + ' - Goods: ' + goods + ' - Bads: ' + bads + ' - Shits: ' + shits;
+
+		if (ClientPrefs.judgementCounters == false)
+			judgementTxt.text = ''
+
+		if (ClientPrefs.judgementCounters == false && ClientPrefs.marvelouses)
+			judgementTxt.text = ''
 
 		if (botplayTxt.visible)
 		{

@@ -84,6 +84,13 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			false);
 		addOption(Option);
 
+		var Option = new Option('Judgement Counters',
+			"If checked, Shows Judgement Statistics on the Left Side of the Screen",
+			'judgementCounters',
+			'bool',
+			true);
+		addOption(Option);
+
 		var option:Option = new Option('Marvelous Ratings',
 			'If unchecked, marvelous ratings will disappear.',
 			'marvelouses',

@@ -80,6 +80,7 @@ class ClientPrefs {
 	public static var lowEndMode:Bool = false;
 	public static var hideCombo:Bool = false;
 	public static var strumLineAlpha:Float = 1;
+	public static var judgementCounters:Bool = true;
 
 	// Added by Bedrock Engine (via Pull Requests)
 	public static var marvelouses:Bool = true;
@@ -169,6 +170,8 @@ class ClientPrefs {
 		FlxG.save.data.lowEndMode = lowEndMode;
 		FlxG.save.data.hideCombo = hideCombo;
 		FlxG.save.data.strumLineAlpha = strumLineAlpha;
+		FlxG.save.data.judgementCounters = judgementCounters;
+
 		// Added by Bedrock Engine (via Pull Requests)
 		FlxG.save.data.marvelousWindow = marvelousWindow;
 		FlxG.save.data.marvelouses = marvelouses;
@@ -317,6 +320,10 @@ class ClientPrefs {
 		if (FlxG.save.data.strumLineAlpha != null) {
 			strumLineAlpha = FlxG.save.data.strumLineAlpha;
 		}
+		if (FlxG.save.data.judgementCounters != null) {
+			judgementCounters = FlxG.save.data.judgementCounters;
+		}
+		
 		// Added by Bedrock Engine (via Pull Requests)
 		if(FlxG.save.data.marvelousWindow != null) {
 			marvelousWindow = FlxG.save.data.marvelousWindow;
