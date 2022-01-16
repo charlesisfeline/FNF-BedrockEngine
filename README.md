@@ -7,7 +7,6 @@ I'm currently working with https://github.com/Luisinhi010 to make this thing bet
 * Fix all current issues with Opponent Mode
 * Noteskins on Options Menu
 * Updating this entire file because it's outdated at the moment lol
-* Stage Editor (see: https://github.com/ShadowMario/FNF-PsychEngine/pull/3502)
 
 # Future Plans
 * Softcoded Judgements (maybe??)
