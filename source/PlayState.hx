@@ -2638,10 +2638,10 @@ class PlayState extends MusicBeatState
 			judgementTxt.text = 'Marvs: ' + marvelouses + ' - Sicks: ' + sicks + ' - Goods: ' + goods + ' - Bads: ' + bads + ' - Shits: ' + shits;
 
 		if (ClientPrefs.judgementCounters == false)
-			judgementTxt.text = ''
+			judgementTxt.text = '';
 
 		if (ClientPrefs.judgementCounters == false && ClientPrefs.marvelouses)
-			judgementTxt.text = ''
+			judgementTxt.text = '';
 
 		if (botplayTxt.visible)
 		{
