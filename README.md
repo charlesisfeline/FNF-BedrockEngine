@@ -12,6 +12,7 @@ I'm currently working with https://github.com/Luisinhi010 to make this thing bet
 * Softcoded Judgements (maybe??)
 * Separated Noteskins for each Player
 * Remove the Additional Hitsounds, making it a Toggle, and *(probably)* softcoding Hitsounds as a whole
+* Stage Editor (see: https://github.com/ShadowMario/FNF-PsychEngine/pull/3502)
 
 # UPDATES:
 * 01-13-22: did remove the additional hitsounds, now for the hard part I suppose!
