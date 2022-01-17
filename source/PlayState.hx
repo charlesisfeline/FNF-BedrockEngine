@@ -2623,27 +2623,27 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		if (ratingFC == "" && !ClientPrefs.hideCombo)
-			scoreTxt.text = 'Score: ' + songScore + ' - Combo Breaks: ' + songMisses + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + '(?)';
+			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + '(?)';
 		else
-			scoreTxt.text = 'Score: ' + songScore + ' - Combo Breaks: ' + songMisses + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + ratingName;
 
 		if (ClientPrefs.hideCombo)
-			scoreTxt.text = 'Score: ' + songScore + ' - Combo Breaks: ' + songMisses + ' - Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + ratingName + ' - Combo: ' + combo;
+			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + ratingName + ' // Combo: ' + combo;
 
 		if (ClientPrefs.hideAccuracy)
-			scoreTxt.text = 'Score: ' + songScore + ' - Combo Breaks: ' + songMisses;
+			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses;
 
 		if (ClientPrefs.hideAccuracy && ClientPrefs.hideCombo)
-			scoreTxt.text = 'Score: ' + songScore + ' - Combo Breaks: ' + songMisses + ' - Combo: ' + combo;
+			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Combo: ' + combo;
 
 		// in case you have Botplay on
 		if (ClientPrefs.getGameplaySetting('botplay', false))
-			scoreTxt.text = 'Score: ' + songScore + ' - Combo Breaks: ' + songMisses + ' - Accuracy: 101% - ' + 'BFC ' + '(SS+)'; //Bot Full Combo
+			scoreTxt.text = '';
 
 		if (ClientPrefs.judgementCounters)
-			judgementTxt.text = 'Sicks: ' + sicks + ' - Goods: ' + goods + ' - Bads: ' + bads + ' - Shits: ' + shits;
+			judgementTxt.text = 'Sicks: ' + sicks + ' // Goods: ' + goods + ' // Bads: ' + bads + ' // Shits: ' + shits;
 		if (ClientPrefs.judgementCounters && ClientPrefs.marvelouses)
-			judgementTxt.text = 'Marvs: ' + marvelouses + ' - Sicks: ' + sicks + ' - Goods: ' + goods + ' - Bads: ' + bads + ' - Shits: ' + shits;
+			judgementTxt.text = 'Marvs: ' + marvelouses + ' // Sicks: ' + sicks + ' // Goods: ' + goods + ' // Bads: ' + bads + ' // Shits: ' + shits;
 
 		if (ClientPrefs.judgementCounters == false)
 			judgementTxt.text = '';
@@ -2720,11 +2720,15 @@ class PlayState extends MusicBeatState
 
 		if (healthBar.percent < 20)
 			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 1;
+		else if (healthBar.percent > 85)
+			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 2;
 		else
 			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 0;
 
 		if (healthBar.percent > 80)
 			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 1;
+		else if (healthBar.percent > 85)
+			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 2;
 		else
 			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 0;
 
@@ -5218,17 +5222,17 @@ class PlayState extends MusicBeatState
 			// Rating FC
 			ratingFC = "";
 			if (marvelouses > 0) 
-				ratingFC = "- MFC "; // Marvelous Full Combo
+				ratingFC = "// MFC "; // Marvelous Full Combo
 			if (sicks > 0)
-				ratingFC = "- SFC "; //Sick Full Combo
+				ratingFC = "// SFC "; //Sick Full Combo
 			if (goods > 0)
-				ratingFC = "- GFC "; // Good Full Combo
+				ratingFC = "// GFC "; // Good Full Combo
 			if (bads > 0 || shits > 0)
-				ratingFC = "- FC "; // Full Combo
+				ratingFC = "// FC "; // Full Combo
 			if (songMisses > 0 && songMisses < 10)
-				ratingFC = "- SDCB "; //Single Digit Combo Break
+				ratingFC = "// SDCB "; //Single Digit Combo Break
 			else if (songMisses >= 10)
-				ratingFC = "Clear - ";
+				ratingFC = "// Clear ";
 		}
 		setOnLuas('rating', ratingPercent);
 		setOnLuas('ratingName', ratingName);

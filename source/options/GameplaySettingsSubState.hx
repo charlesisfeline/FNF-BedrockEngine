@@ -85,7 +85,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		addOption(Option);
 
 		var Option = new Option('Judgement Counters',
-			"If checked, Shows Judgement Statistics on the Left Side of the Screen",
+			"If checked, Shows Judgement Statistics below the Info Bar",
 			'judgementCounters',
 			'bool',
 			true);
