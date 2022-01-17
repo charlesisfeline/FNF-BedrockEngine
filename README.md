@@ -12,7 +12,6 @@ I'm currently working with https://github.com/Luisinhi010 to make this thing bet
 * Softcoded Judgements (maybe??)
 * Separated Noteskins for each Player
 * Remove the Additional Hitsounds, making it a Toggle, and *(probably)* softcoding Hitsounds as a whole
-* Stage Editor (see: https://github.com/ShadowMario/FNF-PsychEngine/pull/3502)
 
 # UPDATES:
 * 01-13-22: did remove the additional hitsounds, now for the hard part I suppose!
@@ -25,6 +24,7 @@ Credits:
 * HiroMizuki - Pixel Note Splashes - https://github.com/ShadowMario/FNF-PsychEngine/pull/1792
 * lemz1 - Play as Opponent - https://github.com/ShadowMario/FNF-PsychEngine/pull/2770
 * l1ttleO - Made ProjectFNF 2.X, Menu Animations, Original Hit Sound Code, Miss Sounds Toggle - https://github.com/l1ttleO/ProjectFNF
+* magnumsrtisswag - Stage Editor - https://github.com/ShadowMario/FNF-PsychEngine/pull/3502
 * Starmapo - Time Signatures - https://github.com/ShadowMario/FNF-PsychEngine/pull/3428
 * Stilic - Freeplay Bump, Max Optimization - https://github.com/ShadowMario/FNF-PsychEngine/pull/1809
 * tposejank - Sustains now wont do anything if the note that start it was missed - https://github.com/ShadowMario/FNF-PsychEngine/pull/2817
