@@ -406,13 +406,15 @@ class PlayState extends MusicBeatState
 		if (stageData == null)
 		{ // Stage couldn't be found, create a dummy stage for preventing a crash
 			stageData = {
+				name: "",
 				directory: "",
 				defaultZoom: 0.9,
 				isPixelStage: false,
 
 				boyfriend: [770, 100],
 				girlfriend: [400, 130],
-				opponent: [100, 100]
+				opponent: [100, 100],
+				layerArray: []
 			};
 		}
 
@@ -710,6 +712,14 @@ class PlayState extends MusicBeatState
 					bg.scale.set(6, 6);
 					bg.antialiasing = false;
 					add(bg);
+				}
+
+				default: //custom stages
+					curStage = stageData.name;
+					for (layer in stageData.layerArray){
+					var loadedLayer:BGSprite = new BGSprite(layer.directory, layer.xAxis, layer.yAxis, layer.scrollX, layer.scrollY);
+                    loadedLayer.setGraphicSize(Std.int(loadedLayer.width * layer.scale));
+				    add(loadedLayer);
 				}
 		}
 
