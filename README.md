@@ -186,13 +186,12 @@ this should be enough for any pc to run!
 ![image](https://user-images.githubusercontent.com/45212377/147283059-d8555266-2e55-4e5d-9979-dd316c7004e7.png)
 
 * S+ 	100% Accuracy.
-* S 	Over 95% Accuracy.
-* A 	Over 90% Accuracy.
-* B 	Over 80% Accuracy.
-* C 	Over 85% Accuracy.
-* D  Over 79% Accuracy.
-* E  Over 74% Accuracy.
-* F  Anything Below 68% Accuracy.
+* S 	99.9% Accuracy.
+* AAA 	99.1% Accuracy.
+* AA 	98.6% Accuracy.
+* B     80% Accuracy.
+* C     70% Accuracy.
+* D     40% Accuracy or below.
 
 ## Opponent Mode
 
