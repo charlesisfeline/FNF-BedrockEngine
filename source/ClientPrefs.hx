@@ -81,6 +81,7 @@ class ClientPrefs {
 	public static var hideCombo:Bool = false;
 	public static var strumLineAlpha:Float = 1;
 	public static var judgementCounters:Bool = true;
+	public static var timeBarUi:String = 'Psych Engine';
 
 	// Added by Bedrock Engine (via Pull Requests)
 	public static var marvelouses:Bool = true;
@@ -171,6 +172,7 @@ class ClientPrefs {
 		FlxG.save.data.hideCombo = hideCombo;
 		FlxG.save.data.strumLineAlpha = strumLineAlpha;
 		FlxG.save.data.judgementCounters = judgementCounters;
+		FlxG.save.data.timeBarUi = timeBarUi;
 
 		// Added by Bedrock Engine (via Pull Requests)
 		FlxG.save.data.marvelousWindow = marvelousWindow;
@@ -322,6 +324,9 @@ class ClientPrefs {
 		}
 		if (FlxG.save.data.judgementCounters != null) {
 			judgementCounters = FlxG.save.data.judgementCounters;
+		}
+		if (FlxG.save.data.timeBarUi != null) {
+			timeBarUi = FlxG.save.data.timeBarUi;
 		}
 		
 		// Added by Bedrock Engine (via Pull Requests)
