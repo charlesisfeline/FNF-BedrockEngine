@@ -76,6 +76,8 @@ class TitleState extends MusicBeatState
 
 	public static var updateVersion:String = '';
 
+	var candance:Bool = true;
+
 	override public function create():Void
 	{
 		#if MODS_ALLOWED
@@ -194,6 +196,9 @@ class TitleState extends MusicBeatState
 			});
 		}
 		#end
+
+		if (!candance)
+			candance = true;
 	}
 
 	var logoBl:FlxSprite;
@@ -289,9 +294,10 @@ class TitleState extends MusicBeatState
 		#end
 		gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
 		gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
-
+		gfDance.animation.addByPrefix('Hey', 'GF Cheer', 24, false);
 		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
 		add(gfDance);
+
 		gfDance.shader = swagShader.shader;
 		if (shouldUseBl)
 			add(logoBl);
@@ -431,6 +437,8 @@ class TitleState extends MusicBeatState
 				transitioning = true;
 				// FlxG.sound.music.stop();
 
+				gfDance.animation.play('Hey');
+				candance = false;
 				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
 					if (mustUpdate) {
@@ -544,14 +552,27 @@ class TitleState extends MusicBeatState
 			FlxTween.tween(logo, {'scale.x': 0.95, 'scale.y': 0.95}, 0.1, {ease: FlxEase.bounceIn});
 		}
 
-		if(gfDance != null) {
+		if (candance)
+		{
+			if (gfDance != null)
+			{
+				danceLeft = !danceLeft;
+
+				if (danceLeft)
+					gfDance.animation.play('danceRight');
+				else
+					gfDance.animation.play('danceLeft');
+			}
+		}
+
+		/* if(gfDance != null) {
 			danceLeft = !danceLeft;
 
 			if (danceLeft)
 				gfDance.animation.play('danceRight');
 			else
 				gfDance.animation.play('danceLeft');
-		}
+		}*/
 
 		if(!closedState) {
 			sickBeats++;

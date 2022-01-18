@@ -3944,7 +3944,7 @@ class PlayState extends MusicBeatState
 		// trace(noteDiff, ' ' + Math.abs(note.strumTime - Conductor.songPosition));
 
 		if (ClientPrefs.playHitSounds)
-			FlxG.sound.play(Paths.sound('ChartingTick'));
+			FlxG.sound.play(Paths.sound('Tick'));
 
 		// boyfriend.playAnim('hey');
 		vocals.volume = 1;
