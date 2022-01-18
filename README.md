@@ -16,6 +16,7 @@ I'm currently working with https://github.com/Luisinhi010 to make this thing bet
 # UPDATES:
 * 01-13-22: did remove the additional hitsounds, now for the hard part I suppose!
 * 01-15-22: imma just make hitsounds less louder for now, softcoded ones will be added eventually, not on 0.3
+* 01-18-21: Actually, Hitsounds are already Softcoded, just place your Hitsound on "mods/sounds" with the name "Tick.ogg", for Chart Editor Sounds, do "ChartingTick.ogg", that's about it!
 
 # Friday Night Funkin' - Bedrock Engine!
 a fork of Psych Engine which adds a bunch of features from Pull Requests around the Main Branch, and even other forks!
