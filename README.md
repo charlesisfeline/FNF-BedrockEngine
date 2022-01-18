@@ -8,9 +8,8 @@ I'm currently working with https://github.com/Luisinhi010 to make this thing bet
 * Updating this entire file because it's outdated at the moment lol
 
 # Future Plans
-* Softcoded Judgements (maybe??)
-* Separated Noteskins for each Player
-* Remove the Additional Hitsounds, making it a Toggle
+* Softcoded Judgement Skins
+* Separated Noteskins for each Player (already possible with lua so...)
 *  Fix all current issues with Opponent Mode
 
 # UPDATES:
