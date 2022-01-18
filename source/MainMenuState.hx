@@ -45,6 +45,7 @@ class MainMenuState extends MusicBeatState
 
 	var magenta:FlxSprite;
 	var bg:FlxSprite;
+	var logoBl:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
 	var debugKeys:Array<FlxKey>;
@@ -129,6 +130,31 @@ class MainMenuState extends MusicBeatState
 			//menuItem.setGraphicSize(Std.int(menuItem.width * 0.58));
 			menuItem.updateHitbox();
 		}
+
+		if (!ClientPrefs.lowQuality)
+		{
+			logoBl = new FlxSprite(-100, -100);
+
+			logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
+			logoBl.scrollFactor.set();
+			logoBl.antialiasing = ClientPrefs.globalAntialiasing;
+			logoBl.animation.addByPrefix('bump', 'logo bumpin', 24, false);
+			logoBl.setGraphicSize(Std.int(logoBl.width * 0.5));
+			logoBl.animation.play('bump');
+			logoBl.alpha = 0;
+			logoBl.angle = 0;
+			logoBl.updateHitbox();
+			add(logoBl);
+			FlxTween.tween(logoBl, {
+				y: logoBl.y + 150,
+				x: logoBl.x + 150,
+				angle: -4,
+				alpha: 1
+			}, 1.4, {ease: FlxEase.expoInOut});
+		}
+
+		if (!ClientPrefs.lowQuality)
+			FlxG.camera.follow(camFollowPos, null, 1);
 
 		FlxG.camera.follow(camFollowPos, null, 1);
 
