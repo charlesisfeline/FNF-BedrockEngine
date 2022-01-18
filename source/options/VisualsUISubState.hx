@@ -32,7 +32,7 @@ class VisualsUISubState extends BaseOptionsMenu
 	public function new()
 	{
 		title = 'Visuals and UI';
-		rpcTitle = 'Visuals & UI Settings Menu'; //for Discord Rich Presence
+		rpcTitle = 'Tweaking the Visuals & UI'; //for Discord Rich Presence
 
 		var option:Option = new Option('Camera Zooms', "If unchecked, the camera won't zoom in on a beat hit.", 'camZooms', 'bool', true);
 		addOption(option);

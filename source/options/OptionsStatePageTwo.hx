@@ -27,27 +27,17 @@ import Controls;
 
 using StringTools;
 
-class OptionsState extends MusicBeatState
+class OptionsStatePageTwo extends MusicBeatState
 {
-	var options:Array<String> = ['Note Colors', 'Controls', 'Adjust Delay and Combo', 'Graphics', 'Visuals and UI', 'Gameplay'];
+	var options:Array<String> = ['Nothing Lol'];
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 	private static var curSelected:Int = 0;
 	public static var menuBG:FlxSprite;
 
 	function openSelectedSubstate(label:String) {
 		switch(label) {
-			case 'Note Colors':
+			case 'Nothing Lol':
 				openSubState(new options.NotesSubState());
-			case 'Controls':
-				openSubState(new options.ControlsSubState());
-			case 'Graphics':
-				openSubState(new options.GraphicsSettingsSubState());
-			case 'Visuals and UI':
-				openSubState(new options.VisualsUISubState());
-			case 'Gameplay':
-				openSubState(new options.GameplaySettingsSubState());
-			case 'Adjust Delay and Combo':
-				LoadingState.loadAndSwitchState(new options.NoteOffsetState());
 		}
 	}
 
@@ -56,7 +46,7 @@ class OptionsState extends MusicBeatState
 
 	override function create() {
 		#if desktop
-		DiscordClient.changePresence("In the Options Menu", null);
+		DiscordClient.changePresence("in the Second Page of Options Menu", null);
 		#end
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
@@ -116,9 +106,10 @@ class OptionsState extends MusicBeatState
 			openSelectedSubstate(options[curSelected]);
 		}
 
-		/*if (FlxG.keys.justPressed.RIGHT) {
-			LoadingState.loadAndSwitchState(new OptionsStatePageTwo());
-		}*/
+		if (controls.UI_LEFT_P) {
+			LoadingState.loadAndSwitchState(new options.OptionsState());
+			FlxG.sound.play(Paths.sound('scrollMenu'));
+		}
 	}
 	
 	function changeSelection(change:Int = 0) {

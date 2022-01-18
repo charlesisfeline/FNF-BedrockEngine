@@ -32,7 +32,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 	public function new()
 	{
 		title = 'Gameplay Settings';
-		rpcTitle = 'Gameplay Settings Menu'; //for Discord Rich Presence
+		rpcTitle = 'Adjusting the Gameplay Settings'; //for Discord Rich Presence
 
 		var option:Option = new Option('Center Notes', 'If checked, your notes get centered.', 'middleScroll', 'bool', false);
 	addOption(option);
