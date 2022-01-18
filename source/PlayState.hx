@@ -2111,8 +2111,7 @@ class PlayState extends MusicBeatState
 						oldNote = unspawnNotes[Std.int(unspawnNotes.length - 1)];
 						var sustainNote:Note = new Note(daStrumTime
 							+ (Conductor.stepCrochet * susNote)
-							+ (Conductor.stepCrochet / FlxMath.roundDecimal(songSpeed, 2)), daNoteData, oldNote,
-							swagNote, true);
+							+ (Conductor.stepCrochet / FlxMath.roundDecimal(songSpeed, 2)), daNoteData, oldNote, true);
 
 						sustainNote.mustPress = gottaHitNote;
 						sustainNote.gfNote = (section.gfSection && (songNotes[1] < 4));
@@ -2635,19 +2634,10 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		if (ratingFC == "" && !ClientPrefs.hideCombo)
+		if (ratingFC == "")
 			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + '(?)';
 		else
 			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + ratingName;
-
-		if (ClientPrefs.hideCombo)
-			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% ' + ratingFC + ratingName + ' // Combo: ' + combo;
-
-		if (ClientPrefs.hideAccuracy)
-			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses;
-
-		if (ClientPrefs.hideAccuracy && ClientPrefs.hideCombo)
-			scoreTxt.text = 'Score: ' + songScore + ' // Combo Breaks: ' + songMisses + ' // Combo: ' + combo;
 
 		// in case you have Botplay on
 		if (ClientPrefs.getGameplaySetting('botplay', false))
@@ -2659,9 +2649,6 @@ class PlayState extends MusicBeatState
 			judgementTxt.text = 'Marvs: ' + marvelouses + ' // Sicks: ' + sicks + ' // Goods: ' + goods + ' // Bads: ' + bads + ' // Shits: ' + shits;
 
 		if (ClientPrefs.judgementCounters == false)
-			judgementTxt.text = '';
-
-		if (ClientPrefs.judgementCounters == false && ClientPrefs.marvelouses)
 			judgementTxt.text = '';
 
 		if (botplayTxt.visible)

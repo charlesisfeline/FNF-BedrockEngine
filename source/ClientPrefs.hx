@@ -70,7 +70,6 @@ class ClientPrefs {
 	public static var playHitSounds:Bool = false;
 	public static var lightcpustrums:Bool = true;
 	//public static var infoSize:Bool = false;
-	public static var hideAccuracy:Bool = false;
 	public static var hideGf:Bool = false;
 	#if PSYCH_WATERMARKS
 	public static var uiSkin:String = 'Bedrock';
@@ -78,7 +77,6 @@ class ClientPrefs {
 	public static var uiSkin:String = 'Classic';
 	#end
 	public static var lowEndMode:Bool = false;
-	public static var hideCombo:Bool = false;
 	public static var strumLineAlpha:Float = 1;
 	public static var judgementCounters:Bool = true;
 	public static var timeBarUi:String = 'Psych Engine';
@@ -165,11 +163,9 @@ class ClientPrefs {
 		FlxG.save.data.playHitSounds = playHitSounds;
 		FlxG.save.data.lightcpustrums = lightcpustrums;
 		//FlxG.save.data.infoSize = infoSize;
-		FlxG.save.data.hideAccuracy = hideAccuracy;
 		FlxG.save.data.hideGf = hideGf;
 		FlxG.save.data.uiSkin = uiSkin;
 		FlxG.save.data.lowEndMode = lowEndMode;
-		FlxG.save.data.hideCombo = hideCombo;
 		FlxG.save.data.strumLineAlpha = strumLineAlpha;
 		FlxG.save.data.judgementCounters = judgementCounters;
 		FlxG.save.data.timeBarUi = timeBarUi;

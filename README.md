@@ -27,7 +27,6 @@ Credits:
 * magnumsrtisswag - Stage Editor - https://github.com/ShadowMario/FNF-PsychEngine/pull/3502
 * Starmapo - Time Signatures - https://github.com/ShadowMario/FNF-PsychEngine/pull/3428
 * Stilic - Freeplay Bump, Max Optimization - https://github.com/ShadowMario/FNF-PsychEngine/pull/1809
-* tposejank - Sustains now wont do anything if the note that start it was missed - https://github.com/ShadowMario/FNF-PsychEngine/pull/2817
 * Verwex - made Mic'd Up Engine, Winning Icons - https://github.com/Verwex/Funkin-Mic-d-Up-SC
 * XtraXD1 - Show/Hide Weeks temporally + Getting/Setting on Source Code - https://github.com/ShadowMario/FNF-PsychEngine/pull/3192
 * Yoshubs - made Forever Engine, Main Inspiration - https://github.com/Yoshubs/Forever-Engine-Legacy
