@@ -36,11 +36,7 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		title = 'Graphics';
 		rpcTitle = 'Graphics Settings Menu'; //for Discord Rich Presence
 
-		var option:Option = new Option('Anti-Aliasing',
-			'If unchecked, disables anti-aliasing, increases performance\nat the cost of sharper visuals.',
-			'globalAntialiasing',
-			'bool',
-			true);
+		var option:Option = new Option('Anti-Aliasing', 'If unchecked, disables anti-aliasing, increases performance\nat the cost of sharper visuals.', 'globalAntialiasing', 'bool', true);
 		option.showBoyfriend = true;
 		option.onChange = onChangeAntiAliasing; //Changing onChange is only needed if you want to make a special interaction after it changes the value
 		addOption(option);
@@ -57,11 +53,7 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		option.displayFormat = '%v FPS';
 		option.onChange = onChangeFramerate;
 
-		var option:Option = new Option('Hide Girlfriend',
-			'If checked, Hides Girlfriend from Stages in order to Improve Perfomance',
-			'hideGf',
-			'bool',
-			false);
+		var option:Option = new Option('Hide Girlfriend', 'If checked, Hides Girlfriend from Stages in order to Improve Perfomance', 'hideGf', 'bool', false);
 		addOption(option);
 
 		//I'd suggest using "Low Quality" as an example for making your own option since it is the simplest here
@@ -72,18 +64,10 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 			false); //Default value
 		addOption(option);
 
-		var option:Option = new Option('Simple Main Menu',
-			'If checked, disables all menu details and makes it more simple, \nThis should decrease loading times for the Main Menu',
-			'lowEndMode',
-			'bool',
-			false);
+		var option:Option = new Option('Simple Main Menu', 'If checked, disables all menu details and makes it more simple, \nThis should decrease loading times for the Main Menu', 'lowEndMode', 'bool', false);
 		addOption(option);
 
-		var option:Option = new Option('Max Optimization',
-			'If checked, disables everything except the HUD.',
-			'maxOptimization',
-			'bool',
-			false);
+		var option:Option = new Option('Max Optimization', 'If checked, disables everything except the HUD.', 'maxOptimization', 'bool', false);
 		addOption(option);
 		
 		var option:Option = new Option('Screen Resolution',

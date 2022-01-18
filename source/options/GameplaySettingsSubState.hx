@@ -33,26 +33,14 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 	{
 		title = 'Gameplay Settings';
 		rpcTitle = 'Gameplay Settings Menu'; //for Discord Rich Presence
-		
-		var option:Option = new Option('Controller Mode',
-			'Check this if you want to play with\na controller instead of using your Keyboard.',
-			'controllerMode',
-			'bool',
-			false);
+
+		var option:Option = new Option('Center Notes', 'If checked, your notes get centered.', 'middleScroll', 'bool', false);
 		addOption(option);
 
-		var option:Option = new Option('Center Notes',
-			'If checked, your notes get centered.',
-			'middleScroll',
-			'bool',
-			false);
+		var option:Option = new Option('Controller Mode', 'Check this if you want to play with\na controller instead of using your Keyboard.', 'controllerMode', 'bool', false);
 		addOption(option);
 
-		var option:Option = new Option('Disable Reset Button',
-			"If checked, pressing Reset won't do anything.",
-			'noReset',
-			'bool',
-			false);
+		var option:Option = new Option('Disable Reset Button', "If checked, pressing Reset won't do anything.", 'noReset', 'bool', false);
 		addOption(option);
 
 		//I'd suggest using "Downscroll" as an example for making your own option since it is the simplest here
@@ -63,60 +51,28 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			false); //Default value
 		addOption(option);
 		
-		var option:Option = new Option('Ghost Tapping',
-			"If checked, you won't get misses from pressing keys\nwhile there are no notes able to be hit.",
-			'ghostTapping',
-			'bool',
-			true);
+		var option:Option = new Option('Ghost Tapping', "If checked, you won't get misses from pressing keys\nwhile there are no notes able to be hit.", 'ghostTapping', 'bool', true);
 		addOption(option);
 
-		var Option = new Option('Hide Accuracy',
-			"If checked, Hides the Accuracy on the Info Bar, Showing only Score and Misses",
-			'hideAccuracy',
-			'bool',
-			false);
+		var Option = new Option('Hide Accuracy', "If checked, Hides the Accuracy on the Info Bar, Showing only Score and Misses", 'hideAccuracy', 'bool', false);
 		addOption(Option);
 
-		var Option = new Option('Hide Combo',
-			"If checked, Hides the Combo Counter, Showing it on the Info bar instead",
-			'hideCombo',
-			'bool',
-			false);
+		var Option = new Option('Hide Combo', "If checked, Hides the Combo Counter, Showing it on the Info bar instead", 'hideCombo', 'bool', false);
 		addOption(Option);
 
-		var Option = new Option('Judgement Counters',
-			"If checked, Shows Judgement Statistics below the Info Bar",
-			'judgementCounters',
-			'bool',
-			true);
+		var Option = new Option('Judgement Counters', "If checked, Shows Judgement Statistics below the Info Bar", 'judgementCounters', 'bool', true);
 		addOption(Option);
 
-		var option:Option = new Option('Marvelous Ratings',
-			'If unchecked, marvelous ratings will disappear.',
-			'marvelouses',
-			'bool',
-			true);
+		var option:Option = new Option('Marvelous Ratings', 'If unchecked, marvelous ratings will disappear.', 'marvelouses', 'bool', true);
 		addOption(option);
 
-		var option:Option = new Option('Play Hit Sounds',
-			"If checked, will play a sound when you hit a note",
-			'playHitSounds',
-			'bool',
-			false);
+		var option:Option = new Option('Play Hit Sounds', "If checked, will play a sound when you hit a note", 'playHitSounds', 'bool', false);
 	addOption(option);
 
-		var option:Option = new Option('Play Miss Sounds',
-			"If unchecked, Sounds for when you Miss a Note will be disabled entirely",
-			'playMissSounds',
-			'bool',
-			true);
+		var option:Option = new Option('Play Miss Sounds', "If unchecked, Sounds for when you Miss a Note will be disabled entirely", 'playMissSounds', 'bool', true);
 	addOption(option);
 
-		var Option = new Option('Light CPU Strums',
-			"If disabled, CPU Notes will no longer light once the CPU hits them",
-			'lightcpustrums',
-			'bool',
-			true);
+		var Option = new Option('Light CPU Strums', "If disabled, CPU Notes will no longer light once the CPU hits them", 'lightcpustrums', 'bool', true);
 	addOption(Option);
 
 		/*var option:Option = new Option('Note Delay',
