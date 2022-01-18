@@ -993,8 +993,8 @@ class PlayState extends MusicBeatState
 		}
 		if (ClientPrefs.timeBarType == 'Song Name' && ClientPrefs.timeBarUi == 'Kade Engine')
 		{
-				timeTxt.size = 18;
-				timeTxt.y += 5;
+			timeTxt.size = 18;
+			timeTxt.y += 5;
 		}
 
 		var splash:NoteSplash = new NoteSplash(100, 100, 0);
