@@ -4155,8 +4155,6 @@ class PlayState extends MusicBeatState
 
 			daLoop++;
 
-			if (ClientPrefs.hideCombo)
-				numScore.destroy();
 		}
 		/* 
 		trace(combo);
@@ -4341,8 +4339,7 @@ class PlayState extends MusicBeatState
 			notes.forEachAlive(function(daNote:Note)
 			{
 				// hold note functions
-				if (daNote.isSustainNote && controlHoldArray[daNote.noteData] && daNote.canBeHit && daNote.mustPress && !daNote.tooLate && !daNote.wasGoodHit
-					&& !daNote.parentNote.tooLate)
+				if (daNote.isSustainNote && controlHoldArray[daNote.noteData] && daNote.canBeHit && daNote.mustPress && !daNote.tooLate && !daNote.wasGoodHit)
 				{
 					goodNoteHit(daNote);
 				}
@@ -4400,7 +4397,7 @@ class PlayState extends MusicBeatState
 				note.destroy();
 			}
 		});
-		if (daNote.isSustainNote && daNote.parentNote.tooLate)
+		if (daNote.isSustainNote)
 			return;
 		combo = 0;
 

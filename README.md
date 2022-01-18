@@ -23,10 +23,10 @@ Credits:
 * CerBor - Difficulty Drop Down on Chart Menu - https://github.com/ShadowMario/FNF-PsychEngine/pull/2896
 * HiroMizuki - Pixel Note Splashes - https://github.com/ShadowMario/FNF-PsychEngine/pull/1792
 * lemz1 - Play as Opponent - https://github.com/ShadowMario/FNF-PsychEngine/pull/2770
-* l1ttleO - Made ProjectFNF 2.X, Menu Animations, Original Hit Sound Code, Miss Sounds Toggle - https://github.com/l1ttleO/ProjectFNF
+* l1ttleO - Made ProjectFNF 2.X, Original Hit Sound Code, Miss Sounds Toggle - https://github.com/l1ttleO/ProjectFNF
 * magnumsrtisswag - Stage Editor - https://github.com/ShadowMario/FNF-PsychEngine/pull/3502
 * Starmapo - Time Signatures - https://github.com/ShadowMario/FNF-PsychEngine/pull/3428
-* Stilic - Freeplay Bump, Max Optimization - https://github.com/ShadowMario/FNF-PsychEngine/pull/1809
+* Stilic - Freeplay Bump, Max Optimization, Menu Animations - https://github.com/ShadowMario/FNF-PsychEngine/pull/1809
 * Verwex - made Mic'd Up Engine, Winning Icons - https://github.com/Verwex/Funkin-Mic-d-Up-SC
 * XtraXD1 - Show/Hide Weeks temporally + Getting/Setting on Source Code - https://github.com/ShadowMario/FNF-PsychEngine/pull/3192
 * Yoshubs - made Forever Engine, Main Inspiration - https://github.com/Yoshubs/Forever-Engine-Legacy

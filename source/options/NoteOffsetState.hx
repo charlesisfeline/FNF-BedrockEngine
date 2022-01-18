@@ -114,8 +114,6 @@ class NoteOffsetState extends MusicBeatState
 		comboNums = new FlxSpriteGroup();
 		comboNums.cameras = [camHUD];
 		add(comboNums);
-		if (ClientPrefs.hideCombo)
-			remove(comboNums);
 
 		var seperatedScore:Array<Int> = [];
 		for (i in 0...3)
