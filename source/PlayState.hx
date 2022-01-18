@@ -2716,34 +2716,48 @@ class PlayState extends MusicBeatState
 		var mult:Float = FlxMath.lerp(1, iconP1.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
 		iconP1.scale.set(mult, mult);
 		iconP1.updateHitbox();
-		iconP1.bounce();
 
 		var mult:Float = FlxMath.lerp(1, iconP2.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
 		iconP2.scale.set(mult, mult);
 		iconP2.updateHitbox();
-		iconP2.bounce();
 
 		var iconOffset:Int = 26;
 
-		iconP1.x = (opponentChart ? -593 : 0) + healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, (opponentChart ? -100 : 100), 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
-		iconP2.x = (opponentChart ? -593 : 0) + healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, (opponentChart ? -100 : 100), 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
+		iconP1.x = (opponentChart ? -593 : 0)
+			+ healthBar.x
+			+ (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, (opponentChart ? -100 : 100), 100, 0) * 0.01))
+			+ (150 * iconP1.scale.x - 150) / 2
+			- iconOffset;
+		iconP2.x = (opponentChart ? -593 : 0)
+			+ healthBar.x
+			+ (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, (opponentChart ? -100 : 100), 100, 0) * 0.01))
+			- (150 * iconP2.scale.x) / 2
+			- iconOffset * 2;
 
 		if (health > 2)
 			health = 2;
 
-		if (healthBar.percent < 20)
-			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 1;
-		else if (healthBar.percent > 85)
-			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 2;
-		else
-			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 0;
+		var p1 = iconP1;
+		var p2 = iconP2;
+		if (opponentChart)
+		{
+			p1 = iconP2;
+			p2 = iconP1;
+		}
 
-		if (healthBar.percent > 80)
-			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 1;
+		if (healthBar.percent < 20)
+			p1.animation.curAnim.curFrame = 1;
 		else if (healthBar.percent > 85)
-			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 2;
+			p1.animation.curAnim.curFrame = 2;
 		else
-			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 0;
+			p1.animation.curAnim.curFrame = 0;
+
+		if (healthBar.percent > 85)
+			p2.animation.curAnim.curFrame = 1;
+		else if (healthBar.percent < 20)
+			p2.animation.curAnim.curFrame = 2;
+		else
+			p2.animation.curAnim.curFrame = 0;
 
 		if (FlxG.keys.anyJustPressed(debugKeysCharacter) && !endingSong && !inCutscene)
 		{
@@ -5040,11 +5054,13 @@ class PlayState extends MusicBeatState
 			curBeat % (gfSpeed * 2) == 0 ? {
 				iconP1.scale.set(1.1, 0.8);
 				iconP2.scale.set(1.1, 1.3);
+
 				FlxTween.angle(iconP1, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
 				FlxTween.angle(iconP2, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
 			} : {
 				iconP1.scale.set(1.1, 1.3);
 				iconP2.scale.set(1.1, 0.8);
+
 				FlxTween.angle(iconP2, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
 				FlxTween.angle(iconP1, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
 				}
