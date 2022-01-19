@@ -144,7 +144,7 @@ class MainMenuState extends MusicBeatState
 			logoBl.alpha = 0;
 			logoBl.angle = 0;
 			logoBl.updateHitbox();
-			add(logoBl);
+			//add(logoBl);
 			FlxTween.tween(logoBl, {
 				y: logoBl.y + 150,
 				x: logoBl.x + 150,

@@ -81,6 +81,7 @@ class ClientPrefs {
 	public static var judgementCounters:Bool = true;
 	public static var timeBarUi:String = 'Psych Engine';
 	public static var underlay:Float = 0;
+	public static var keAccuracy:Bool = false;
 
 	// Added by Bedrock Engine (via Pull Requests)
 	public static var marvelouses:Bool = true;
@@ -175,6 +176,7 @@ class ClientPrefs {
 		FlxG.save.data.marvelousWindow = marvelousWindow;
 		FlxG.save.data.marvelouses = marvelouses;
 		FlxG.save.data.underlay = underlay;
+		FlxG.save.data.keAccuracy = keAccuracy;
 
 		FlxG.save.flush();
 
@@ -337,6 +339,10 @@ class ClientPrefs {
 		if (FlxG.save.data.underlay != null)
 		{
 			underlay = FlxG.save.data.underlay;
+		}
+		if (FlxG.save.data.keAccuracy != null)
+		{
+			keAccuracy = FlxG.save.data.keAccuracy;
 		}
 		
 		// flixel automatically saves your volume!
