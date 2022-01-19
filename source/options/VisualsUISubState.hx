@@ -107,8 +107,8 @@ class VisualsUISubState extends BaseOptionsMenu
 		['Psych Engine', 'Kade Engine']);
 		addOption(option);
 
-		var option:Option = new Option('UI Skin:', "What should your judgements look like?", 'uiSkin', 'string', 'Bedrock',
-		['Classic', 'Bedrock']);
+		var option:Option = new Option('Judgement Skin:', "What should your judgements look like?", 'uiSkin', 'string', 'Bedrock',
+		['Classic', 'Bedrock', 'BEAT!']);
 		addOption(option);
 
 		super();
