@@ -58,7 +58,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 	addOption(Option);
 
 		var Option = new Option('Kade Engine Accuracy', "If checked, the Accuracy will be more Complex, making it Harsher than before, good for Competitive Players", 'keAccuracy', 'bool', true);
-	addOption(Option);
+	//addOption(Option);
 
 		var option:Option = new Option('Marvelous Ratings', 'If unchecked, marvelous ratings will disappear.', 'marvelouses', 'bool', true);
 	addOption(option);
