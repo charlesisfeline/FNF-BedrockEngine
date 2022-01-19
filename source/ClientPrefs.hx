@@ -80,6 +80,7 @@ class ClientPrefs {
 	public static var strumLineAlpha:Float = 1;
 	public static var judgementCounters:Bool = true;
 	public static var timeBarUi:String = 'Psych Engine';
+	public static var underlay:Float = 0;
 
 	// Added by Bedrock Engine (via Pull Requests)
 	public static var marvelouses:Bool = true;
@@ -173,6 +174,7 @@ class ClientPrefs {
 		// Added by Bedrock Engine (via Pull Requests)
 		FlxG.save.data.marvelousWindow = marvelousWindow;
 		FlxG.save.data.marvelouses = marvelouses;
+		FlxG.save.data.underlay = underlay;
 
 		FlxG.save.flush();
 
@@ -331,6 +333,10 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.marvelouses != null) {
 			marvelouses = FlxG.save.data.marvelouses;
+		}
+		if (FlxG.save.data.underlay != null)
+		{
+			underlay = FlxG.save.data.underlay;
 		}
 		
 		// flixel automatically saves your volume!

@@ -74,6 +74,19 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.decimals = 1;
 		addOption(option);
 
+		var option:Option = new Option('Lane Transparency',
+			"Change your lane underlay's transparency here",
+			'underlay',
+			'float',
+		true);
+		option.displayFormat = '%v';
+		option.scrollSpeed = 100;
+		option.changeValue = 0.1;
+		option.decimals = 1;
+		option.minValue = 0;
+		option.maxValue = 1;
+		addOption(option);
+
 		var option:Option = new Option('Strumline Opacity',
 			"How much opaque should your Notes' Strumline be?.",
 			'strumLineAlpha',
