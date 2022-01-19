@@ -74,8 +74,8 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.decimals = 1;
 		addOption(option);
 
-		var option:Option = new Option('Lane Transparency',
-			"Change your lane underlay's transparency here",
+		var option:Option = new Option('Lane Opacity',
+			"Change your lane underlay's opacity here",
 			'underlay',
 			'float',
 		true);
