@@ -1,6 +1,4 @@
-# AT THE CURRENT TIME IN DEVELOPMENT, THIS README FILE IS *VERY* OUTDATED, I WILL UPDATE IT AS SOON AS 0.3 IS READY TO RELEASE!
-
-I'm currently working with https://github.com/Luisinhi010 to make this thing better
+# MOD COMING SOON
 
 # Current Plans
 
@@ -17,9 +15,10 @@ I'm currently working with https://github.com/Luisinhi010 to make this thing bet
 * 01-15-22: imma just make hitsounds less louder for now, softcoded ones will be added eventually, not on 0.3
 * 01-18-21: Actually, Hitsounds are already Softcoded, just place your Hitsound on "mods/sounds" with the name "Tick.ogg", for Chart Editor Sounds, do "ChartingTick.ogg", that's about it!
 
-# Friday Night Funkin' - Bedrock Engine!
+# Friday Night Funkin' - Weight Engine!
 a fork of Psych Engine which adds a bunch of features from Pull Requests around the Main Branch, and even other forks!
 Credits:
+* Gui-iago - Base Engine - https://github.com/Gui-iago/FNF-BedrockEngine
 * CerBor - Difficulty Drop Down on Chart Menu - https://github.com/ShadowMario/FNF-PsychEngine/pull/2896
 * HiroMizuki - Pixel Note Splashes - https://github.com/ShadowMario/FNF-PsychEngine/pull/1792
 * lemz1 - Play as Opponent - https://github.com/ShadowMario/FNF-PsychEngine/pull/2770
@@ -215,4 +214,4 @@ right now this feature is hardcoded, but I plan to make it softcoded soon
 ![image](https://user-images.githubusercontent.com/45212377/146986288-8d3a11d9-8aa7-4054-be57-7486cf244c54.png)
 
 ## and more!
-I will keep updating this fork as much as possible for it to be in sync with the main repository, and adding more features to it in the future!
+i will add more features sooner
