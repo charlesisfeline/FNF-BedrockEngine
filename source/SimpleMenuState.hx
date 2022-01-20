@@ -43,19 +43,13 @@ class SimpleMenuState extends MusicBeatState
 	#if !switch 'Donate', #end
 	'Options'];
 
-	#if debug
-	public static var bedrockDebugVersion:String = '0.3-DEBUG';
-	public static var psychDebugVersion:String = '0.5.1-DEBUG';
-	#end
-	public static var bedrockEngineVersion:String = '0.3'; //This is also used for Discord RPC
-	public static var psychEngineVersion:String = '0.5.1'; //this one too
-
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 
 	private static var curSelected:Int = 0;
 	private var camAchievement:FlxCamera;
 	public static var menuBG:FlxSprite;
 
+	var bg:FlxSprite;
 	var debugKeys:Array<FlxKey>;
 
 	function openSelectedSubstate(label:String)
@@ -87,8 +81,8 @@ class SimpleMenuState extends MusicBeatState
 
 		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBG'));
-		bg.setGraphicSize(Std.int(bg.width * 1.1 * scaleRatio));
+		bg = new FlxSprite(-80).loadGraphic(Paths.image('menuBGdark'));
+		bg.setGraphicSize(Std.int(bg.width * 1.175*scaleRatio ));
 		bg.updateHitbox();
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
@@ -98,25 +92,16 @@ class SimpleMenuState extends MusicBeatState
 		add(grpOptions);
 
 		//Version Text
-		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 64, 0, "Bedrock Engine v" + bedrockEngineVersion, 12);
+		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 64, 0, "Bedrock Engine v" + MainMenuState.bedrockEngineVersion, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
-		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 44, 0, "Psych Engine v" + psychEngineVersion, 12);
+		
+		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 44, 0, "Psych Engine v" + MainMenuState.psychEngineVersion, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
-		//Debug Build Version Text
-		#if debug
-		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 64, 0, "Bedrock Engine v" + bedrockDebugVersion, 12);
-		versionShit.scrollFactor.set();
-		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		add(versionShit);
-		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 44, 0, "Psych Engine v" + psychDebugVersion, 12);
-		versionShit.scrollFactor.set();
-		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		add(versionShit);
-		#end
+		
 		//FNF Version Text (Global)
 		var versionShit:FlxText = new FlxText(12, ClientPrefs.getResolution()[1] - 24, 0, "Friday Night Funkin' v" + Application.current.meta.get('version'), 12);
 		versionShit.scrollFactor.set();
