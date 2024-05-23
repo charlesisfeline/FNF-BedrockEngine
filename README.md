@@ -1,5 +1,3 @@
-# MOD COMING SOON
-
 # Current Plans
 
 * Noteskins on Options Menu
@@ -15,9 +13,10 @@
 * 01-15-22: imma just make hitsounds less louder for now, softcoded ones will be added eventually, not on 0.3
 * 01-18-21: Actually, Hitsounds are already Softcoded, just place your Hitsound on "mods/sounds" with the name "Tick.ogg", for Chart Editor Sounds, do "ChartingTick.ogg", that's about it!
 
-# Friday Night Funkin' - Weight Engine!
+# Friday Night Funkin' - Bedrock Engine!
 a fork of Psych Engine which adds a bunch of features from Pull Requests around the Main Branch, and even other forks!
 Credits:
+* CharlesCatYT - hi I archived this shit, thanks
 * Gui-iago - Base Engine - https://github.com/Gui-iago/FNF-BedrockEngine
 * CerBor - Difficulty Drop Down on Chart Menu - https://github.com/ShadowMario/FNF-PsychEngine/pull/2896
 * HiroMizuki - Pixel Note Splashes - https://github.com/ShadowMario/FNF-PsychEngine/pull/1792
@@ -36,7 +35,7 @@ Credits:
 > ### Dependencies
 
 - Git
-- Haxel (LATEST VERSION, STOP USING 4.1.5!!!!)
+- Haxe (4.2.5)
 - VS Community (windows only!)
 
 > ### OPTIONAL Dependencies 
